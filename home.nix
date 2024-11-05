@@ -11,6 +11,10 @@ home-manager.users.pjalv = { pkgs, ... }: {
   home.packages = with pkgs; [
       lazygit
       swww
+      sassc
+      gtk-engine-murrine
+      gtk_engines
+      gnome-themes-extra
   ];
   # programs.bash.enable = true;
 
@@ -28,7 +32,7 @@ gtk = {
 
     font = {
       name = "Nunito";
-      size = 13;
+      size = 10;
     };
 
     iconTheme = {

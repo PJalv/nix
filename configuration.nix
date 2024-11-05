@@ -7,13 +7,13 @@
 {
   imports =
     [
-      ./home.nix
+      #./home.nix
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
-  networking.hostName = "pjalv-nixos"; # Define your hostna    boot.loader.systemd-boot.enable = false;
+  networking.hostName = "desktop-nixos"; # Define your hostna    boot.loader.systemd-boot.enable = false;
 
 boot.loader.grub.enable = true;
 boot.loader.grub.device = "nodev";
@@ -177,16 +177,17 @@ security.polkit.enable = true;
 
     # Audio
     pavucontrol
-    power-profiles-daemon
+    pulseaudio
     spotify
     # File Management
     xfce.thunar
+    xfce.tumbler
   ];
   fonts.packages = with pkgs; [ 
-    nerdfonts
+    #nerdfonts
+  #(nerdfonts.override { fonts = [ "FiraCode" ]; })
     font-awesome
     noto-fonts-cjk-sans
-    noto-fonts-cjk
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
