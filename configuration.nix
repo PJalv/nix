@@ -3,7 +3,11 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
-
+let
+  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  session = "${pkgs.hyprland}/bin/Hyprland";
+  username = "pjalv";
+in
 {
   imports =
     [
@@ -13,7 +17,7 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  networking.hostName = "pjalv-nixos"; # Define your hostna    boot.loader.systemd-boot.enable = false;
+  networking.hostName = "desktop-nixos"; # Define your hostna    boot.loader.systemd-boot.enable = false;
 
 boot.loader.grub.enable = true;
 boot.loader.grub.device = "nodev";
@@ -27,6 +31,7 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.interfaces.enp8s0.wakeOnLan.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -43,11 +48,32 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+services.greetd = {
+    enable = true;
+    settings = {
+      initial_session = {
+        command = "${session}";
+        user = "${username}";
+      };
+      default_session = {
+        command = "${tuigreet} --greeting 'Welcome to NixOS!' --asterisks --remember --remember-user-session --time -cmd ${session}";
+        user = "pjalv";
+      };
+    };
+  };
+
+
+
+
   # Enable the X11 windowing system.
-  services.displayManager.sddm = {
-  enable = true;
-  theme = "catppuccin-sddm-corners";
-};
+#   services.displayManager = {
+# 	autoLogin.enable = true;
+# 	autoLogin.user = "pjalv";
+# };
+#   services.displayManager.sddm = {
+#   enable = true;
+#   theme = "catppuccin-sddm-corners";
+# };
   services.xserver.enable = true;
 
   programs.hyprland = {
@@ -105,7 +131,7 @@ security.polkit.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pjalv = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "input" "network"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "input" "network" "dialout"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       tree
@@ -116,10 +142,12 @@ security.polkit.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+  (import ./macropad.nix)
+  # macro_go
     # Editors
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
-    chromium
+    # chromium
     libreoffice
 
     # Networking
@@ -177,18 +205,17 @@ security.polkit.enable = true;
 
     # Audio
     pavucontrol
-    power-profiles-daemon
+    pulseaudio
     spotify
     # File Management
     xfce.thunar
+    xfce.tumbler
   ];
-  fonts.packages = with pkgs; [ 
+ fonts.packages = with pkgs; [ 
     nerdfonts
     font-awesome
     noto-fonts-cjk-sans
-    noto-fonts-cjk
   ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

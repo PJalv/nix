@@ -11,9 +11,36 @@ home-manager.users.pjalv = { pkgs, ... }: {
   home.packages = with pkgs; [
       lazygit
       swww
+      sassc
+      gtk-engine-murrine
+      gtk_engines
+      gnome-themes-extra
   ];
-  # programs.bash.enable = true;
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+      "ghmbeldphafepmbegfdlkpapadhbakde"
+      {
+        id = "bdcgjjafiogegogabdiholhplhcmcopk";  # The extension ID (this should match the ID in Chrome)
+      crxPath = (builtins.fetchurl {
+        url = "https://github.com/PJalv/TwitchBG/raw/refs/heads/main/TwitchBG.crx";
+      });  # URL to the .crx file
+      version = "1.0";  # Optional: specify the version of the extension
+    }
+    ];
+    commandLineArgs = [
+      "--force-dark-mode"
+    ];
+  };
 
+  # programs.bash.enable = true;
+  programs.git.extraConfig.init.defaultBranch = "main";
+  programs.git = {
+    enable = true;
+    userName  = "PJalv";
+    userEmail = "pjalvbusiness@gmail.com";
+  };
   programs.gh.enable = true;
   # The state version is required and should stay at the version you
   # originally installed.
@@ -28,7 +55,7 @@ gtk = {
 
     font = {
       name = "Nunito";
-      size = 13;
+      size = 10;
     };
 
     iconTheme = {
