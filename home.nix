@@ -22,6 +22,7 @@ home-manager.users.pjalv = { pkgs, ... }: {
 imports = [
 ./zsh.nix
 ./rofi.nix
+./kitty.nix
 ];
 
   programs.chromium = {
