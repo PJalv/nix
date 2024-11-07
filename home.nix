@@ -8,6 +8,7 @@
 
 
 home-manager.users.pjalv = { pkgs, ... }: {
+
   home.packages = with pkgs; [
       lazygit
       swww
@@ -15,11 +16,19 @@ home-manager.users.pjalv = { pkgs, ... }: {
       gtk-engine-murrine
       gtk_engines
       gnome-themes-extra
+      zoxide
   ];
+
+imports = [
+./zsh.nix
+./rofi.nix
+];
+
   programs.chromium = {
     enable = true;
     extensions = [
   "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+  "ghmbeldphafepmbegfdlkpapadhbakde" # proton pass 
   ];
     commandLineArgs = [
       "--force-dark-mode"
