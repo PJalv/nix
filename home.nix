@@ -19,16 +19,8 @@ home-manager.users.pjalv = { pkgs, ... }: {
   programs.chromium = {
     enable = true;
     extensions = [
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-      "ghmbeldphafepmbegfdlkpapadhbakde"
-      {
-        id = "bdcgjjafiogegogabdiholhplhcmcopk";  # The extension ID (this should match the ID in Chrome)
-      crxPath = (builtins.fetchurl {
-        url = "https://github.com/PJalv/TwitchBG/raw/refs/heads/main/TwitchBG.crx";
-      });  # URL to the .crx file
-      version = "1.0";  # Optional: specify the version of the extension
-    }
-    ];
+  "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+  ];
     commandLineArgs = [
       "--force-dark-mode"
     ];
