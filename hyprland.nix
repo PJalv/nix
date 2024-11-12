@@ -21,6 +21,7 @@ in
             "waybar & mako & macro_go 'chromium' '.spotify-wrapped'"
             "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
             "[workspace 9 silent] vesktop & hyprctl dispatch workspace 9"
+            "fusuma"
 
           ];
 
@@ -246,37 +247,43 @@ in
           '';
         in
         ''
-                    ${if machine == "laptop" then laptopConfig else desktopConfig}
+                              ${if machine == "laptop" then laptopConfig else desktopConfig}
 
-                  exec-once = swww-daemon
-                  exec-once = nm-applet --indicator
-          # will start a submap called 'resize'
-          # sets repeatable binds for resizing the active window
-          # use reset to go back to the global submap
-          # will reset the submap, meaning end the current one and return to the global one
-                    xwayland {
-                      force_zero_scaling = true
-                    }
-                  workspace = 9, monitor:HDMI-A-1
+                            exec-once = swww-daemon
+                            exec-once = nm-applet --indicator
+                    # will start a submap called 'resize'
+                    # sets repeatable binds for resizing the active window
+                    # use reset to go back to the global submap
+                    # will reset the submap, meaning end the current one and return to the global one
+                              xwayland {
+                                force_zero_scaling = true
+                              }
+                            workspace = 9, monitor:HDMI-A-1
 
-                    env = XCURSOR_SIZE,24
-                    env = HYPRCURSOR_SIZE,24
-                    device {
-                      name = epic-mouse-v1
-                        sensitivity = -0.5
-                    }
-                  bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
-                    bind = ALT, R, submap, resize
-          # will start a submap called "resize"
-                    submap = resize
-          # sets repeatable binds for resizing the active window
-                    binde = , l, resizeactive, 50 0
-                    binde = , h, resizeactive, -50 0
-                    binde = , k, resizeactive, 0 -40
-                    binde = , j, resizeactive, 0 40 # use reset to go back to the global submap
-                    bind = , escape, submap, reset 
-          # will reset the submap, meaning end the current one and return to the global one
-                    submap = reset
+                              env = XCURSOR_SIZE,24
+                              env = HYPRCURSOR_SIZE,24
+                              device {
+                                name = epic-mouse-v1
+                                  sensitivity = -0.5
+                              }
+                            bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
+                              bind = ALT, R, submap, resize
+                    # will start a submap called "resize"
+                              submap = resize
+                    # sets repeatable binds for resizing the active window
+                              binde = , l, resizeactive, 50 0
+                              binde = , h, resizeactive, -50 0
+                              binde = , k, resizeactive, 0 -40
+                              binde = , j, resizeactive, 0 40 # use reset to go back to the global submap
+                              bind = , escape, submap, reset 
+                    # will reset the submap, meaning end the current one and return to the global one
+                              submap = reset
+                              bind = $mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
+          bindel=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+          bindel=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+          bindel=, XF86MonBrightnessDown, exec, brightnessctl s 2%-
+          bindel=, XF86MonBrightnessUp, exec, brightnessctl s 5%+
+          bindl=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
         '';
     };
 }
