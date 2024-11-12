@@ -1,4 +1,9 @@
 { config, pkgs, lib, ... }:
+let
+  machine = "desktop";
+  username = "pjalv";
+
+in
 
 {
   wayland.windowManager.hyprland =
@@ -12,8 +17,7 @@
             "wl-paste --type text --watch cliphist store # Stores only text data"
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
             "wl-paste --type image --watch cliphist store # Stores only image data"
-            "nm-applet --indicator"
-            "swww-daemon & swww img '$(find wallpapers -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)'"
+            "swww img $(find wallpapers -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
             "waybar & mako & macro_go 'chromium' '.spotify-wrapped'"
             "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
             "[workspace 9 silent] vesktop & hyprctl dispatch workspace 9"
@@ -231,37 +235,48 @@
 
         };
 
-      extraConfig = ''
-        monitor=DP-3,1920x1080@144,0x0,1
-        monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
+      extraConfig =
+        let
+          laptopConfig = ''
+            monitor=eDP-1,2240x1400,0x0,1
+          '';
+          desktopConfig = ''
+            monitor=DP-3,1920x1080@144,0x0,1
+            monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
+          '';
+        in
+        ''
+                    ${if machine == "laptop" then laptopConfig else desktopConfig}
 
-                # will start a submap called 'resize'
-                # sets repeatable binds for resizing the active window
-                # use reset to go back to the global submap
-                # will reset the submap, meaning end the current one and return to the global one
-                        xwayland {
-                          force_zero_scaling = true
-                        }
-                      workspace = 9, monitor:HDMI-A-1
+                  exec-once = swww-daemon
+                  exec-once = nm-applet --indicator
+          # will start a submap called 'resize'
+          # sets repeatable binds for resizing the active window
+          # use reset to go back to the global submap
+          # will reset the submap, meaning end the current one and return to the global one
+                    xwayland {
+                      force_zero_scaling = true
+                    }
+                  workspace = 9, monitor:HDMI-A-1
 
-                        env = XCURSOR_SIZE,24
-                        env = HYPRCURSOR_SIZE,24
-                        device {
-                          name = epic-mouse-v1
-                            sensitivity = -0.5
-                        }
-                      bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
-                        bind = ALT, R, submap, resize
-                # will start a submap called "resize"
-                        submap = resize
-                # sets repeatable binds for resizing the active window
-                        binde = , l, resizeactive, 50 0
-                        binde = , h, resizeactive, -50 0
-                        binde = , k, resizeactive, 0 -40
-                        binde = , j, resizeactive, 0 40 # use reset to go back to the global submap
-                        bind = , escape, submap, reset 
-                # will reset the submap, meaning end the current one and return to the global one
-                        submap = reset
-      '';
+                    env = XCURSOR_SIZE,24
+                    env = HYPRCURSOR_SIZE,24
+                    device {
+                      name = epic-mouse-v1
+                        sensitivity = -0.5
+                    }
+                  bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
+                    bind = ALT, R, submap, resize
+          # will start a submap called "resize"
+                    submap = resize
+          # sets repeatable binds for resizing the active window
+                    binde = , l, resizeactive, 50 0
+                    binde = , h, resizeactive, -50 0
+                    binde = , k, resizeactive, 0 -40
+                    binde = , j, resizeactive, 0 40 # use reset to go back to the global submap
+                    bind = , escape, submap, reset 
+          # will reset the submap, meaning end the current one and return to the global one
+                    submap = reset
+        '';
     };
 }
