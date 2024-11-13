@@ -1,55 +1,56 @@
 { config, lib, pkgs, ... }:
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  session = "${pkgs.hyprland}/bin/Hyprland";
+  session = "${pkgs.hyprland}/bin/Hyprland";  # Fixed typo here
 
   # Define base packages that are common to both laptop and desktop
-  basePackages = with pkgs; [
-    vim
-    neovim
-    wget
-    networkmanagerapplet
-    wireguard-tools
-    lxqt.lxqt-policykit
-    liberation_ttf
-    clang
-    clang-tools
-    cargo
-    git
-    gnumake
-    go
-    templ
-    zig
-    (python312.withPackages (pypkgs: with pypkgs;[ compiledb ]))
-    btop
-    home-manager
-    minicom
-    mako
-    libnotify
-    wl-clipboard
-    gwenview
-    grim
-    copyq
-    bc
-    unzip
-    slurp
-    gcc
-    playerctl
-    fzf
-    zoxide
-    ripgrep
-    kitty
-    waybar
-    vesktop
-    rofi-wayland
-    rofi
-    pavucontrol
-    pulseaudio
-    spotify
-    xfce.thunar
-    xfce.tumbler
-    (import ./macropad.nix)
-  ];
+  basePackages = with pkgs;
+    [
+      vim
+      neovim
+      wget
+      networkmanagerapplet
+      wireguard-tools
+      lxqt.lxqt-policykit
+      liberation_ttf
+      clang
+      clang-tools
+      cargo
+      git
+      gnumake
+      go
+      templ
+      zig
+      (python312.withPackages (pypkgs: with pypkgs;[ compiledb ]))
+      btop
+      home-manager
+      minicom
+      mako
+      libnotify
+      wl-clipboard
+      gwenview
+      grim
+      copyq
+      bc
+      unzip
+      slurp
+      gcc
+      playerctl
+      fzf
+      zoxide
+      ripgrep
+      kitty
+      waybar
+      vesktop
+      rofi-wayland
+      rofi
+      pavucontrol
+      pulseaudio
+      spotify
+      xfce.thunar
+      xfce.tumbler
+      (import ./macropad.nix)
+    ];
 
   # Define laptop-specific packages
   laptopPackages = with pkgs; [
@@ -68,10 +69,9 @@ let
 in
 {
   imports = [
-    ./home.nix
     ./hardware-configuration.nix
+    ./home.nix
   ];
-
   options = {
     username = lib.mkOption {
       type = lib.types.str;
@@ -81,7 +81,7 @@ in
 
     machine = lib.mkOption {
       type = lib.types.str;
-      default = "desktop";
+      default = "laptop";
       description = "Machine identifier";
     };
   };
@@ -89,7 +89,7 @@ in
   config = lib.mkMerge [
     # Common configuration
     {
-      networking.hostName = "${config.machine}-nixos";
+      networking.hostName = "pjalv-${config.machine}";
       networking.networkmanager.enable = true;
 
       boot = {
@@ -130,7 +130,8 @@ in
         zsh.enable = true;
       };
 
-      users.users.pjalv = {
+      users.users.${config.username} = {
+        # Access username option
         isNormalUser = true;
         extraGroups = [ "wheel" "input" "network" "dialout" "networkmanager" ];
         shell = pkgs.zsh;
@@ -153,7 +154,6 @@ in
       services.openssh.enable = true;
       networking.firewall.allowedUDPPorts = [ 51820 ];
 
-      # Install base packages common to both configurations
       environment.systemPackages = basePackages;
 
       system.stateVersion = "24.05";
@@ -161,12 +161,13 @@ in
 
     # Desktop-specific configuration
     (lib.mkIf (config.machine == "desktop") {
+      # Access machine option
       services.greetd = {
         enable = true;
         settings = {
           initial_session = {
             command = "${session}";
-            user = "${config.username}";
+            user = "${config.username}"; # Access username option
           };
           default_session = {
             command = "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd Hyprland";
@@ -182,14 +183,12 @@ in
         };
       };
 
-      # Add desktop-specific packages
       environment.systemPackages = desktopPackages;
     })
 
     # Laptop-specific configuration
     (lib.mkIf (config.machine == "laptop") {
-      networking.wireless.enable = true;
-
+      # Access machine option
       services = {
         displayManager.sddm = {
           enable = true;
@@ -199,7 +198,6 @@ in
         libinput.enable = true;
       };
 
-      # Add laptop-specific packages
       environment.systemPackages = laptopPackages;
     })
   ];

@@ -1,11 +1,10 @@
 { config, pkgs, lib, ... }:
 let
-  machine = "desktop";
+  machine = "laptop";
   username = "pjalv";
-
 in
-
 {
+
   wayland.windowManager.hyprland =
     {
       enable = true;
@@ -17,27 +16,13 @@ in
             "wl-paste --type text --watch cliphist store # Stores only text data"
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
             "wl-paste --type image --watch cliphist store # Stores only image data"
-            "swww img $(find .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
             "waybar & mako & macro_go 'chromium' '.spotify-wrapped'"
             "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
             "[workspace 9 silent] vesktop & hyprctl dispatch workspace 9"
-
           ];
 
           input =
-            let
-              laptopConfig = {
-
-                sensitivity = 0.9; # -1.0 - 1.0, 0 means no modification.
-              };
-              desktopConfig = {
-
-                sensitivity = -0.3; # -1.0 - 1.0, 0 means no modification.
-              };
-            in
             {
-              inherit (if machine == "laptop" then laptopConfig else desktopConfig);
-
               kb_layout = "us";
               kb_options = "caps:swapescape";
               follow_mouse = 2;
@@ -250,7 +235,10 @@ in
       extraConfig =
         let
           laptopConfig = ''
-            monitor = eDP-1,2240x1400,0x0,1
+              monitor = eDP-1,2240x1400,0x0,1
+            input {
+            sensitivity = 0.9
+            }
           '';
           desktopConfig = ''
             monitor=DP-3,1920x1080@144,0x0,1
@@ -262,6 +250,8 @@ in
 
           exec-once = swww-daemon
           exec-once = nm-applet --indicator
+          exec-once = fusuma
+          exec-once = swww img "$(find .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
           # will start a submap called 'resize'
           # sets repeatable binds for resizing the active window
           # use reset to go back to the global submap

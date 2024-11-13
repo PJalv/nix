@@ -3,8 +3,9 @@ let
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {
     url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
-    rev = "de3dbf16dc11231da8a97426d1587d19a0cd7dfa"; # Or specify the commit hash/branch/tag
-    sha256 = "sha256-CCoNql9tOdiTdLThxA1mbo0IvGpTHikDh+OAhIi420g="; # This will be automatically replaced when you run `nixos-rebuild`
+    rev = "4acfbbf7255deabe4438bd2d1f07782dbfbb4f47";
+    # Or specify the commit hash/branch/tag
+    sha256 = "sha256-KLguT+Ggy/z9shEcTKgWxU/0OlUoFguSqQHh25sLpvg="; # This will be automatically replaced when you run `nixos-rebuild`
   };
 
   # Define the location of your dotfiles directory
@@ -22,6 +23,7 @@ in
       wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
       fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
       mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
+      styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
     };
     home.packages = with pkgs; [
       lazygit
