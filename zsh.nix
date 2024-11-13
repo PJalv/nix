@@ -1,4 +1,4 @@
-{ config, pkgs, host, ...}: 
+{ config, pkgs, host, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -162,27 +162,27 @@
     '';
     shellAliases = {
       cd = "z";
-ls = "ls --color";
-vim = "nvim";
-c = "clear";
-pbc = "wl=copy";
-pbp = "wl-paste";
+      ls = "ls --color";
+      vim = "nvim";
+      c = "clear";
+      pbc = "wl=copy";
+      pbp = "wl-paste";
 
 
-nixedit = "cd /etc/nixos && nvim .";
-nixupdate = "sudo nixos-rebuild switch";
+      nixedit = "cd /etc/nixos && nvim .";
+      nixupdate = "sudo nixos-rebuild switch";
 
-      };
+    };
   };
 
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
   };
-programs.fzf = {
-  enable = true;
-  enableZshIntegration = true;
-};
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
 
 }
