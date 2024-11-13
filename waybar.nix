@@ -42,7 +42,7 @@ in
         "cpu"
         "memory"
         "backlight"
-      ] ++ (if machine == "laptop" then [ "power-profiles-daemon" "battery" ] else [ ])
+      ] ++ (if machine == "laptop" then [ "power-profiles-daemon" "temperature" "battery" ] else [ ])
       ++ [
         "clock"
         "tray"
