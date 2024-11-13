@@ -17,28 +17,39 @@ in
             "wl-paste --type text --watch cliphist store # Stores only text data"
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
             "wl-paste --type image --watch cliphist store # Stores only image data"
-            "swww img $(find wallpapers -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
+            "swww img $(find .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
             "waybar & mako & macro_go 'chromium' '.spotify-wrapped'"
             "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
             "[workspace 9 silent] vesktop & hyprctl dispatch workspace 9"
-            "fusuma"
 
           ];
 
-          input = {
-            kb_layout = "us";
-            kb_options = "caps:swapescape";
-            follow_mouse = 2;
-            scroll_factor = 3;
-            sensitivity = -0.3; # -1.0 - 1.0, 0 means no modification.
-            accel_profile = "flat";
+          input =
+            let
+              laptopConfig = {
 
-            touchpad = {
-              natural_scroll = true;
+                sensitivity = 0.9; # -1.0 - 1.0, 0 means no modification.
+              };
+              desktopConfig = {
+
+                sensitivity = -0.3; # -1.0 - 1.0, 0 means no modification.
+              };
+            in
+            {
+              inherit (if machine == "laptop" then laptopConfig else desktopConfig);
+
+              kb_layout = "us";
+              kb_options = "caps:swapescape";
+              follow_mouse = 2;
+              scroll_factor = 3;
+              accel_profile = "flat";
+
+              touchpad = {
+                natural_scroll = true;
+              };
+              repeat_delay = 250;
+              repeat_rate = 50;
             };
-            repeat_delay = 250;
-            repeat_rate = 50;
-          };
           gestures =
             {
               workspace_swipe = false;
@@ -239,7 +250,7 @@ in
       extraConfig =
         let
           laptopConfig = ''
-            monitor=eDP-1,2240x1400,0x0,1
+            monitor = eDP-1,2240x1400,0x0,1
           '';
           desktopConfig = ''
             monitor=DP-3,1920x1080@144,0x0,1
@@ -247,43 +258,39 @@ in
           '';
         in
         ''
-                              ${if machine == "laptop" then laptopConfig else desktopConfig}
+          ${if machine == "laptop" then laptopConfig else desktopConfig}
 
-                            exec-once = swww-daemon
-                            exec-once = nm-applet --indicator
-                    # will start a submap called 'resize'
-                    # sets repeatable binds for resizing the active window
-                    # use reset to go back to the global submap
-                    # will reset the submap, meaning end the current one and return to the global one
-                              xwayland {
-                                force_zero_scaling = true
-                              }
-                            workspace = 9, monitor:HDMI-A-1
+          exec-once = swww-daemon
+          exec-once = nm-applet --indicator
+          # will start a submap called 'resize'
+          # sets repeatable binds for resizing the active window
+          # use reset to go back to the global submap
+          # will reset the submap, meaning end the current one and return to the global one
+          xwayland {
+          force_zero_scaling = true
+          }
 
-                              env = XCURSOR_SIZE,24
-                              env = HYPRCURSOR_SIZE,24
-                              device {
-                                name = epic-mouse-v1
-                                  sensitivity = -0.5
-                              }
-                            bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
-                              bind = ALT, R, submap, resize
-                    # will start a submap called "resize"
-                              submap = resize
-                    # sets repeatable binds for resizing the active window
-                              binde = , l, resizeactive, 50 0
-                              binde = , h, resizeactive, -50 0
-                              binde = , k, resizeactive, 0 -40
-                              binde = , j, resizeactive, 0 40 # use reset to go back to the global submap
-                              bind = , escape, submap, reset 
-                    # will reset the submap, meaning end the current one and return to the global one
-                              submap = reset
-                              bind = $mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
-          bindel=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-          bindel=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-          bindel=, XF86MonBrightnessDown, exec, brightnessctl s 2%-
-          bindel=, XF86MonBrightnessUp, exec, brightnessctl s 5%+
-          bindl=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+          env = XCURSOR_SIZE,24
+          env = HYPRCURSOR_SIZE,24
+          device {
+          name = epic-mouse-v1
+          sensitivity = -0.5
+          }
+          bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
+          bind = ALT, R, submap, resize
+          # will start a submap called "resize"
+          submap = resize
+          # sets repeatable binds for resizing the active window
+          binde = , l, resizeactive, 50 0
+          binde = , h, resizeactive, -50 0
+          binde = , k, resizeactive, 0 -40
+          binde = , j, resizeactive, 0 40 # use reset to go back to the global submap
+          bind = , escape, submap, reset
+          # will reset the submap, meaning end the current one and return to the global one
+          submap = reset
         '';
     };
 }
+
+
+
