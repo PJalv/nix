@@ -278,6 +278,12 @@ in
           bind = , escape, submap, reset
           # will reset the submap, meaning end the current one and return to the global one
           submap = reset
+          bind = $mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
+          bindel=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+          bindel=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+          bindel=, XF86MonBrightnessDown, exec, brightnessctl s 2%-
+          bindel=, XF86MonBrightnessUp, exec, brightnessctl s 5%+
+          bindl=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
         '';
     };
 }

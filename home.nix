@@ -56,6 +56,7 @@ in
 
     # programs.bash.enable = true;
     programs.git.extraConfig.init.defaultBranch = "main";
+    programs.git.extraConfig.safe.directory = "/etc/nixos";
     programs.git = {
       enable = true;
       userName = "PJalv";
