@@ -243,6 +243,7 @@ in
           desktopConfig = ''
             monitor=DP-3,1920x1080@144,0x0,1
             monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
+            workspace=9, monitor:HDMI-A-1
           '';
         in
         ''
