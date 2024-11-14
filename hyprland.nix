@@ -18,7 +18,6 @@ in
             "wl-paste --type image --watch cliphist store # Stores only image data"
             "waybar & mako & macro_go 'chromium' '.spotify-wrapped'"
             "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
-            "[workspace 9 silent] vesktop & hyprctl dispatch workspace 9"
           ];
 
           input =
@@ -244,6 +243,7 @@ in
             monitor=DP-3,1920x1080@144,0x0,1
             monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
             workspace=9, monitor:HDMI-A-1
+            exec-once=[workspace 9 silent] vesktop & hyprctl dispatch workspace 9
           '';
         in
         ''
