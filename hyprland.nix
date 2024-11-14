@@ -36,7 +36,7 @@ in
             };
           gestures =
             {
-              workspace_swipe = false;
+              workspace_swipe = true;
             };
           general = {
             "$fileManager" = "thunar";
