@@ -46,8 +46,9 @@ in
     programs.chromium = {
       enable = true;
       extensions = [
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
-        "ghmbeldphafepmbegfdlkpapadhbakde" # proton pass 
+        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+        { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
+
       ];
       commandLineArgs = [
         "--force-dark-mode"

@@ -49,6 +49,7 @@ let
       spotify
       xfce.thunar
       xfce.tumbler
+      libreoffice
       (import ./macropad.nix)
     ];
 
@@ -64,7 +65,6 @@ let
   desktopPackages = with pkgs; [
     stm32cubemx
     openocd
-    libreoffice
   ];
 in
 {
