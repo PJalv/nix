@@ -90,6 +90,7 @@ in
         gtk-xft-hinting = 1;
         gtk-xft-hintstyle = "hintslight";
         gtk-xft-rgba = "rgb";
+        gtk-application-prefer-dark-theme = 1;
       };
 
       gtk2.extraConfig = ''
@@ -97,6 +98,7 @@ in
         gtk-xft-hinting=1
         gtk-xft-hintstyle="hintslight"
         gtk-xft-rgba="rgb"
+        gtk-application-prefer-dark-theme=1
       '';
 
       cursorTheme = {
