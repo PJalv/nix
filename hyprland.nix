@@ -16,8 +16,10 @@ in
             "wl-paste --type text --watch cliphist store # Stores only text data"
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
             "wl-paste --type image --watch cliphist store # Stores only image data"
-            "waybar & mako & macro_go 'chromium' '.spotify-wrapped'"
+            "mako"
+            "macro_go 'chromium' '.spotify-wrapped'"
             "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
+            "sleep 1 && waybar"
           ];
 
           input =
