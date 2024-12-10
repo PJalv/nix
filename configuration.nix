@@ -46,6 +46,7 @@ let
       rofi
       pavucontrol
       pulseaudio
+      obs-studio
       spotify
       xfce.thunar
       xfce.tumbler
@@ -65,6 +66,7 @@ let
   desktopPackages = with pkgs; [
     stm32cubemx
     openocd
+    kdePackages.kdeconnect-kde
   ];
 in
 {
