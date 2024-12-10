@@ -13,12 +13,15 @@ let
       wireguard-tools
       lxqt.lxqt-policykit
       liberation_ttf
+      basedpyright
       clang
       clang-tools
       cargo
       git
       gnumake
       go
+      gopls
+      lua-language-server
       templ
       zig
       (python312.withPackages (pypkgs: with pypkgs;[ compiledb ]))
@@ -51,6 +54,7 @@ let
       xfce.thunar
       xfce.tumbler
       libreoffice
+      vlc
       (import ./macropad.nix)
     ];
 
