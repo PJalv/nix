@@ -19,7 +19,6 @@ in
 
   home-manager.users.pjalv = { config, pkgs, ... }: {
     xdg.configFile = {
-      nvim.source = "${dotfilesDir}/.config/nvim"; # Neovim config
       wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
       fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
       mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
