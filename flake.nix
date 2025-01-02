@@ -7,6 +7,7 @@
   };
 
   outputs = { self, nixpkgs, nix, nixos-hardware, home-manager }: {
+
     nixosConfigurations = {
       pjalv-desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
