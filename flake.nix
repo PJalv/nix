@@ -22,7 +22,7 @@
       pjalv-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./users/pjalv/user.nix
+           ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager {
             home-manager.useUserPackages = true;
             home-manager.users.pjalv = import ./users/pjalv/hm.nix;
