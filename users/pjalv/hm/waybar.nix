@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  machine = "desktop";
+  machine = "laptop";
   username = "pjalv";
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {

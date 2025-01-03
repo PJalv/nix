@@ -46,6 +46,7 @@ let
       vesktop
       rofi-wayland
       rofi
+      vial
       pavucontrol
       pulseaudio
       obs-studio
@@ -85,7 +86,7 @@ in
 
     machine = lib.mkOption {
       type = lib.types.str;
-      default = "desktop";
+      default = "laptop";
       description = "Machine identifier";
     };
   };
@@ -95,7 +96,7 @@ in
     {
       networking.hostName = "pjalv-${config.machine}";
       networking.networkmanager.enable = true;
-
+      hardware.keyboard.qmk.enable = true;
       boot = {
         loader = {
           systemd-boot.enable = false;

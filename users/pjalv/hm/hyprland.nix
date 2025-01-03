@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  machine = "desktop";
+  machine = "laptop";
   username = "pjalv";
 in
 {
