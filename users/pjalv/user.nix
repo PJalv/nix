@@ -84,13 +84,13 @@ in
 
     machine = lib.mkOption {
       type = lib.types.str;
-      default = "desktop";
+      default = "laptop";
       description = "Machine identifier";
     };
   };
 
   imports = [
-   ./desktop/hardware-configuration.nix # "desktop"
+   ./laptop/hardware-configuration.nix # "laptop"
   ];
   config = lib.mkMerge [
     # Common configuration
