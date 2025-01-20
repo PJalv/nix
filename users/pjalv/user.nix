@@ -76,7 +76,7 @@ let
 in
 {
   imports = [
-   ../../hardware-configuration.nix 
+   ./${config.machine}/hardware-configuration.nix
   ];
   options = {
     username = lib.mkOption {
