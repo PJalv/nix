@@ -75,9 +75,6 @@ let
   ];
 in
 {
-  imports = [
-   ./${config.machine}/hardware-configuration.nix
-  ];
   options = {
     username = lib.mkOption {
       type = lib.types.str;
@@ -92,6 +89,9 @@ in
     };
   };
 
+  imports = [
+   ./${config.machine}/hardware-configuration.nix
+  ];
   config = lib.mkMerge [
     # Common configuration
     {

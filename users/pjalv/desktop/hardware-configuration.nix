@@ -29,10 +29,6 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/drive" =
-    { device = "/dev/sdc1";
-      fsType = "exfat";
-    };
 
 
   swapDevices =
