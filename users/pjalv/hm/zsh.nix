@@ -170,7 +170,7 @@
 
 
       nixedit = "cd /etc/nixos && nvim .";
-      nixupdate = "sudo nixos-rebuild switch";
+      nixupdate = "git stage . && git commit -m 'Tweak' && sudo nixos-rebuild switch";
 
     };
   };

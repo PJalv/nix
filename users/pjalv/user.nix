@@ -68,7 +68,7 @@ let
 
   # Define desktop-specific packages
   desktopPackages = with pkgs; [
-    # stm32cubemx
+    stm32cubemx
     # openocd
     # kdePackages.kdeconnect-kde
   ];
@@ -86,7 +86,7 @@ in
 
     machine = lib.mkOption {
       type = lib.types.str;
-      default = "laptop";
+      default = "desktop";
       description = "Machine identifier";
     };
   };
