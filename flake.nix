@@ -28,6 +28,11 @@
       pjalv-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+        {
+          environment.systemPackages = [
+            ghostty.packages.x86_64-linux.default
+          ];
+        }
            ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager {
             home-manager.useUserPackages = true;

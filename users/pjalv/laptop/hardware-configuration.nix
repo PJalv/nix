@@ -29,10 +29,6 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/mnt" =
-    { device = "/dev/sda1";
-      fsType = "exfat";
-    };
 
 
   swapDevices =
