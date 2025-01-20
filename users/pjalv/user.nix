@@ -21,7 +21,7 @@ let
       git
       basedpyright
       gopls
-      ghostty
+      # ghostty
       lua-language-server
       (python312.withPackages (pypkgs: with pypkgs;[ compiledb ]))
       btop
