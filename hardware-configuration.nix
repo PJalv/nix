@@ -34,10 +34,6 @@
       fsType = "exfat";
     };
 
-  fileSystems."/mnt" =
-    { device = "/dev/sdb1";
-      fsType = "exfat";
-    };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/44ccc7a9-7ef0-40dc-b28f-29bf9fd68f6e"; }
