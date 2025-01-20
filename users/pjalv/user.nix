@@ -90,7 +90,7 @@ in
   };
 
   imports = [
-    (./. + "/desktop-${config.machine}.nix")
+    (/. + "/desktop-${config.machine}.nix")
   ];
   config = lib.mkMerge [
     # Common configuration
