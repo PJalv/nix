@@ -21,9 +21,10 @@ let
       git
       basedpyright
       gopls
-      ghostty
+      # ghostty
       lua-language-server
-      (python312.withPackages (pypkgs: with pypkgs;[ compiledb ]))
+      nixd
+      compiledb
       btop
       home-manager
       minicom
@@ -74,9 +75,6 @@ let
   ];
 in
 {
-  imports = [
-   ../../hardware-configuration.nix 
-  ];
   options = {
     username = lib.mkOption {
       type = lib.types.str;
@@ -86,11 +84,14 @@ in
 
     machine = lib.mkOption {
       type = lib.types.str;
-      default = "laptop";
+      default = "desktop";
       description = "Machine identifier";
     };
   };
 
+  imports = [
+   ./desktop/hardware-configuration.nix # "desktop"
+  ];
   config = lib.mkMerge [
     # Common configuration
     {

@@ -36,6 +36,7 @@ in
       ./hm/hyprland.nix
       ./hm/waybar.nix
       ./hm/ghostty.nix
+      ./hm/entries.nix
       # ./kitty.nix
     ];
 
