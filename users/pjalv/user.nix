@@ -23,7 +23,8 @@ let
       gopls
       # ghostty
       lua-language-server
-      (python312.withPackages (pypkgs: with pypkgs;[ compiledb ]))
+      nixd
+      compiled
       btop
       home-manager
       minicom
@@ -68,7 +69,7 @@ let
 
   # Define desktop-specific packages
   desktopPackages = with pkgs; [
-    # stm32cubemx
+    stm32cubemx
     # openocd
     # kdePackages.kdeconnect-kde
   ];
