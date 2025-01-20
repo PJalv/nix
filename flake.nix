@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url        = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
   outputs = { self, nixpkgs, nix, nixos-hardware, home-manager }: {
