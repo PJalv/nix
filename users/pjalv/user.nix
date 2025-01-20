@@ -24,7 +24,7 @@ let
       # ghostty
       lua-language-server
       nixd
-      compiled
+      compiledb
       btop
       home-manager
       minicom
