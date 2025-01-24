@@ -3,13 +3,13 @@
 
  pkgs.buildGoModule rec {
     pname = "macro_go";
-    version= "0.1.1";
+    version= "0.1.2";
 
     src = 
     pkgs.fetchFromGitHub {
       owner = "PJalv";
       repo = "macropad";
-      rev = "0.1.1";
+      rev = "${version}";
       hash = "sha256-jDZTHHwQP8N78oNTjFJmUWkhIyagdKIOnOxgX6CzDvk=";
     }+"/macro_go";
 
