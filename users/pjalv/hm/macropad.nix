@@ -5,7 +5,8 @@
     pname = "macro_go";
     version= "0.1.1";
 
-    src = pkgs.fetchFromGitHub {
+    src = 
+    pkgs.fetchFromGitHub {
       owner = "PJalv";
       repo = "macropad";
       rev = "0.1.1";
