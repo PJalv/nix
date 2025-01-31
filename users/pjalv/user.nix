@@ -11,6 +11,7 @@ let
       neovim
       wget
       networkmanagerapplet
+      gnumake
       wireguard-tools
       lxqt.lxqt-policykit
       liberation_ttf
