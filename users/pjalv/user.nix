@@ -144,6 +144,7 @@ in
         extraGroups = [ "wheel" "input" "network" "dialout" "networkmanager" ];
         shell = pkgs.zsh;
       };
+      users.defaultUserShell = pkgs.zsh;
 
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
       nixpkgs.config.allowUnfree = true;
