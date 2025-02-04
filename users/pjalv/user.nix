@@ -39,6 +39,7 @@ let
       bc
       unzip
       slurp
+      direnv
       gcc
       playerctl
       fzf
