@@ -35,6 +35,7 @@ let
       gwenview
       grim
       copyq
+      eza
       bc
       unzip
       slurp
