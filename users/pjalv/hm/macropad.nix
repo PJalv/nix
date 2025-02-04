@@ -9,8 +9,8 @@
     pkgs.fetchFromGitHub {
       owner = "PJalv";
       repo = "macropad";
-      rev = "${version}";
-      hash = "sha256-jDZTHHwQP8N78oNTjFJmUWkhIyagdKIOnOxgX6CzDvk=";
+      rev = "a2503e7f57f34c240763b532f6e3036d333f4c37";
+      hash = "sha256-h75Fkw3R8mNdt7imamIpfuzsyYP66BT0Nv5UPAnabRo=";
     }+"/macro_go";
 
   vendorHash = "sha256-wSrY7GIXYcLh6iuhMKu8gqSsXUWj8CdBvMDgT3bH18o=";
