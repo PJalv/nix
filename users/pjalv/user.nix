@@ -25,7 +25,6 @@ let
     git
     basedpyright
     gopls
-    # ghostty
     lua-language-server
     nixd
     compiledb
@@ -91,7 +90,7 @@ in
 
     machine = lib.mkOption {
       type = lib.types.str;
-      default = "laptop";
+      default = "desktop";
       description = "Machine identifier";
     };
   };

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  machine = "laptop";
+  machine = "desktop";
   username = "pjalv";
 in
 {
