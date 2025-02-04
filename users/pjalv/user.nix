@@ -11,6 +11,7 @@ let
       neovim
       wget
       networkmanagerapplet
+      gnumake
       wireguard-tools
       lxqt.lxqt-policykit
       liberation_ttf
@@ -143,6 +144,7 @@ in
         extraGroups = [ "wheel" "input" "network" "dialout" "networkmanager" ];
         shell = pkgs.zsh;
       };
+      users.defaultUserShell = pkgs.zsh;
 
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
       nixpkgs.config.allowUnfree = true;

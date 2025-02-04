@@ -167,7 +167,7 @@
       c = "clear";
       pbc = "wl=copy";
       pbp = "wl-paste";
-
+      nix-shell ="nix-shell --run $SHELL";
 
       nixedit = "cd /etc/nixos && nvim .";
       nixupdate = "git stage . && git commit -m 'Tweak' && sudo nixos-rebuild switch";
