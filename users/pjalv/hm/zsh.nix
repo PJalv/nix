@@ -12,11 +12,11 @@
         name = "fzf-tab";
         src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
       }
-      # {
-      #   name = "powerlevel10k";
-      #   src = pkgs.zsh-powerlevel10k;
-      #   file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      # }
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
     ];
 
     completionInit = ''

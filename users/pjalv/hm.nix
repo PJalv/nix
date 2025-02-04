@@ -37,7 +37,7 @@ in
       ./hm/waybar.nix
       ./hm/ghostty.nix
       ./hm/entries.nix
-      ./hm/starship.nix
+      # ./hm/starship.nix
       # ./kitty.nix
     ];
 
