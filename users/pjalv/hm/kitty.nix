@@ -17,7 +17,7 @@
       enable_audio_bell = false;
       mouse_hide_wait = 60;
 
-## Tabs
+      ## Tabs
       tab_title_template = "{index}";
       active_tab_font_style = "normal";
       inactive_tab_font_style = "normal";
@@ -29,13 +29,12 @@
       inactive_tab_background = "#3C3836";
     };
 
-    keybindings = {  
-## Tabs
+    keybindings = {
+      ## Tabs
       "shift+alt+h" = "previous_tab";
       "shift+alt+l" = "next_tab";
 
-
-## Unbind
+      ## Unbind
       "ctrl+shift+left" = "no_op";
       "ctrl+shift+right" = "no_op";
     };

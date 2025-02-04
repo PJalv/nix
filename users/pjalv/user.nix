@@ -1,65 +1,70 @@
-
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
-  session = "${pkgs.hyprland}/bin/Hyprland";  # Fixed typo here
+  session = "${pkgs.hyprland}/bin/Hyprland"; # Fixed typo here
 
   # Define base packages that are common to both laptop and desktop
-  basePackages = with pkgs;
-    [
-      vim
-      neovim
-      wget
-      networkmanagerapplet
-      gnumake
-      wireguard-tools
-      lxqt.lxqt-policykit
-      liberation_ttf
-      basedpyright
-      clang
-      clang-tools
-      cargo
-      git
-      basedpyright
-      gopls
-      # ghostty
-      lua-language-server
-      nixd
-      compiledb
-      btop
-      home-manager
-      minicom
-      mako
-      libnotify
-      wl-clipboard
-      gwenview
-      grim
-      copyq
-      bc
-      unzip
-      slurp
-      gcc
-      playerctl
-      fzf
-      zoxide
-      ripgrep
-      kitty
-      waybar
-      vesktop
-      rofi-wayland
-      rofi
-      vial
-      pavucontrol
-      pulseaudio
-      obs-studio
-      spotify
-      stm32cubemx
-      xfce.thunar
-      xfce.tumbler
-      libreoffice
-      vlc
-      (import ./hm/macropad.nix pkgs) 
-    ];
+  basePackages = with pkgs; [
+    vim
+    neovim
+    wget
+    networkmanagerapplet
+    gnumake
+    wireguard-tools
+    lxqt.lxqt-policykit
+    liberation_ttf
+    basedpyright
+    clang
+    clang-tools
+    cargo
+    git
+    basedpyright
+    gopls
+    # ghostty
+    lua-language-server
+    nixd
+    compiledb
+    btop
+    home-manager
+    minicom
+    mako
+    libnotify
+    wl-clipboard
+    gwenview
+    grim
+    copyq
+    eza
+    bc
+    unzip
+    slurp
+    direnv
+    gcc
+    playerctl
+    fzf
+    zoxide
+    ripgrep
+    kitty
+    waybar
+    vesktop
+    rofi-wayland
+    rofi
+    vial
+    pavucontrol
+    pulseaudio
+    obs-studio
+    spotify
+    stm32cubemx
+    xfce.thunar
+    xfce.tumbler
+    libreoffice
+    vlc
+    (import ./hm/macropad.nix pkgs)
+  ];
 
   # Define laptop-specific packages
   laptopPackages = with pkgs; [
@@ -86,13 +91,13 @@ in
 
     machine = lib.mkOption {
       type = lib.types.str;
-      default = "desktop";
+      default = "laptop";
       description = "Machine identifier";
     };
   };
 
   imports = [
-   ./desktop/hardware-configuration.nix # "desktop"
+    ./laptop/hardware-configuration.nix # "laptop"
   ];
   config = lib.mkMerge [
     # Common configuration
@@ -141,12 +146,21 @@ in
       users.users.${config.username} = {
         # Access username option
         isNormalUser = true;
-        extraGroups = [ "wheel" "input" "network" "dialout" "networkmanager" ];
+        extraGroups = [
+          "wheel"
+          "input"
+          "network"
+          "dialout"
+          "networkmanager"
+        ];
         shell = pkgs.zsh;
       };
       users.defaultUserShell = pkgs.zsh;
 
-      nix.settings.experimental-features = [ "nix-command" "flakes" ];
+      nix.settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       nixpkgs.config.allowUnfree = true;
       hardware.pulseaudio.enable = false;
       security = {
@@ -154,9 +168,8 @@ in
         polkit.enable = true;
       };
 
-      fonts.packages = with pkgs;
-        [
-        font-awesome 
+      fonts.packages = with pkgs; [
+        font-awesome
         noto-fonts-cjk-sans
         nerd-fonts.fira-code
 
@@ -216,4 +229,3 @@ in
     })
   ];
 }
-

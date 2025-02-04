@@ -1,28 +1,13 @@
-{config, ...}: {
+{ config, pkgs, ... }:
+{
   home.sessionVariables.STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
 
   programs.starship = {
-    
+
     enable = true;
     enableZshIntegration = true;
-    settings = {
-      character = {
-        success_symbol = "[›](bold green)";
-        error_symbol = "[›](bold red)";
-      };
+    settings = pkgs.lib.importTOML ./dots/starship.toml;
 
-      git_status = {
-        deleted = "✗";
-        modified = "✶";
-        staged = "✓";
-        stashed = "≡";
-      };
-
-      nix_shell = {
-        symbol = " ";
-        heuristic = true;
-      };
-
-    };
   };
+
 }
