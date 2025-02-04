@@ -16,8 +16,8 @@
     gtk-tabs-location = bottom
     confirm-close-surface = false
 
-    keybind = ctrl+shift+j=scroll_page_fractional:-0.5
-    keybind = ctrl+shift+k=scroll_page_fractional:0.5
+    keybind = ctrl+shift+j=scroll_page_fractional:0.7
+    keybind = ctrl+shift+k=scroll_page_fractional:-0.7
 
     keybind = alt+shift+h=previous_tab
     keybind = alt+shift+l=next_tab
