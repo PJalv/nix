@@ -5,7 +5,6 @@
     
     enable = true;
     enableZshIntegration = true;
-   settings = pkgs.lib.importTOML  "${builtins.readFile "${config.users.users.PJalv.home}/starship.toml"}";
 
     
   };
