@@ -1,4 +1,3 @@
-
 { pkgs, ... }:
 {
   gtk = {
@@ -18,7 +17,6 @@
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-    
 
     gtk3.extraConfig = {
       gtk-xft-antialias = 1;
