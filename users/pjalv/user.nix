@@ -96,7 +96,7 @@ in
   };
 
   imports = [
-    ./laptop/hardware-configuration.nix # "laptop"
+    ./desktop/hardware-configuration.nix # "laptop"
   ];
   config = lib.mkMerge [
     # Common configuration
