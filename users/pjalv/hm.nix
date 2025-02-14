@@ -49,6 +49,7 @@ xdg.mimeApps = {
     gnome-themes-extra
     zoxide
     zed-editor
+    arduino-ide
   ];
 
   imports = [
