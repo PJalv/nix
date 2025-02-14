@@ -48,6 +48,7 @@ xdg.mimeApps = {
     gtk_engines
     gnome-themes-extra
     zoxide
+    zed-editor
   ];
 
   imports = [
