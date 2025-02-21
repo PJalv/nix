@@ -163,6 +163,11 @@
         zle -N zle-line-init
         zle -N zle-line-finish
       fi
+      function load_api_keys() {
+        while read line; do
+          export "$line"
+        done < ~/.api_keys
+      }
     '';
     shellAliases = {
       cd = "z";
