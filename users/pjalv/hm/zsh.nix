@@ -123,6 +123,11 @@
       setopt hist_expire_dups_first
       setopt hist_verify
 
+      load_api_keys() {
+        while read line; do
+          export "$line"
+        done < ~/.api_keys
+      }
       source ~/.p10k.zsh
 
       # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
@@ -171,7 +176,6 @@
       c = "clear";
       pbc = "wl=copy";
       pbp = "wl-paste";
-      load_api_keys="while IFS= read -r line; do export '$line'; done < ~/.api_keys";
       nix-shell = "nix-shell --run $SHELL";
 
       nixedit = "cd /etc/nixos && nvim .";
