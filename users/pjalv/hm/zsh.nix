@@ -124,9 +124,20 @@
       setopt hist_verify
 
       load_api_keys() {
-        while read line; do
-          export "$line"
-        done < ~/.api_keys
+          local api_keys_file="$HOME/.api_keys"
+
+          if [[ -f "$api_keys_file" ]]; then
+              while IFS= read -r line; do
+                  # Skip empty lines and comments
+                  [[ -z "$line" || "$line" == \#* ]] && continue
+
+                  # Export each line as an environment variable
+                  export "$line"
+              done < "$api_keys_file"
+              echo "✅ API keys loaded successfully!"
+          else
+              echo "⚠️  Missing .api_keys file"
+          fi
       }
       source ~/.p10k.zsh
 
