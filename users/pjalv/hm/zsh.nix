@@ -163,11 +163,6 @@
         zle -N zle-line-init
         zle -N zle-line-finish
       fi
-      function load_api_keys() {
-        while read line; do
-          export "$line"
-        done < ~/.api_keys
-      }
     '';
     shellAliases = {
       cd = "z";
@@ -176,6 +171,7 @@
       c = "clear";
       pbc = "wl=copy";
       pbp = "wl-paste";
+      load_api_keys="while IFS= read -r line; do export '$line'; done < ~/.api_keys";
       nix-shell = "nix-shell --run $SHELL";
 
       nixedit = "cd /etc/nixos && nvim .";
