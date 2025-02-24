@@ -25,6 +25,21 @@ in
     mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
     styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
   };
+xdg.mimeApps = {
+    enable = true;
+    associations.added = {
+      "x-scheme-handler/http" = ["chromium-browser.desktop"];
+      "x-scheme-handler/https" = ["chromium-browser.desktop"];
+      "text/html" = ["chromium-browser.desktop"];
+      "application/pdf" = ["chromium-browser.desktop"];
+    };
+    defaultApplications = {
+      "x-scheme-handler/http" = ["chromium-browser.desktop"];
+      "x-scheme-handler/https" = ["chromium-browser.desktop"];
+      "text/html" = ["chromium-browser.desktop"];
+      "application/pdf" = ["chromium-browser.desktop"];
+    };
+  };
   home.packages = with pkgs; [
     lazygit
     swww
@@ -33,6 +48,8 @@ in
     gtk_engines
     gnome-themes-extra
     zoxide
+    zed-editor
+    arduino-ide
   ];
 
   imports = [

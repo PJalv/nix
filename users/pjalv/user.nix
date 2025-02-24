@@ -71,6 +71,8 @@ let
     brightnessctl
     fusuma
     catppuccin-sddm-corners
+    qemu
+    quickemu
   ];
 
   # Define desktop-specific packages
