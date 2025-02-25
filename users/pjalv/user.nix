@@ -174,7 +174,6 @@ in
         font-awesome
         noto-fonts-cjk-sans
         nerd-fonts.fira-code
-
       ];
 
       services.openssh.enable = true;

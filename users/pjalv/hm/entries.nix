@@ -9,7 +9,6 @@
       terminal = false;
       categories = [ "Application" ];
     };
-
   };
 
 }
