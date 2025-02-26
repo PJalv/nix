@@ -17,6 +17,9 @@
     "nvme"
     "xhci_pci"
     "rtsx_pci_sdmmc"
+    "usbhid"
+    "joydev"
+    "xpad"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
