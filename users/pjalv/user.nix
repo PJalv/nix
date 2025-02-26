@@ -78,6 +78,7 @@ let
   # Define desktop-specific packages
   desktopPackages = with pkgs; [
     bottles
+    steam-rom-manager
     # stm32cubemx
     # openocd
     # kdePackages.kdeconnect-kde
@@ -203,6 +204,12 @@ in
           };
         };
       };
+programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+};
 
       # services.xserver.enable = true;
       # services.displayManager.sddm.enable = true;
