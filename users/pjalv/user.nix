@@ -109,6 +109,7 @@ in
       networking.networkmanager.enable = true;
       hardware.keyboard.qmk.enable = true;
 hardware.bluetooth.enable = true; # enables support for Bluetooth
+hardware.bluetooth.package = pkgs.bluezFull;
 services.blueman.enable = true;
   hardware.bluetooth.powerOnBoot = true; 
       boot = {
