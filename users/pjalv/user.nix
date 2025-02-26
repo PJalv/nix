@@ -77,6 +77,7 @@ let
 
   # Define desktop-specific packages
   desktopPackages = with pkgs; [
+    bottles-unwrapped
     # stm32cubemx
     # openocd
     # kdePackages.kdeconnect-kde
