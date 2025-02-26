@@ -34,7 +34,7 @@ let
     mako
     libnotify
     wl-clipboard
-    gwenview
+    swappy
     grim
     copyq
     eza
