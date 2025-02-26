@@ -135,7 +135,7 @@ format = 'via [$symbol$stack]($style)'
 [purescript]
 format = 'via [$symbol]($style)'
 [python]
-format = 'via [$symbol]($style)'
+format = 'via [${symbol}(${version} )(\($virtualenv\) )]($style)'
 [quarto]
 format = 'via [$symbol]($style)'
 [raku]
