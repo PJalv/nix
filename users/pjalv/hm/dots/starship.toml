@@ -1,7 +1,24 @@
 # version: 1.0.0
+format = """
+$nix_shell\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$character
+"""
 
 add_newline = true
 continuation_prompt = "[▸▹ ](dimmed white)"
+
+[nix_shell]
+format = "[󱄅 ](bold blue)"
+disabled = false
+
+[battery]
+disabled = true
+
 [directory]
 truncate_to_repo = false
 fish_style_pwd_dir_length = 1
