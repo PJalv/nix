@@ -61,7 +61,7 @@ continuation_prompt = "[▸▹ ](dimmed white)"
 impure_msg = '[impure](bold red)'
 pure_msg = '[pure](bold green)'
 unknown_msg = '[unknown](bold yellow)'
-format = '[(󱄅 $state) ](bold blue)'
+format = '[ $state ](bold blue)'
 
 [battery]
 disabled = true
@@ -74,6 +74,8 @@ fish_style_pwd_dir_length = 1
 format = "via [$symbol]($style)"
 [buf]
 format = "via [$symbol]($style)"
+[c]
+format = 'via [$name $version]($style)'
 [cmake]
 format = "via [$symbol]($style)"
 [cobol]
