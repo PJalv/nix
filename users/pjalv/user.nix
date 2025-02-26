@@ -110,6 +110,7 @@ in
       hardware.keyboard.qmk.enable = true;
 hardware.bluetooth.enable = true; # enables support for Bluetooth
 hardware.bluetooth.package = pkgs.bluez;
+hardware.bluetooth.input.General.ClassicBondedOnly = false;
 services.blueman.enable = true;
   hardware.bluetooth.powerOnBoot = true; 
       boot = {
