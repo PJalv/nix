@@ -108,6 +108,9 @@ in
       networking.hostName = "pjalv-${config.machine}";
       networking.networkmanager.enable = true;
       hardware.keyboard.qmk.enable = true;
+hardware.bluetooth.enable = true; # enables support for Bluetooth
+services.blueman.enable = true;
+  hardware.bluetooth.powerOnBoot = true; 
       boot = {
         loader = {
           systemd-boot.enable = false;
