@@ -13,7 +13,7 @@ add_newline = true
 continuation_prompt = "[▸▹ ](dimmed white)"
 
 [nix_shell]
-format = "[󱄅 ](bold blue)"
+format = "[$symbol ]($style)"
 disabled = false
 
 [battery]
