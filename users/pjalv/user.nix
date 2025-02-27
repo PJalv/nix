@@ -2,11 +2,8 @@
   config,
   lib,
   pkgs,
-<<<<<<< HEAD
-=======
   machine ? "desktop",
   username ? "pjalv",
->>>>>>> Snippet
   ...
 }:
 let
@@ -90,36 +87,6 @@ let
   ];
 in
 {
-<<<<<<< HEAD
-  options = {
-    username = lib.mkOption {
-      type = lib.types.str;
-      default = "pjalv";
-      description = "Primary user of the system";
-    };
-
-    machine = lib.mkOption {
-      type = lib.types.str;
-      default = "desktop";
-      description = "Machine identifier";
-    };
-  };
-
-  imports = [
-    ./desktop/hardware-configuration.nix # "laptop"
-  ];
-  config = lib.mkMerge [
-    # Common configuration
-    {
-      networking.hostName = "pjalv-${config.machine}";
-      networking.networkmanager.enable = true;
-      hardware.keyboard.qmk.enable = true;
-hardware.bluetooth.enable = true; # enables support for Bluetooth
-hardware.bluetooth.package = pkgs.bluez;
-hardware.bluetooth.input.General.ClassicBondedOnly = false;
-services.blueman.enable = true;
-  hardware.bluetooth.powerOnBoot = true; 
-=======
   # We'll use the passed-in parameters instead of defining options
   imports = [
     ./${machine}/hardware-configuration.nix
@@ -131,13 +98,12 @@ services.blueman.enable = true;
       networking.hostName = "pjalv-${machine}";
       networking.networkmanager.enable = true;
       hardware.keyboard.qmk.enable = true;
-      hardware.bluetooth.enable = true; # enables support for Bluetooth
+      hardware.bluetooth.enable = true;
       hardware.bluetooth.package = pkgs.bluez;
       hardware.bluetooth.input.General.ClassicBondedOnly = false;
       services.blueman.enable = true;
       hardware.bluetooth.powerOnBoot = true; 
       
->>>>>>> Snippet
       boot = {
         loader = {
           systemd-boot.enable = false;
@@ -178,7 +144,6 @@ services.blueman.enable = true;
       virtualisation.docker.enable = true;
 
       users.users.${username} = {
-        # Access username option
         isNormalUser = true;
         extraGroups = [
           "wheel"
@@ -207,7 +172,6 @@ services.blueman.enable = true;
         font-awesome
         noto-fonts-cjk-sans
         nerd-fonts.fira-code
-
       ];
 
       services.openssh.enable = true;
@@ -225,7 +189,7 @@ services.blueman.enable = true;
         settings = {
           initial_session = {
             command = "${session}";
-            user = "${username}"; # Access username option
+            user = "${username}";
           };
           default_session = {
             command = "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd Hyprland";
@@ -236,9 +200,9 @@ services.blueman.enable = true;
       
       programs.steam = {
         enable = true;
-        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-        dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-        localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+        localNetworkGameTransfers.openFirewall = true;
       };
 
       networking.interfaces = {
@@ -253,7 +217,6 @@ services.blueman.enable = true;
 
     # Laptop-specific configuration
     (lib.mkIf (machine == "laptop") {
-      # Access machine option
       services = {
         displayManager.sddm = {
           enable = true;
@@ -267,4 +230,3 @@ services.blueman.enable = true;
     })
   ];
 }
-
