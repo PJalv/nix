@@ -113,7 +113,7 @@ in
           };
           efi = {
             canTouchEfiVariables = true;
-            efiSysMountPoint = "/boot/efi";
+            efiSysMountPoint = if machine == "laptop" then "/boot" else "/boot/efi";
           };
         };
         kernelPackages = pkgs.linuxPackages_latest;

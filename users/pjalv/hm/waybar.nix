@@ -2,12 +2,12 @@
   config,
   pkgs,
   lib,
+  machine ? "desktop",
+  username ? "pjalv",
   ...
 }:
 
 let
-  machine = "desktop";
-  username = "pjalv";
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {
     url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
