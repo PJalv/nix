@@ -48,13 +48,7 @@ in
     gtk_engines
     gnome-themes-extra
     zoxide
-    zed-editor
-    arduino-ide
-  ] ++ (if machine == "laptop" then [
-    # Laptop-specific home packages
-  ] else [
-    # Desktop-specific home packages
-  ]);
+  ];
 
   imports = [
     ./hm/zsh.nix
@@ -63,7 +57,7 @@ in
     ./hm/waybar.nix
     ./hm/ghostty.nix
     ./hm/entries.nix
-    # ./hm/starship.nix
+    ./hm/starship.nix
     # ./kitty.nix
   ];
 
@@ -71,7 +65,6 @@ in
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
-
   };
   programs.chromium = {
     enable = true;
