@@ -2,6 +2,11 @@
   config,
   lib,
   pkgs,
+<<<<<<< HEAD
+=======
+  machine ? "desktop",
+  username ? "pjalv",
+>>>>>>> Snippet
   ...
 }:
 let
@@ -85,6 +90,7 @@ let
   ];
 in
 {
+<<<<<<< HEAD
   options = {
     username = lib.mkOption {
       type = lib.types.str;
@@ -113,6 +119,25 @@ hardware.bluetooth.package = pkgs.bluez;
 hardware.bluetooth.input.General.ClassicBondedOnly = false;
 services.blueman.enable = true;
   hardware.bluetooth.powerOnBoot = true; 
+=======
+  # We'll use the passed-in parameters instead of defining options
+  imports = [
+    ./${machine}/hardware-configuration.nix
+  ];
+
+  config = lib.mkMerge [
+    # Common configuration
+    {
+      networking.hostName = "pjalv-${machine}";
+      networking.networkmanager.enable = true;
+      hardware.keyboard.qmk.enable = true;
+      hardware.bluetooth.enable = true; # enables support for Bluetooth
+      hardware.bluetooth.package = pkgs.bluez;
+      hardware.bluetooth.input.General.ClassicBondedOnly = false;
+      services.blueman.enable = true;
+      hardware.bluetooth.powerOnBoot = true; 
+      
+>>>>>>> Snippet
       boot = {
         loader = {
           systemd-boot.enable = false;
@@ -152,7 +177,7 @@ services.blueman.enable = true;
       };
       virtualisation.docker.enable = true;
 
-      users.users.${config.username} = {
+      users.users.${username} = {
         # Access username option
         isNormalUser = true;
         extraGroups = [
@@ -194,14 +219,13 @@ services.blueman.enable = true;
     }
 
     # Desktop-specific configuration
-    (lib.mkIf (config.machine == "desktop") {
-      # Access machine option
+    (lib.mkIf (machine == "desktop") {
       services.greetd = {
         enable = true;
         settings = {
           initial_session = {
             command = "${session}";
-            user = "${config.username}"; # Access username option
+            user = "${username}"; # Access username option
           };
           default_session = {
             command = "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd Hyprland";
@@ -209,16 +233,14 @@ services.blueman.enable = true;
           };
         };
       };
-programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-};
+      
+      programs.steam = {
+        enable = true;
+        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+        dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+        localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+      };
 
-      # services.xserver.enable = true;
-      # services.displayManager.sddm.enable = true;
-      # services.desktopManager.plasma6.enable = true;
       networking.interfaces = {
         enp8s0 = {
           wakeOnLan.enable = true;
@@ -230,7 +252,7 @@ programs.steam = {
     })
 
     # Laptop-specific configuration
-    (lib.mkIf (config.machine == "laptop") {
+    (lib.mkIf (machine == "laptop") {
       # Access machine option
       services = {
         displayManager.sddm = {
@@ -245,3 +267,4 @@ programs.steam = {
     })
   ];
 }
+

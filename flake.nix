@@ -17,10 +17,13 @@
       home-manager,
     }:
     {
-
       nixosConfigurations = {
         pjalv-desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { 
+            machine = "desktop";
+            username = "pjalv";
+          };
           modules = [
             {
               environment.systemPackages = [
@@ -32,11 +35,19 @@
             {
               home-manager.useUserPackages = true;
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+              home-manager.extraSpecialArgs = { 
+                machine = "desktop";
+                username = "pjalv"; 
+              };
             }
           ];
         };
         pjalv-laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { 
+            machine = "laptop";
+            username = "pjalv";
+          };
           modules = [
             {
               environment.systemPackages = [
@@ -48,6 +59,10 @@
             {
               home-manager.useUserPackages = true;
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+              home-manager.extraSpecialArgs = { 
+                machine = "laptop";
+                username = "pjalv"; 
+              };
             }
           ];
         };

@@ -2,6 +2,8 @@
   config,
   pkgs,
   lib,
+  machine ? "desktop",
+  username ? "pjalv",
   ...
 }:
 let
@@ -17,15 +19,13 @@ let
   dotfilesDir = dotfilesRepo;
 in
 {
-
   xdg.configFile = {
-
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
     fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
     mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
     styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
   };
-xdg.mimeApps = {
+  xdg.mimeApps = {
     enable = true;
     associations.added = {
       "x-scheme-handler/http" = ["chromium-browser.desktop"];
@@ -50,7 +50,11 @@ xdg.mimeApps = {
     zoxide
     zed-editor
     arduino-ide
-  ];
+  ] ++ (if machine == "laptop" then [
+    # Laptop-specific home packages
+  ] else [
+    # Desktop-specific home packages
+  ]);
 
   imports = [
     ./hm/zsh.nix
@@ -81,7 +85,6 @@ xdg.mimeApps = {
     ];
   };
 
-  # programs.bash.enable = true;
   programs.git.extraConfig.init.defaultBranch = "main";
   programs.git.extraConfig.safe.directory = "/etc/nixos";
   programs.git.extraConfig.pull.rebase = false;
@@ -148,5 +151,5 @@ xdg.mimeApps = {
   };
 
   home.sessionVariables = { };
-
 }
+

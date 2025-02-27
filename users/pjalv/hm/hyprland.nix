@@ -2,12 +2,10 @@
   config,
   pkgs,
   lib,
+  machine ? "desktop",
+  username ? "pjalv",
   ...
 }:
-let
-  machine = "desktop";
-  username = "pjalv";
-in
 {
 
   wayland.windowManager.hyprland = {
@@ -64,7 +62,6 @@ in
       };
 
       dwindle = {
-        # no_gaps_when_only = false;
         preserve_split = true;
       };
 
@@ -73,16 +70,11 @@ in
         active_opacity = 1.0;
         inactive_opacity = 1.0;
 
-        # drop_shadow = false;
-        # "col.shadow" = "rgba(1a1a1aee)";
         blur = {
           enabled = false;
           size = 3;
           passes = 1;
         };
-
-        # shadow_range = 4;
-        # shadow_render_power = 3;
       };
 
       animations = {
@@ -149,7 +141,6 @@ in
         "$mainMod SHIFT, 0, movetoworkspace, 10"
 
         # media and volume controls
-        # ",XF86AudioMute,exec, pamixer -t"
         ",XF86AudioPlay,exec, playerctl play-pause"
         ",XF86AudioNext,exec, playerctl next"
         ",XF86AudioPrev,exec, playerctl previous"
@@ -163,25 +154,8 @@ in
         "$mainMod, mouse_up, workspace, e-1"
 
         # SCREENSHOT
-
         "$mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
       ];
-
-      # # binds active in lockscreen
-      # bindl = [
-      #   # laptop brigthness
-      #   ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-      #   ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-      #   "$mainMod, XF86MonBrightnessUp, exec, brightnessctl set 100%+"
-      #   "$mainMod, XF86MonBrightnessDown, exec, brightnessctl set 100%-"
-      # ]h
-
-      # binde = [
-      #   ", l, resizeactive, 50 0"
-      #   ", h, resizeactive, -50 0"
-      #   ", k, resizeactive, 0 -40"
-      #   ", j, resizeactive, 0 40"
-      # ];
 
       # mouse binding
       bindm = [
@@ -203,15 +177,14 @@ in
 
         "suppressevent maximize, class:.*" # You'll probably like this.
       ];
-
     };
 
     extraConfig =
       let
         laptopConfig = ''
-            monitor = eDP-1,2240x1400,0x0,1
+          monitor = eDP-1,2240x1400,0x0,1
           input {
-          sensitivity = 0.9
+            sensitivity = 0.9
           }
         '';
         desktopConfig = ''
@@ -233,14 +206,14 @@ in
         # use reset to go back to the global submap
         # will reset the submap, meaning end the current one and return to the global one
         xwayland {
-        force_zero_scaling = true
+          force_zero_scaling = true
         }
 
         env = XCURSOR_SIZE,24
         env = HYPRCURSOR_SIZE,24
         device {
-        name = epic-mouse-v1
-        sensitivity = -0.5
+          name = epic-mouse-v1
+          sensitivity = -0.5
         }
         bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
         bind = ALT, R, submap, resize
@@ -263,3 +236,4 @@ in
       '';
   };
 }
+

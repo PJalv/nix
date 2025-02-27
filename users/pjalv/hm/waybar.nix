@@ -216,5 +216,5 @@ in
     @define-color mantle #181825;
     @define-color crust #11111b;
   '';
-
 }
+
