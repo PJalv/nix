@@ -29,11 +29,6 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/nix/store" =
-    { device = "/home/nix-store";
-      fsType = "none";
-      options = [ "bind" ];
-    };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/44ccc7a9-7ef0-40dc-b28f-29bf9fd68f6e"; }
