@@ -10,7 +10,10 @@
   outputs =
     {
       ghostty,
+      self,
       nixpkgs,
+      nix,
+      nixos-hardware,
       home-manager,
     }:
     {
