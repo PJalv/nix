@@ -70,7 +70,7 @@
                 machine = "laptop";
                 username = "pjalv"; 
               };
-              home-manager.sharedModules = [spicetify-nix.homeManagerModule.default];
+              home-manager.sharedModules = [spicetify-nix.homeManagerModules.default];
 
             }
           ];
