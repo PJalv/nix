@@ -71,7 +71,7 @@ in
     ./hm/waybar.nix
     ./hm/ghostty.nix
     ./hm/entries.nix
-    inputs.spicetify-nix.homeManagerModule  # Add this line
+    inputs.spicetify-nix  # Add this line
     ./hm/starship.nix
     # ./kitty.nix
   ];
