@@ -1,13 +1,12 @@
 {
   config,
   lib,
+  pkgs,
   machine ? "desktop",
   username ? "pjalv",
-  nixpkgs,
   ...
 }:
 let
-pkgs = import nixpkgs {  config.allowUnfree = true; };
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland"; # Fixed typo here
 
