@@ -67,10 +67,9 @@ spicetify-nix.url = "github:Gerg-L/spicetify-nix";
               home-manager.extraSpecialArgs = { 
                 machine = "laptop";
                 username = "pjalv"; 
-              };
-              home-manager.specialArgs = {
+
                 inherit spicetify-nix;
-                };
+              };
             }
           ];
         };
