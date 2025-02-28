@@ -39,7 +39,10 @@
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
               home-manager.extraSpecialArgs = { 
                 machine = "desktop";
-                username = "pjalv"; 
+                username = "pjalv";
+                inputs = {
+                  inherit spicetify-nix;  
+                };
               };
             }
           ];
@@ -63,7 +66,10 @@
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
               home-manager.extraSpecialArgs = { 
                 machine = "laptop";
-                username = "pjalv"; 
+                username = "pjalv";
+                inputs = {
+                  inherit spicetify-nix;  
+                };
               };
             }
           ];
