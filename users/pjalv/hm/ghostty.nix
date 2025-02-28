@@ -10,6 +10,7 @@
     theme = catppuccin-mocha
     window-theme = ghostty
     window-decoration = false
+    
 
 
     gtk-titlebar = false

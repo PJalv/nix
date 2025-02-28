@@ -166,6 +166,7 @@
         zle -N zle-line-init
         zle -N zle-line-finish
       fi
+      precmd_functions+=(load_api_keys)
     '';
     shellAliases = {
       cd = "z";
