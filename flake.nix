@@ -68,7 +68,7 @@
               home-manager.extraSpecialArgs = { 
                 machine = "laptop";
                 username = "pjalv"; 
-
+                inherit spicetify-nix;
               };
             }
           ];
