@@ -172,6 +172,10 @@
       ls = "ls --color";
       vim = "nvim";
       c = "clear";
+
+      find_remote = "adb exec-out am start -a android.intent.action.VIEW -d -n com.nvidia.remotelocator/.ShieldRemoteLocatorActivity";
+
+
       pbc = "wl=copy";
       pbp = "wl-paste";
       nix-shell = "nix-shell --run $SHELL";
