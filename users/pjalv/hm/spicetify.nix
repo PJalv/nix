@@ -1,22 +1,14 @@
 { inputs, pkgs, ... }:
 let
-  inherit (inputs) spicetify-nix;
+  spicePkgs=inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in {
-  imports = [ spicetify-nix.homeManagerModules.default ];
-  programs.spicetify = let
-   spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
-  in
-  {
-    enable = true;
-    theme = spicePkgs.themes.starryNight;
-    enabledExtensions = with spicePkgs.extensions; [
-      adblock
-      powerBar
-      trashbin
-      loopyLoop
-      popupLyrics
-      playlistIcons
-      keyboardShortcut
-    ];
-  };
-}
+programs.spicetify = {
+     enable = true;
+     enabledExtensions = with spicePkgs.extensions; [
+       adblockify
+       hidePodcasts
+       shuffle # shuffle+ (special characters are sanitized out of extension names)
+     ];
+     theme = spicePkgs.themes.catppuccin;
+     colorScheme = "mocha";
+};}
