@@ -122,7 +122,6 @@
                   # Export each line as an environment variable
                   export "$line"
               done < "$api_keys_file"
-              echo "✅ API keys loaded successfully!"
           else
               echo "⚠️  Missing .api_keys file"
           fi
