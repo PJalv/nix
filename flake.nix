@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     ghostty.url = "github:ghostty-org/ghostty";
-spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
@@ -59,6 +58,7 @@ spicetify-nix.url = "github:Gerg-L/spicetify-nix";
                 ghostty.packages.x86_64-linux.default
               ];
             }
+
             ./users/pjalv/user.nix
             home-manager.nixosModules.home-manager
             {
@@ -68,7 +68,6 @@ spicetify-nix.url = "github:Gerg-L/spicetify-nix";
                 machine = "laptop";
                 username = "pjalv"; 
 
-                inherit spicetify-nix;
               };
             }
           ];
