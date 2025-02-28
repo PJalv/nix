@@ -17,7 +17,7 @@
       nixos-hardware,
       home-manager,
       spicetify-nix,
-    }@ inputs:
+    }:
     {
       nixosConfigurations = {
         pjalv-desktop = nixpkgs.lib.nixosSystem {
