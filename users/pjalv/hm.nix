@@ -5,6 +5,7 @@
   machine ? "desktop",
   username ? "pjalv",
   inputs,
+  spicetify-nix,
   ...
 }:
 let
@@ -19,7 +20,7 @@ let
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
 
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system};
+  spicePkgs = spicetify-nix.packages.${pkgs.system};
 in
 {
   xdg.configFile = {
