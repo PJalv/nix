@@ -90,10 +90,10 @@ in
   imports = [
     ./${machine}/hardware-configuration.nix
   ];
-  nixpkgs.config.allowUnfree = true;
   config = lib.mkMerge [
     # Common configuration
     {
+
       networking.hostName = "pjalv-${machine}";
       networking.networkmanager.enable = true;
       hardware.keyboard.qmk.enable = true;
