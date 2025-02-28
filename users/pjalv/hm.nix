@@ -4,7 +4,6 @@
   lib,
   machine ? "desktop",
   username ? "pjalv",
-  inputs,
   ...
 }:
 let
@@ -18,21 +17,8 @@ let
 
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
-   programs.spicetify = {
-     enable = true;
-     enabledExtensions = with spicePkgs.extensions; [
-       adblockify
-       hidePodcasts
-       fullAppDisplay
-       adblock
-       shuffle # shuffle+ (special characters are sanitized out of extension names)
-     ];
-     theme = spicePkgs.themes.catppuccin;
-     colorScheme = "mocha";
-   };
   xdg.configFile = {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
     fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
@@ -71,7 +57,6 @@ in
     ./hm/waybar.nix
     ./hm/ghostty.nix
     ./hm/entries.nix
-    inputs.spicetify-nix  # Add this line
     ./hm/starship.nix
     # ./kitty.nix
   ];

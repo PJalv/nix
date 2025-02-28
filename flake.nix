@@ -5,13 +5,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     ghostty.url = "github:ghostty-org/ghostty";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
     {
       ghostty,
-      spicetify-nix,
       self,
       nixpkgs,
       nix,
@@ -39,10 +37,7 @@
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
               home-manager.extraSpecialArgs = { 
                 machine = "desktop";
-                username = "pjalv";
-                inputs = {
-                  inherit spicetify-nix;  
-                };
+                username = "pjalv"; 
               };
             }
           ];
@@ -66,10 +61,7 @@
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
               home-manager.extraSpecialArgs = { 
                 machine = "laptop";
-                username = "pjalv";
-                inputs = {
-                  inherit spicetify-nix;  
-                };
+                username = "pjalv"; 
               };
             }
           ];
