@@ -49,7 +49,7 @@
             }
           ];
         };
-        pjalv-laptop = nixpkgs.lib.nixosSystem {
+        pjalv-laptop =  nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { 
             machine = "laptop";
@@ -66,6 +66,8 @@
             ./users/pjalv/user.nix
             home-manager.nixosModules.home-manager
             {
+
+              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
               home-manager.extraSpecialArgs = { 
