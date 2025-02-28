@@ -17,7 +17,7 @@
       nixos-hardware,
       home-manager,
       spicetify-nix,
-    }:
+    }@ inputs:
     {
       nixosConfigurations = {
         pjalv-desktop = nixpkgs.lib.nixosSystem {
@@ -69,8 +69,8 @@
               home-manager.extraSpecialArgs = { 
                 machine = "laptop";
                 username = "pjalv"; 
+                inherit inputs;
               };
-              home-manager.sharedModules = [spicetify-nix.homeManagerModules.default];
 
             }
           ];

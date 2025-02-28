@@ -1,9 +1,13 @@
-{spicetify-nix, pkgs, lib, ... }:
-let
-   spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-in 
-{
-programs.spicetify = {
+{inputs, pkgs, ... }:
+   let
+     # For Flakeless:
+     # spicePkgs = spicetify-nix.packages;
+
+     # With flakes:
+     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+   in
+   {
+   programs.spicetify = {
      enable = true;
      enabledExtensions = with spicePkgs.extensions; [
        adblockify
@@ -12,4 +16,5 @@ programs.spicetify = {
      ];
      theme = spicePkgs.themes.catppuccin;
      colorScheme = "mocha";
-};}
+   };
+   }
