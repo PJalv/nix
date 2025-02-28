@@ -5,7 +5,6 @@
   machine ? "desktop",
   username ? "pjalv",
   inputs,
-  spicetify-nix,
   ...
 }:
 let
@@ -20,7 +19,6 @@ let
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
 
- spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
   xdg.configFile = {
@@ -62,7 +60,7 @@ in
     ./hm/ghostty.nix
     ./hm/entries.nix
     ./hm/starship.nix
-    ./hm/spicetify.nix   
+    ./hm/spicetify.nix    
     # ./kitty.nix
   ];
 
