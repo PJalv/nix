@@ -4,6 +4,7 @@
   pkgs,
   machine ? "desktop",
   username ? "pjalv",
+  inputs,
   ...
 }:
 let
@@ -89,7 +90,7 @@ in
   imports = [
     ./${machine}/hardware-configuration.nix
   ];
-
+  nixpkgs.config.allowUnfree = true;
   config = lib.mkMerge [
     # Common configuration
     {

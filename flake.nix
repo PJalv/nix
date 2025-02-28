@@ -25,6 +25,7 @@
           specialArgs = { 
             machine = "desktop";
             username = "pjalv";
+          
           };
           modules = [
             {
@@ -50,10 +51,11 @@
         };
         pjalv-laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          config.allowUnfree = true;
+          allowUnfree = true;
           specialArgs = { 
             machine = "laptop";
             username = "pjalv";
+            inherit inputs;
           };
           modules = [
             {
