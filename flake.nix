@@ -39,6 +39,7 @@
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
               home-manager.extraSpecialArgs = { 
                 machine = "desktop";
+                inherit spicetify-nix;
                 username = "pjalv"; 
               };
               home-manager.specialArgs = {
@@ -68,8 +69,9 @@
               home-manager.extraSpecialArgs = { 
                 machine = "laptop";
                 username = "pjalv"; 
-                inherit spicetify-nix;
               };
+              home-manager.sharedModules = [spicetify-nix.homeManagerModule.default];
+
             }
           ];
         };
