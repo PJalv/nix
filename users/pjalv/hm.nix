@@ -60,7 +60,7 @@ in
     ./hm/ghostty.nix
     ./hm/entries.nix
     ./hm/starship.nix
-    ./hm/spicetify.nix    
+    ./hm/spicetify.nix inputs.spicetify-nix.homeManagerModules.default
     # ./kitty.nix
   ];
 
