@@ -19,6 +19,8 @@ let
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
 
+  spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
+
 in
 {
   xdg.configFile = {
@@ -60,8 +62,7 @@ in
     ./hm/ghostty.nix
     ./hm/entries.nix
     ./hm/starship.nix
-    ./hm/spicetify.nix inputs.spicetify-nix.homeManagerModules.default
-    # ./kitty.nix
+    ./hm/spicetify.nix spicetify-nix 
   ];
 
   programs.direnv = {

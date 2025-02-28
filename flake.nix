@@ -54,7 +54,6 @@
           specialArgs = { 
             machine = "laptop";
             username = "pjalv";
-            inherit inputs;
           };
           modules = [
             {
