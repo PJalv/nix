@@ -18,7 +18,11 @@ let
 
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
+<<<<<<< HEAD
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+=======
+  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system};
+>>>>>>> Snippet
 in
 {
    programs.spicetify = {
@@ -26,6 +30,8 @@ in
      enabledExtensions = with spicePkgs.extensions; [
        adblockify
        hidePodcasts
+       fullAppDisplay
+       adblock
        shuffle # shuffle+ (special characters are sanitized out of extension names)
      ];
      theme = spicePkgs.themes.catppuccin;
@@ -69,6 +75,7 @@ in
     ./hm/waybar.nix
     ./hm/ghostty.nix
     ./hm/entries.nix
+    inputs.spicetify-nix.homeManagerModule  # Add this line
     ./hm/starship.nix
     # ./kitty.nix
   ];
