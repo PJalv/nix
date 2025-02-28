@@ -51,7 +51,6 @@
         };
         pjalv-laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          allowUnfree = true;
           specialArgs = { 
             machine = "laptop";
             username = "pjalv";
