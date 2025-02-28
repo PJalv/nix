@@ -62,7 +62,7 @@ in
     ./hm/ghostty.nix
     ./hm/entries.nix
     ./hm/starship.nix
-    ./hm/spicetify.nix spicePkgs  
+    ./hm/spicetify.nix   
     # ./kitty.nix
   ];
 
