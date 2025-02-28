@@ -20,7 +20,7 @@ let
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
 
-  spicePkgs = spicetify-nix.packages.${pkgs.system};
+ spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
   xdg.configFile = {
