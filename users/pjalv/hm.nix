@@ -18,6 +18,8 @@ let
 
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
+
+  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system};
 in
 {
   xdg.configFile = {
@@ -59,7 +61,7 @@ in
     ./hm/ghostty.nix
     ./hm/entries.nix
     ./hm/starship.nix
-    ./hm/spicetify.nix  
+    ./hm/spicetify.nix inputs  
     # ./kitty.nix
   ];
 
