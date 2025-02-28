@@ -59,7 +59,7 @@ in
     ./hm/ghostty.nix
     ./hm/entries.nix
     ./hm/starship.nix
-    ./hm/spicetify.nix 
+    ./hm/spicetify.nix inputs 
     # ./kitty.nix
   ];
 
@@ -111,7 +111,7 @@ in
     };
 
     iconTheme = {
-      name = "Papirus-Dark";
+      name = "Pxapirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
 
