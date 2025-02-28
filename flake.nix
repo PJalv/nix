@@ -5,11 +5,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     ghostty.url = "github:ghostty-org/ghostty";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
     {
       ghostty,
+      spicetify-nix,
       self,
       nixpkgs,
       nix,
