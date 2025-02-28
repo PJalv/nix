@@ -1,9 +1,5 @@
 {inputs, pkgs, ... }:
    let
-     # For Flakeless:
-     # spicePkgs = spicetify-nix.packages;
-
-     # With flakes:
      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
    in
    {
