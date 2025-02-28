@@ -1,7 +1,5 @@
-{ spicetify-nix, pkgs, lib, ... }:
-let
-  spicePkgs=spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-in {
+{spicePkgs,  lib, ... }:
+{
 programs.spicetify = {
      enable = true;
      enabledExtensions = with spicePkgs.extensions; [
