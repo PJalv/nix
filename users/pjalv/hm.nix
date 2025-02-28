@@ -18,11 +18,7 @@ let
 
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
-<<<<<<< HEAD
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-=======
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system};
->>>>>>> Snippet
 in
 {
    programs.spicetify = {
