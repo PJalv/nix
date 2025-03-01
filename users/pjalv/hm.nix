@@ -29,6 +29,7 @@ in
     mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
     styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
   };
+
   xdg.mimeApps = {
     enable = true;
     associations.added = {
@@ -44,6 +45,7 @@ in
       "application/pdf" = ["chromium-browser.desktop"];
     };
   };
+
   home.packages = with pkgs; [
     lazygit
     swww
@@ -70,12 +72,12 @@ in
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+
   programs.chromium = {
     enable = true;
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
-
     ];
     commandLineArgs = [
       "--force-dark-mode"
@@ -90,6 +92,7 @@ in
     userName = "PJalv";
     userEmail = "pjalvbusiness@gmail.com";
   };
+
   programs.gh.enable = true;
   # The state version is required and should stay at the version you
   # originally installed.
@@ -99,6 +102,7 @@ in
       color-scheme = "prefer-dark";
     };
   };
+
   gtk = {
     enable = true;
     theme = {
@@ -113,7 +117,7 @@ in
     };
 
     iconTheme = {
-      name = "Pxapirus-Dark";
+      name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
 
@@ -132,7 +136,6 @@ in
       gtk-xft-rgba="rgb"
       gtk-application-prefer-dark-theme=1
     '';
-
     cursorTheme = {
       name = "catppuccin-macchiato-dark-cursors";
       package = pkgs.catppuccin-cursors.macchiatoDark;

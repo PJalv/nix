@@ -16,7 +16,6 @@
       nix,
       nixos-hardware,
       home-manager,
-      spicetify-nix,
     }@inputs:
     {
       nixosConfigurations = {
@@ -66,9 +65,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pjalv = import ./users/pjalv/hm.nix;
-              home-manager.extraSpecialArgs = { 
+              home-manager.extraSpecialArgs = {
                 machine = "laptop";
-                username = "pjalv"; 
+                username = "pjalv";
                 inherit inputs;
               };
 
