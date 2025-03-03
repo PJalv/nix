@@ -29,10 +29,6 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/mnt/drive" =
-    { device = "/dev/sda1";
-      fsType = "exfat";
-    };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/8c5cc452-8058-4528-a2e9-2f9e151fb411"; }
