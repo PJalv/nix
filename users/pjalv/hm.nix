@@ -1,19 +1,12 @@
-{
-  config,
-  pkgs,
-  lib,
-  machine ? "desktop",
-  username ? "pjalv",
-  inputs,
-  ...
-}:
+{ config, pkgs, lib, machine ? "desktop", username ? "pjalv", inputs, ... }:
 let
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {
     url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
     rev = "4acfbbf7255deabe4438bd2d1f07782dbfbb4f47";
     # Or specify the commit hash/branch/tag
-    sha256 = "sha256-KLguT+Ggy/z9shEcTKgWxU/0OlUoFguSqQHh25sLpvg="; # This will be automatically replaced when you run `nixos-rebuild`
+    sha256 =
+      "sha256-KLguT+Ggy/z9shEcTKgWxU/0OlUoFguSqQHh25sLpvg="; # This will be automatically replaced when you run `nixos-rebuild`
   };
 
   # Define the location of your dotfiles directory
@@ -21,8 +14,7 @@ let
 
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
 
-in
-{
+in {
   xdg.configFile = {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
     fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
@@ -32,16 +24,16 @@ in
   xdg.mimeApps = {
     enable = true;
     associations.added = {
-      "x-scheme-handler/http" = ["chromium-browser.desktop"];
-      "x-scheme-handler/https" = ["chromium-browser.desktop"];
-      "text/html" = ["chromium-browser.desktop"];
-      "application/pdf" = ["chromium-browser.desktop"];
+      "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
+      "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
+      "text/html" = [ "chromium-browser.desktop" ];
+      "application/pdf" = [ "chromium-browser.desktop" ];
     };
     defaultApplications = {
-      "x-scheme-handler/http" = ["chromium-browser.desktop"];
-      "x-scheme-handler/https" = ["chromium-browser.desktop"];
-      "text/html" = ["chromium-browser.desktop"];
-      "application/pdf" = ["chromium-browser.desktop"];
+      "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
+      "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
+      "text/html" = [ "chromium-browser.desktop" ];
+      "application/pdf" = [ "chromium-browser.desktop" ];
     };
   };
   home.packages = with pkgs; [
@@ -55,14 +47,14 @@ in
   ];
 
   imports = [
-    ./hm/zsh.nix
-    ./hm/rofi.nix
-    ./hm/hyprland.nix
-    ./hm/waybar.nix
-    ./hm/ghostty.nix
-    ./hm/entries.nix
-    ./hm/starship.nix
-    ./hm/spicetify.nix spicetify-nix 
+    ../../hm/zsh.nix
+    ../../hm/rofi.nix
+    ../../hm/hyprland.nix
+    ../../hm/waybar.nix
+    ../../hm/ghostty.nix
+    ../../hm/entries.nix
+    ../../hm/starship.nix
+    ../../hm/spicetify.nix spicetify-nix
   ];
 
   programs.direnv = {
@@ -77,9 +69,7 @@ in
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
 
     ];
-    commandLineArgs = [
-      "--force-dark-mode"
-    ];
+    commandLineArgs = [ "--force-dark-mode" ];
   };
 
   programs.git.extraConfig.init.defaultBranch = "main";
@@ -95,9 +85,7 @@ in
   # originally installed.
   home.stateVersion = "24.05";
   dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
   };
   gtk = {
     enable = true;

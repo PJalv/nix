@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
 
   xdg.configFile."ghostty/config".text = ''
     font-family = FiraCode Nerd Font Mono
@@ -10,7 +9,7 @@
     theme = catppuccin-mocha
     window-theme = ghostty
     window-decoration = false
-    
+
 
 
     gtk-titlebar = false

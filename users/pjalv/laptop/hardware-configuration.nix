@@ -4,39 +4,36 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b94248b9-8760-4e99-a9fc-5748367aa3f4";
-      fsType = "btrfs";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/b94248b9-8760-4e99-a9fc-5748367aa3f4";
+    fsType = "btrfs";
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/76f20e0d-6e22-474d-a656-563ce73f583f";
-      fsType = "btrfs";
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/76f20e0d-6e22-474d-a656-563ce73f583f";
+    fsType = "btrfs";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BD8B-DAE8";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/BD8B-DAE8";
+    fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
+  };
 
-  fileSystems."/mnt/drive" =
-    { device = "/dev/sda1";
-      fsType = "exfat";
-    };
+  fileSystems."/mnt/drive" = {
+    device = "/dev/sda1";
+    fsType = "exfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/8c5cc452-8058-4528-a2e9-2f9e151fb411"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/8c5cc452-8058-4528-a2e9-2f9e151fb411"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -47,5 +44,6 @@
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

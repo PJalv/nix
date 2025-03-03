@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home.packages = (with pkgs; [ rofi-wayland ]);
 
   xdg.configFile."rofi/catppuccin-frappe.rasi".text = ''

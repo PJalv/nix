@@ -1,23 +1,15 @@
-{
-  config,
-  pkgs,
-  host,
-  ...
-}:
-{
+{ config, pkgs, host, ... }: {
   programs.zsh = {
     enable = true;
     # enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    plugins = [
-      {
-        # Must be before plugins that wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
-        name = "fzf-tab";
-        src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-      }
-    ];
+    plugins = [{
+      # Must be before plugins that wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
+      name = "fzf-tab";
+      src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+    }];
 
     completionInit = ''
       # Load Zsh modules
@@ -173,15 +165,16 @@
       vim = "nvim";
       c = "clear";
 
-      find_remote = "adb exec-out am start -a android.intent.action.VIEW -d -n com.nvidia.remotelocator/.ShieldRemoteLocatorActivity";
-
+      find_remote =
+        "adb exec-out am start -a android.intent.action.VIEW -d -n com.nvidia.remotelocator/.ShieldRemoteLocatorActivity";
 
       pbc = "wl=copy";
       pbp = "wl-paste";
       nix-shell = "nix-shell --run $SHELL";
 
       nixedit = "cd /etc/nixos && nvim .";
-      nixupdate = "git stage . && git commit -m 'Tweak' && sudo nixos-rebuild switch";
+      nixupdate =
+        "git stage . && git commit -m 'Tweak' && sudo nixos-rebuild switch";
 
     };
   };

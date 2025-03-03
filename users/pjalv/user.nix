@@ -1,12 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  machine ? "desktop",
-  username ? "pjalv",
-  inputs,
-  ...
-}:
+{ config, lib, pkgs, machine ? "desktop", username ? "pjalv", inputs, ... }:
 let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland"; # Fixed typo here
@@ -84,12 +76,9 @@ let
     # openocd
     # kdePackages.kdeconnect-kde
   ];
-in
-{
+in {
   # We'll use the passed-in parameters instead of defining options
-  imports = [
-    ./${machine}/hardware-configuration.nix
-  ];
+  imports = [ ./${machine}/hardware-configuration.nix ];
   config = lib.mkMerge [
     # Common configuration
     {
@@ -101,9 +90,8 @@ in
       hardware.bluetooth.package = pkgs.bluez;
       hardware.bluetooth.input.General.ClassicBondedOnly = false;
       services.blueman.enable = true;
-      hardware.bluetooth.powerOnBoot = true; 
-      
-      
+      hardware.bluetooth.powerOnBoot = true;
+
       boot = {
         loader = {
           systemd-boot.enable = false;
@@ -115,7 +103,8 @@ in
           };
           efi = {
             canTouchEfiVariables = true;
-            efiSysMountPoint = if machine == "laptop" then "/boot" else "/boot/efi";
+            efiSysMountPoint =
+              if machine == "laptop" then "/boot" else "/boot/efi";
           };
         };
         kernelPackages = pkgs.linuxPackages_latest;
@@ -145,22 +134,13 @@ in
 
       users.users.${username} = {
         isNormalUser = true;
-        extraGroups = [
-          "wheel"
-          "input"
-          "network"
-          "dialout"
-          "docker"
-          "networkmanager"
-        ];
+        extraGroups =
+          [ "wheel" "input" "network" "dialout" "docker" "networkmanager" ];
         shell = pkgs.zsh;
       };
       users.defaultUserShell = pkgs.zsh;
 
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      nix.settings.experimental-features = [ "nix-command" "flakes" ];
       nixpkgs.config.allowUnfree = true;
       hardware.pulseaudio.enable = false;
       security = {
@@ -192,12 +172,13 @@ in
             user = "${username}";
           };
           default_session = {
-            command = "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd Hyprland";
+            command =
+              "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd Hyprland";
             user = "greeter";
           };
         };
       };
-      
+
       programs.steam = {
         enable = true;
         remotePlay.openFirewall = true;
