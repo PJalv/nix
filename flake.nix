@@ -71,7 +71,7 @@
       homeConfigurations = let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        username = "remote";
+        username = "debian";
       in {
         homeConfigurations."${username}" =
           home-manager.lib.homeManagerConfiguration {
