@@ -1,4 +1,12 @@
-{ config, pkgs, lib, machine ? "desktop", username ? "pjalv", ... }: {
+{
+  config,
+  pkgs,
+  lib, 
+  machine ? "desktop",
+  username ? "pjalv",
+  ...
+}:
+{
 
   wayland.windowManager.hyprland = {
     enable = true;
