@@ -69,9 +69,9 @@
         };
       };
       homeConfigurations = let
-        username = "debian";
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
-        # pkgs = import nixpkgs { system = "aarch64-linux"; }; # For ARM-based systems
+        username = "pjalv";
+        #pkgs = import nixpkgs { system = "x86_64-linux"; };
+        pkgs = import nixpkgs { system = "aarch64-linux"; }; # For ARM-based systems
       in {
         "${username}" =
           home-manager.lib.homeManagerConfiguration {

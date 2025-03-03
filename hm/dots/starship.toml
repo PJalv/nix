@@ -1,5 +1,6 @@
 # version: 1.0.0
 format = """
+$hostname
 $nix_shell\
 $directory\
 $git_branch\
@@ -56,6 +57,12 @@ $character
 add_newline = true
 continuation_prompt = "[▸▹ ](dimmed white)"
 
+[hostname]
+ssh_only = true
+format = "[$hostname]($style)"
+trim_at = "-"
+style = "bold dimmed white"
+disabled = false
 
 [nix_shell]
 impure_msg = '[impure](bold red)'

@@ -13,17 +13,17 @@
 
     completionInit = ''
       # Load Zsh modules
-      # zmodload zsh/zle
-      # zmodload zsh/zpty
-      # zmodload zsh/complist
+       zmodload zsh/zle
+       zmodload zsh/zpty
+       zmodload zsh/complist
 
       # Initialize colors
       autoload -Uz colors
       colors
 
       # Initialize completion system
-      # autoload -U compinit
-      # compinit
+       autoload -U compinit
+       compinit
       _comp_options+=(globdots)
 
       # Load edit-command-line for ZLE
