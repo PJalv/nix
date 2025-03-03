@@ -57,7 +57,7 @@ let
     xfce.tumbler
     libreoffice
     vlc
-    (import ./hm/macropad.nix pkgs)
+    (import ../../hm/macropad.nix pkgs)
   ];
 
   # Define laptop-specific packages
