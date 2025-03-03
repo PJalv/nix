@@ -16,6 +16,7 @@
       nix,
       nixos-hardware,
       home-manager,
+      spicetify-nix,
     }@inputs:
     {
       nixosConfigurations = {
