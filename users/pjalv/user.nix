@@ -107,7 +107,7 @@ in {
               if machine == "laptop" then "/boot" else "/boot/efi";
           };
         };
-        kernelPackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.linuxPackages_6_13;
       };
 
       time.timeZone = "America/Los_Angeles";
