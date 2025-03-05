@@ -91,6 +91,7 @@
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         "SUPER, D, exec, vesktop"
         "SUPER, S, exec, spotify"
+        "SUPER, ., exec, emote"
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"

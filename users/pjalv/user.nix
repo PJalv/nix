@@ -36,6 +36,7 @@ let
     bc
     unzip
     slurp
+    emote
     direnv
     gcc
     playerctl
