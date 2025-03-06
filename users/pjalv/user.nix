@@ -139,7 +139,7 @@ in {
       users.users.${username} = {
         isNormalUser = true;
         extraGroups =
-          [ "wheel" "input" "network" "dialout" "docker" "networkmanager" ];
+          [ "wheel" "input" "network" "dialout" "docker" "networkmanager" "ydotool" ];
         shell = pkgs.zsh;
       };
       users.defaultUserShell = pkgs.zsh;
