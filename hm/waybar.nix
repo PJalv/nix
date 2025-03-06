@@ -107,7 +107,7 @@ in {
         # on-scroll-up = "playerctl --player=spotify,vlc next";
         # on-scroll-down = "playerctl --player=spotify,vlc previous";
       };
-    "custom/voice-typer"= {
+    "custom/voice-type"= {
         format= "{}";
         return-type= "json";
         interval= 1;
