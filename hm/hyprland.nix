@@ -20,7 +20,9 @@
         "mako"
         "macro_go 'chromium' '.spotify-wrapped'"
         "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
+        "cd $HOME/.config/waybar && nix-shell --run 'uv run python main.py'"
         "sleep 1 && waybar"
+
       ];
 
       input = {
