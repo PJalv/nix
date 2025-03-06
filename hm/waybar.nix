@@ -31,7 +31,7 @@ in {
       tray = { spacing = 10; };
       modules-center = [ "hyprland/window" ];
       modules-left =
-        [ "hyprland/workspaces" "custom/media" "custom/process_volume" ];
+        [ "hyprland/workspaces" "custom/media" "custom/process_volume" "custom/voice_type" ];
       modules-right = [ "pulseaudio" "network" "cpu" "memory" "backlight" ]
         ++ (if machine == "laptop" then [
           "power-profiles-daemon"
@@ -107,6 +107,13 @@ in {
         # on-scroll-up = "playerctl --player=spotify,vlc next";
         # on-scroll-down = "playerctl --player=spotify,vlc previous";
       };
+    "custom/voice-typer"= {
+        format= "{}";
+        return-type= "json";
+        interval= 1;
+        exec= "echo '{\"text\":\"🎤\", \"tooltip\":\"Voice Typer\", \"class\":\"'$(cat /tmp/voice_typer_status)'\", \"alt\":\"voice-typer\"}'";
+        on-click= "cd /home/pjalv/projects/voice_typer && nix-shell";
+    };
       pulseaudio = {
         scroll-step = 2;
         format = "{volume}% {icon} {format_source}";
