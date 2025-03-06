@@ -1,5 +1,18 @@
-{ config, pkgs, lib, machine , username ? "pjalv", dotfilesDir, ... }:
-{
+{ config, pkgs, lib, machine ? "desktop", username ? "pjalv", ... }:
+
+let
+  # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
+  dotfilesRepo = pkgs.fetchgit {
+    url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
+    rev = "ca907f6de4995dfd44c94818150c77d3b80d0a05";
+    # Or specify the commit hash/branch/tag
+    sha256 = "sha256-PyE86Uwu14gsNuQxIYDKw+d2637fHYKiozNUnfSZ24Y="; # This will be automatically replaced when you run `nixos-rebuild`
+  };
+
+  # Define the location of your dotfiles directory
+  dotfilesDir = dotfilesRepo;
+
+in {
 
   programs.waybar = {
     enable = true;

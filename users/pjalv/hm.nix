@@ -1,14 +1,24 @@
 { config, pkgs, lib, machine ? "desktop", username ? "pjalv", inputs, ... }:
 let
+  # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
+  dotfilesRepo = pkgs.fetchgit {
+    url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
+    rev = "ca907f6de4995dfd44c94818150c77d3b80d0a05";
+    # Or specify the commit hash/branch/tag
+    sha256 = "sha256-PyE86Uwu14gsNuQxIYDKw+d2637fHYKiozNUnfSZ24Y="; # This will be automatically replaced when you run `nixos-rebuild`
+  };
+
+  # Define the location of your dotfiles directory
+  dotfilesDir = dotfilesRepo;
+
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
-  dotfilesDir = inputs.dotfiles;
 
 in {
   xdg.configFile = {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
     fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
     mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
-    waybar.source = "${dotfilesDir}/.config/waybar"; # Neovim config
+    styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
   };
 
   xdg.mimeApps = {
@@ -41,7 +51,7 @@ in {
     ../../hm/zsh.nix
     ../../hm/rofi.nix
     ../../hm/hyprland.nix
-    ../../hm/waybar.nix  dotfilesDir
+    ../../hm/waybar.nix
     ../../hm/ghostty.nix
     ../../hm/entries.nix
     ../../hm/starship.nix
