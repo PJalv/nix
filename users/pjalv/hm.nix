@@ -51,13 +51,12 @@ in {
     ../../hm/zsh.nix
     ../../hm/rofi.nix
     ../../hm/hyprland.nix
-    ../../hm/waybar.nix
+    ../../hm/waybar.nix  {inherit dotfilesDir;}
     ../../hm/ghostty.nix
     ../../hm/entries.nix
     ../../hm/starship.nix
     ../../hm/spicetify.nix
     spicetify-nix
-    dotfilesDir
   ];
 
   programs.direnv = {
