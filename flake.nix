@@ -9,7 +9,6 @@
     };
     ghostty.url = "github:ghostty-org/ghostty";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    dotfiles.url = "github:Pjalv/dotfiles";
   };
 
   outputs = { ghostty, self, nixpkgs, nix, nixos-hardware, home-manager
