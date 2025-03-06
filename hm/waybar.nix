@@ -107,7 +107,7 @@ in {
         # on-scroll-down = "playerctl --player=spotify,vlc previous";
       };
       "custom/voice-typer"= {
-        exec= "bash ${dotfilesDir}/.config/styles/voice_typer_waybar.sh";
+        exec= "notify-send hello";
         format= "{}";
         return-type= "json";
         on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
