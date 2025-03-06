@@ -107,12 +107,12 @@ in {
         # on-scroll-up = "playerctl --player=spotify,vlc next";
         # on-scroll-down = "playerctl --player=spotify,vlc previous";
       };
-    "custom/voice-typer"= {
+      "custom/voice-typer"= {
         format= "{}";
         return-type= "json";
-        exec= "bash $HOME/.config/waybar/voice_typer_waybar.sh";
+        exec= "$HOME/.config/waybar/voice_typer_waybar.sh";
         on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
-    };
+      };
       pulseaudio = {
         scroll-step = 2;
         format = "{volume}% {icon} {format_source}";
