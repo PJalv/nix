@@ -1,5 +1,4 @@
 { config, pkgs, lib, machine , username ? "pjalv", dotfilesDir, ... }:
-
 {
 
   programs.waybar = {
