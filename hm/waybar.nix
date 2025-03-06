@@ -110,7 +110,7 @@ in {
       "custom/voice-typer"= {
         format= "{}";
         return-type= "json";
-        exec= "${dotfilesDir}/.config/waybar/voice_typer_waybar.sh";
+        exec= "bash ${dotfilesDir}/.config/waybar/voice_typer_waybar.sh";
         on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
       };
       pulseaudio = {
