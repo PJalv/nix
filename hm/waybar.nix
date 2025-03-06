@@ -110,7 +110,7 @@ in {
     "custom/voice-typer"= {
         format= "{}";
         return-type= "json";
-        exec= "echo '{\"text\":\"🎤\", \"tooltip\":\"Voice Typer\", \"class\":\"'$(cat /tmp/voice_typer_status)'\", \"alt\":\"voice-typer\"}'";
+        exec= "bash /home/pjalv/projects/voice_typer/voice_typer_waybar.sh";
         on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
     };
       pulseaudio = {

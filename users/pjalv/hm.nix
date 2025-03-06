@@ -3,10 +3,10 @@ let
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {
     url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
-    rev = "4acfbbf7255deabe4438bd2d1f07782dbfbb4f47";
+    rev = "5109995a66c15d1754bf84a2a1362ab50ad3214e";
     # Or specify the commit hash/branch/tag
     sha256 =
-      "sha256-KLguT+Ggy/z9shEcTKgWxU/0OlUoFguSqQHh25sLpvg="; # This will be automatically replaced when you run `nixos-rebuild`
+      "sha256-kw7doO5D5XcBoKj1coWqPmYOJt9Y4I6m0lf27KyeSgA="; # This will be automatically replaced when you run `nixos-rebuild`
   };
 
   # Define the location of your dotfiles directory
