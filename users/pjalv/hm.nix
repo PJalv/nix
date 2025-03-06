@@ -18,7 +18,7 @@ in {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
     fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
     mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
-    styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
+    waybar.source = "${dotfilesDir}/.config/waybar"; # Neovim config
   };
 
   xdg.mimeApps = {
@@ -51,7 +51,7 @@ in {
     ../../hm/zsh.nix
     ../../hm/rofi.nix
     ../../hm/hyprland.nix
-    ../../hm/waybar.nix
+    ../../hm/waybar.nix dotfilesDir
     ../../hm/ghostty.nix
     ../../hm/entries.nix
     ../../hm/starship.nix
