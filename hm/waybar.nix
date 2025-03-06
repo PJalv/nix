@@ -1,4 +1,4 @@
-{ config, pkgs, lib, machine ? "desktop", username ? "pjalv", dotfilesDir, ... }:
+{ config, pkgs, lib, machine , username ? "pjalv", dotfilesDir, ... }:
 
 {
 

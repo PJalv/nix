@@ -51,7 +51,7 @@ in {
     ../../hm/zsh.nix
     ../../hm/rofi.nix
     ../../hm/hyprland.nix
-    ../../hm/waybar.nix dotfilesDir
+    ../../hm/waybar.nix 
     ../../hm/ghostty.nix
     ../../hm/entries.nix
     ../../hm/starship.nix
