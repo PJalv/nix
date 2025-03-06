@@ -98,14 +98,14 @@ in {
         on-scroll-up = "playerctl --player=spotify,vlc next";
         on-scroll-down = "playerctl --player=spotify,vlc previous";
       };
-      "custom/voice_typer" = {
-        exec = "${dotfilesDir}/.config/waybar/apps_volume chromium spotify";
-        format = "{}";
-        return-type = "json";
-        # on-click = "playerctl --player=spotify,vlc play-pause";
-        # on-scroll-up = "playerctl --player=spotify,vlc next";
-        # on-scroll-down = "playerctl --player=spotify,vlc previous";
-      };
+      # "custom/voice_typer" = {
+      #   exec = "${dotfilesDir}/.config/waybar/apps_volume chromium spotify";
+      #   format = "{}";
+      #   return-type = "json";
+      #   # on-click = "playerctl --player=spotify,vlc play-pause";
+      #   # on-scroll-up = "playerctl --player=spotify,vlc next";
+      #   # on-scroll-down = "playerctl --player=spotify,vlc previous";
+      # };
       # "custom/voice-typer"= {
       #   exec= "notify-send hello";
       #   format= "{}";
