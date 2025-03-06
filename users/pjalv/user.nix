@@ -130,6 +130,9 @@ in {
           xwayland.enable = true;
         };
         zsh.enable = true;
+        ydotool = {
+          enable = true;
+          }
       };
       virtualisation.docker.enable = true;
 
