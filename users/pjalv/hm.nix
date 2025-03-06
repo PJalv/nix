@@ -57,6 +57,7 @@ in {
     ../../hm/starship.nix
     ../../hm/spicetify.nix
     spicetify-nix
+    dotfilesDir
   ];
 
   programs.direnv = {
