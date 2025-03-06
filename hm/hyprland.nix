@@ -20,7 +20,7 @@
         "mako"
         "macro_go 'chromium' '.spotify-wrapped'"
         "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
-        "cd $HOME/.config/waybar && nix-shell --run 'uv run python main.py'"
+        
         "sleep 1 && waybar"
 
       ];
@@ -190,6 +190,7 @@
       exec-once = nm-applet --indicator
       exec-once = fusuma
       exec-once = swww img "$(find -L .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
+      exec-once = cd $HOME/.config/waybar && nix-shell --run "uv run python main.py" 
       # will start a submap called 'resize'
       # sets repeatable binds for resizing the active window
       # use reset to go back to the global submap
