@@ -98,7 +98,7 @@ in {
         on-scroll-up = "playerctl --player=spotify,vlc next";
         on-scroll-down = "playerctl --player=spotify,vlc previous";
       };
-      "custom/process_volume" = {
+      "custom/voice_typer" = {
         exec = "${dotfilesDir}/.config/waybar/apps_volume chromium spotify";
         format = "{}";
         return-type = "json";
@@ -106,12 +106,12 @@ in {
         # on-scroll-up = "playerctl --player=spotify,vlc next";
         # on-scroll-down = "playerctl --player=spotify,vlc previous";
       };
-      "custom/voice-typer"= {
-        exec= "notify-send hello";
-        format= "{}";
-        return-type= "json";
-        on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
-      };
+      # "custom/voice-typer"= {
+      #   exec= "notify-send hello";
+      #   format= "{}";
+      #   return-type= "json";
+      #   on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
+      # };
       pulseaudio = {
         scroll-step = 2;
         format = "{volume}% {icon} {format_source}";
