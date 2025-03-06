@@ -132,7 +132,7 @@ in {
         zsh.enable = true;
         ydotool = {
           enable = true;
-          }
+          };
       };
       virtualisation.docker.enable = true;
 
