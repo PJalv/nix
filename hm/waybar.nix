@@ -104,7 +104,7 @@ in {
         return-type = "json";
       };
       "custom/voice_typer"= {
-        exec = "bash ${dotfilesDir}/.config/styles/voice_typer_waybar.sh";
+        exec = "bash ${dotfilesDir}/.config/waybar/voice_typer_waybar.sh";
         format= "{}";
         return-type= "json";
         on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
