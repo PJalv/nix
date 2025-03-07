@@ -190,7 +190,7 @@
       exec-once = fusuma
       exec-once = swww img "$(find -L .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
       exec-once = cd $($HOME)/.config/waybar && nix-shell --run "uv run python main.py" 
-      exec-once = /home/${username}/.config/waybar/setup.sh 
+      exec-once = /home/${username}/.config/styles/setup.sh 
 
       xwayland {
         force_zero_scaling = true
