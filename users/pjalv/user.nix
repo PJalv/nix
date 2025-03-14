@@ -92,6 +92,9 @@ in {
       services.blueman.enable = true;
       hardware.bluetooth.powerOnBoot = true;
 
+      hardware.graphics.enable = true;
+
+
       boot = {
         loader = {
           systemd-boot.enable = false;
