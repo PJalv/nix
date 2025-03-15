@@ -73,6 +73,7 @@ let
   desktopPackages = with pkgs; [
     bottles
     steam-rom-manager
+    soundwireserver
     # stm32cubemx
     # openocd
     # kdePackages.kdeconnect-kde
