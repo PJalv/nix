@@ -21,6 +21,7 @@
         "macro_go 'chromium' '.spotify-wrapped'"
         "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
         "sleep 1 && waybar"
+
       ];
 
       input = {
@@ -91,6 +92,7 @@
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         "SUPER, D, exec, vesktop"
         "SUPER, S, exec, spotify"
+        "SUPER, period, exec, emote"
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
@@ -187,10 +189,9 @@
       exec-once = nm-applet --indicator
       exec-once = fusuma
       exec-once = swww img "$(find -L .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
-      # will start a submap called 'resize'
-      # sets repeatable binds for resizing the active window
-      # use reset to go back to the global submap
-      # will reset the submap, meaning end the current one and return to the global one
+      exec-once = cd $($HOME)/.config/waybar && nix-shell --run "uv run python main.py" 
+      exec-once = /home/${username}/.config/styles/setup.sh 
+
       xwayland {
         force_zero_scaling = true
       }
