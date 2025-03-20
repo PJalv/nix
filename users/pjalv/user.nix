@@ -53,6 +53,7 @@ let
     pulseaudio
     obs-studio
     spotify
+    cifs-utils
     stm32cubemx
     xfce.thunar
     xfce.tumbler
