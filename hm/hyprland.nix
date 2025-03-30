@@ -155,11 +155,10 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      # windowrule
-      windowrule = [ "pin,rofi" ];
 
       # windowrulev2
       windowrulev2 = [
+        "pin,class:^(rofi)$"
         "float,class:org.pulseaudio.pavucontrol"
         "size 900 450,class:org.pulseaudio.pavucontrol"
         "float,class:com.github.hluk.copyq"
