@@ -36,6 +36,7 @@ let
     bc
     unzip
     slurp
+    emote
     direnv
     gcc
     playerctl
@@ -72,6 +73,7 @@ let
   desktopPackages = with pkgs; [
     bottles
     steam-rom-manager
+    soundwireserver
     # stm32cubemx
     # openocd
     # kdePackages.kdeconnect-kde
@@ -91,6 +93,8 @@ in {
       hardware.bluetooth.input.General.ClassicBondedOnly = false;
       services.blueman.enable = true;
       hardware.bluetooth.powerOnBoot = true;
+      services.gvfs.enable = true; # Mount, trash, and other functionalities
+      services.tumbler.enable = true; # Thumbnail support for images
 
       boot = {
         loader = {
@@ -129,13 +133,16 @@ in {
           xwayland.enable = true;
         };
         zsh.enable = true;
+        ydotool = {
+          enable = true;
+          };
       };
       virtualisation.docker.enable = true;
 
       users.users.${username} = {
         isNormalUser = true;
         extraGroups =
-          [ "wheel" "input" "network" "dialout" "docker" "networkmanager" ];
+          [ "wheel" "input" "network" "dialout" "docker" "networkmanager" "ydotool" ];
         shell = pkgs.zsh;
       };
       users.defaultUserShell = pkgs.zsh;
@@ -179,6 +186,7 @@ in {
         };
       };
 
+      virtualisation.waydroid.enable = true;
       programs.steam = {
         enable = true;
         remotePlay.openFirewall = true;

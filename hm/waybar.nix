@@ -4,10 +4,9 @@ let
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {
     url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
-    rev = "e610a6cf72fd4b6d1224c995008c540136f472a5";
+    rev = "6d3f321c260580eb61a16749a31faeb8b83bc153";
     # Or specify the commit hash/branch/tag
-    sha256 =
-      "sha256-6+8vb2OfptV7GNHC635EVEi/hzTAc9JF0HF/nP7wiPQ="; # This will be automatically replaced when you run `nixos-rebuild`
+    sha256 = "sha256-MeTkMZwqlSBam7amaAlQ1xmKJQypFy4cGUqzCe91jgk="; # This will be automatically replaced when you run `nixos-rebuild`
   };
 
   # Define the location of your dotfiles directory
@@ -31,7 +30,7 @@ in {
       tray = { spacing = 10; };
       modules-center = [ "hyprland/window" ];
       modules-left =
-        [ "hyprland/workspaces" "custom/media" "custom/process_volume" ];
+        [ "hyprland/workspaces" "custom/media" "custom/process_volume" "custom/voice_typer" ];
       modules-right = [ "pulseaudio" "network" "cpu" "memory" "backlight" ]
         ++ (if machine == "laptop" then [
           "power-profiles-daemon"
@@ -103,9 +102,12 @@ in {
         exec = "${dotfilesDir}/.config/waybar/apps_volume chromium spotify";
         format = "{}";
         return-type = "json";
-        # on-click = "playerctl --player=spotify,vlc play-pause";
-        # on-scroll-up = "playerctl --player=spotify,vlc next";
-        # on-scroll-down = "playerctl --player=spotify,vlc previous";
+      };
+      "custom/voice_typer"= {
+        exec = "bash ${dotfilesDir}/.config/waybar/voice_typer_waybar.sh";
+        format= "{}";
+        return-type= "json";
+        on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
       };
       pulseaudio = {
         scroll-step = 2;
