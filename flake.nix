@@ -9,9 +9,10 @@
     };
     ghostty.url = "github:ghostty-org/ghostty";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  outputs = { ghostty, self, nixpkgs, nix, nixos-hardware, home-manager
+  outputs = { ghostty, self, nixpkgs, nix, nixos-hardware, nixos-wsl, home-manager
     , spicetify-nix, }@inputs: {
       nixosConfigurations = {
         pjalv-desktop = nixpkgs.lib.nixosSystem {
@@ -67,6 +68,24 @@
             }
           ];
         };
+      pjalv-wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+            wsl.defaultUser = "pjalv";
+          }
+        ./users/pjalv/user.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+          }
+
+        ];
+      };
       };
       homeConfigurations = let
         username = "pjalv";
