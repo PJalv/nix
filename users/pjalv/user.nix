@@ -55,6 +55,7 @@ let
     spotify
     cifs-utils
     stm32cubemx
+    wireshark
     xfce.thunar
     xfce.tumbler
     libreoffice
