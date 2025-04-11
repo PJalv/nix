@@ -56,6 +56,7 @@ let
     cifs-utils
     stm32cubemx
     wireshark
+    ettercap
     xfce.thunar
     xfce.tumbler
     libreoffice
