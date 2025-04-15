@@ -41,6 +41,7 @@ in {
     sassc
     zoxide
     tmux
+    apacheHttpd
   ];
 
   imports = [
