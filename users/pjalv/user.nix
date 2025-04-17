@@ -21,6 +21,8 @@ let
     gopls
     lua-language-server
     nixd
+    miniupnpc
+    miniupnpd
     compiledb
     btop
     home-manager
