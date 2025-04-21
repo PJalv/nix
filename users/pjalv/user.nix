@@ -11,7 +11,6 @@ let
     networkmanagerapplet
     gnumake
     wireguard-tools
-    icecast
     lxqt.lxqt-policykit
     liberation_ttf
     basedpyright
@@ -119,8 +118,6 @@ in {
       i18n.defaultLocale = "en_US.UTF-8";
 
       services = {
-        icecast.enable = true;
-        icecast.user = "pjalv";
         xserver.enable = true;
         pipewire = {
           enable = true;
