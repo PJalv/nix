@@ -119,6 +119,7 @@ in {
       i18n.defaultLocale = "en_US.UTF-8";
 
       services = {
+        icecast.enable = true;
         xserver.enable = true;
         pipewire = {
           enable = true;
