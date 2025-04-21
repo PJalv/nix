@@ -11,6 +11,7 @@ let
     networkmanagerapplet
     gnumake
     wireguard-tools
+    icecast
     lxqt.lxqt-policykit
     liberation_ttf
     basedpyright
