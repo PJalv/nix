@@ -120,6 +120,7 @@ in {
 
       services = {
         icecast.enable = true;
+        icecast.user = "pjalv";
         xserver.enable = true;
         pipewire = {
           enable = true;
