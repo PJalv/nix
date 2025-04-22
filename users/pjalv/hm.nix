@@ -42,6 +42,7 @@ in {
     zoxide
     tmux
     apacheHttpd
+    xdg-utils
   ];
 
   imports = [

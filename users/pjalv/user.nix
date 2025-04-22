@@ -22,6 +22,7 @@ let
     lua-language-server
     nixd
     miniupnpc
+    deno
     miniupnpd
     compiledb
     btop
