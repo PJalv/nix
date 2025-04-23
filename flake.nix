@@ -90,6 +90,29 @@
 
         ];
       };
+      work-wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+          specialArgs = {
+            machine = "wsl";
+            username = "jorge.suarez";
+          };
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+            wsl.defaultUser = "jorge.suarez";
+          }
+        ./users/pjalv/user.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+            home-manager.users."jorge.suarez" = import ./users/work/hm.nix;
+          }
+
+        ];
+      };
       };
       homeConfigurations = let
         username = "pjalv";
