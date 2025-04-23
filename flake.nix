@@ -101,7 +101,7 @@
           {
             system.stateVersion = "24.05";
             wsl.enable = true;
-            wsl.defaultUser = "jorge.suarez";
+            wsl.defaultUser = "pjalv";
           }
         ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
