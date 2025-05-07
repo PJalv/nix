@@ -44,6 +44,7 @@ in {
     apacheHttpd
     codex
     xdg-utils
+    discordo
   ];
 
   imports = [
