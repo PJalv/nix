@@ -20,6 +20,7 @@ let
     git
     basedpyright
     gopls
+    atftp
     lua-language-server
     nixd
     compiledb
