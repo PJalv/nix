@@ -42,7 +42,6 @@ in {
     zoxide
     tmux
     apacheHttpd
-    codex
     xdg-utils
     discordo
   ];

@@ -40,7 +40,6 @@ let
     slurp
     emote
     direnv
-    codex
     gcc
     playerctl
     fzf

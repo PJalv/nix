@@ -23,8 +23,6 @@ in {
   home.packages = with pkgs; [
     lazygit
     sassc
-    codex
-    codex
     zoxide
     tmux
     apacheHttpd
