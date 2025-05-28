@@ -88,6 +88,13 @@
             wsl.enable = true;
             wsl.defaultUser = "pjalv";
           }
+
+            {
+              environment.systemPackages =
+                [
+                codex.packages.x86_64-linux.default
+                ];
+            }
         ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
           {
