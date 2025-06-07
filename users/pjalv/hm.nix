@@ -20,7 +20,7 @@ in {
     mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
     styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
   };
-
+  xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
     enable = true;
     associations.added = {
