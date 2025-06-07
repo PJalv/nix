@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty.url = "github:ghostty-org/ghostty?ref=v1.1.3";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
