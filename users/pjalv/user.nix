@@ -95,7 +95,17 @@ in {
       hardware.bluetooth.powerOnBoot = true;
       services.gvfs.enable = true; # Mount, trash, and other functionalities
       services.tumbler.enable = true; # Thumbnail support for images
+      services.udev = {
+        packages = with pkgs; [
 
+          qmk
+            qmk-udev-rules
+            qmk_hid
+            via
+            vial
+        ];
+
+  };
       boot = {
         loader = {
           systemd-boot.enable = false;
