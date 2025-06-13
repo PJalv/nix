@@ -6,10 +6,16 @@
     syntaxHighlighting.enable = true;
 
     plugins = [{
-      # Must be before plugins that wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
+# Must be before plugins that wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
       name = "fzf-tab";
       src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-    }];
+    }
+    {
+      name = "vi-mode";
+      src = pkgs.zsh-vi-mode;
+      file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+    }
+    ];
 
     completionInit = ''
       # Load Zsh modules
