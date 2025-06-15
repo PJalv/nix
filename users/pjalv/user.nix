@@ -146,7 +146,7 @@ in {
           enable = true;
           };
       };
-      virtualisation.docker.enable = true;
+      virtualisation.docker.enable = false;
 
       users.users.${username} = {
         isNormalUser = true;
@@ -195,7 +195,7 @@ in {
         };
       };
 
-      virtualisation.waydroid.enable = true;
+      virtualisation.waydroid.enable = false;
       programs.steam = {
         enable = true;
         remotePlay.openFirewall = true;
