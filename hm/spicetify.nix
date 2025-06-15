@@ -8,6 +8,7 @@ in {
       beautifulLyrics
       hidePodcasts
       shuffle # shuffle+ (special characters are sanitized out of extension names)
+      spicy-lyrics
     ];
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";
