@@ -23,6 +23,7 @@ in
       })
     ];
     theme = spicePkgs.themes.catppuccin;
+    enableDevTools = true;
     colorScheme = "mocha";
   };
 }
