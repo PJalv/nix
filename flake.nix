@@ -11,8 +11,16 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = { ghostty, self, nixpkgs, nix, nixos-hardware, home-manager
-    , spicetify-nix, }@inputs: {
+  outputs =
+    { ghostty
+    , self
+    , nixpkgs
+    , nix
+    , nixos-hardware
+    , home-manager
+    , spicetify-nix
+    ,
+    }@inputs: {
       nixosConfigurations = {
         pjalv-desktop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -68,24 +76,26 @@
           ];
         };
       };
-      homeConfigurations = let
-        username = "pjalv";
-        #pkgs = import nixpkgs { system = "x86_64-linux"; };
-        pkgs = import nixpkgs { system = "aarch64-linux"; }; # For ARM-based systems
-      in {
-        "${username}" =
-          home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
+      homeConfigurations =
+        let
+          username = "pjalv";
+          #pkgs = import nixpkgs { system = "x86_64-linux"; };
+          pkgs = import nixpkgs { system = "aarch64-linux"; }; # For ARM-based systems
+        in
+        {
+          "${username}" =
+            home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
 
-            # Specify your home configuration modules here, for example,
-            # the path to your home.nix.
-            modules = [ ./users/remote/hm.nix ];
-            extraSpecialArgs = { inherit username; };
+              # Specify your home configuration modules here, for example,
+              # the path to your home.nix.
+              modules = [ ./users/remote/hm.nix ];
+              extraSpecialArgs = { inherit username; };
 
-            # Optionally use extraSpecialArgs
-            # to pass through arguments to home.nix
-          };
-      };
+              # Optionally use extraSpecialArgs
+              # to pass through arguments to home.nix
+            };
+        };
 
     };
 

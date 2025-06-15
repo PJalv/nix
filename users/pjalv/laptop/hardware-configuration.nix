@@ -17,13 +17,15 @@
   };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BD8B-DAE8";
+    {
+      device = "/dev/disk/by-uuid/BD8B-DAE8";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/76f20e0d-6e22-474d-a656-563ce73f583f";
+    {
+      device = "/dev/disk/by-uuid/76f20e0d-6e22-474d-a656-563ce73f583f";
       fsType = "btrfs";
     };
 

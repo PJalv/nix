@@ -13,7 +13,8 @@ let
 
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
 
-in {
+in
+{
   xdg.configFile = {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
     fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config

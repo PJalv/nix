@@ -77,7 +77,8 @@ let
     # openocd
     # kdePackages.kdeconnect-kde
   ];
-in {
+in
+{
   # We'll use the passed-in parameters instead of defining options
   imports = [ ./${machine}/hardware-configuration.nix ];
   config = lib.mkMerge [
@@ -98,13 +99,13 @@ in {
         packages = with pkgs; [
 
           qmk
-            qmk-udev-rules
-            qmk_hid
-            via
-            vial
+          qmk-udev-rules
+          qmk_hid
+          via
+          vial
         ];
 
-  };
+      };
       boot = {
         loader = {
           systemd-boot.enable = false;
@@ -144,7 +145,7 @@ in {
         zsh.enable = true;
         ydotool = {
           enable = true;
-          };
+        };
       };
       virtualisation.docker.enable = false;
 

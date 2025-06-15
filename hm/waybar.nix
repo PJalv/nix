@@ -12,7 +12,8 @@ let
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
 
-in {
+in
+{
 
   programs.waybar = {
     enable = true;
@@ -33,11 +34,11 @@ in {
         [ "hyprland/workspaces" "custom/media" "custom/process_volume" "custom/voice_typer" ];
       modules-right = [ "pulseaudio" "network" "cpu" "memory" "backlight" ]
         ++ (if machine == "laptop" then [
-          "power-profiles-daemon"
-          "temperature"
-          "battery"
-        ] else
-          [ ]) ++ [ "clock" "tray" ];
+        "power-profiles-daemon"
+        "temperature"
+        "battery"
+      ] else
+        [ ]) ++ [ "clock" "tray" ];
       battery = {
         format = "{capacity}% {icon} ";
         format-alt = "{time} {icon}";
@@ -103,11 +104,11 @@ in {
         format = "{}";
         return-type = "json";
       };
-      "custom/voice_typer"= {
+      "custom/voice_typer" = {
         exec = "bash ${dotfilesDir}/.config/waybar/voice_typer_waybar.sh";
-        format= "{}";
-        return-type= "json";
-        on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
+        format = "{}";
+        return-type = "json";
+        on-click = "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
       };
       pulseaudio = {
         scroll-step = 2;
