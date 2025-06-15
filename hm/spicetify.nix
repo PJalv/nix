@@ -12,16 +12,17 @@ in {
       # The source of the extension
       # make sure you're using the correct branch
       # It could also be a sub-directory of the repo
-      src = pkgs.fetchFromGitHub {
+      src = (pkgs.fetchFromGitHub {
   owner = "spikerko";
   repo = "spicy-lyrics";
   rev = "71d78660557708bae0b1d68d225a06a72d9c524a";
   hash = "sha256-LuuHtk3ebkPLnbc9qtKm/iN5B2WrtVwNDuRhENLHspM=";
-};
+})+ /src;
       # The actual file name of the extension usually ends with .js
-      name = "src/app.tsx";
+      name = "app.tsx";
   })
     ];
+    alwaysEnableDevTools = true;
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "mocha";
   };
