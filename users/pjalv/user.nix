@@ -53,7 +53,6 @@ let
     pulseaudio
     obs-studio
     spotify
-    stm32cubemx
     xfce.thunar
     xfce.tumbler
     libreoffice
