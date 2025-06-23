@@ -44,6 +44,7 @@ in {
     apacheHttpd
     xdg-utils
     discordo
+    opencode
   ];
 
   imports = [
