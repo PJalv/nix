@@ -27,6 +27,7 @@ in {
     tmux
     apacheHttpd
     xdg-utils
+    opencode
   ];
 
   imports = [
