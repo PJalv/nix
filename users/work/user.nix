@@ -41,6 +41,7 @@ let
     emote
     direnv
     gcc
+    opencode
     playerctl
     fzf
     zoxide
