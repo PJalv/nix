@@ -9,6 +9,7 @@
     };
     ghostty.url = "github:ghostty-org/ghostty?ref=v1.1.3";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs =
@@ -75,6 +76,24 @@
             }
           ];
         };
+      pjalv-wsl = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-wsl.nixosModules.default
+          {
+            system.stateVersion = "24.05";
+            wsl.enable = true;
+            wsl.defaultUser = "pjalv";
+          }
+        ./users/pjalv/user.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+          }
+
+        ];
+      };
       };
       homeConfigurations =
         let
