@@ -52,6 +52,7 @@ let
     pavucontrol
     pulseaudio
     obs-studio
+    spotify
     xfce.thunar
     xfce.tumbler
     libreoffice

@@ -80,11 +80,6 @@
       };
       pjalv-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          machine = "wsl";
-          username = "pjalv";
-          inherit inputs;
-        };
         modules = [
           nixos-wsl.nixosModules.default
           {
@@ -92,7 +87,7 @@
             wsl.enable = true;
             wsl.defaultUser = "pjalv";
           }
-          ./users/pjalv/user.nix
+          ./users/pjalv/wsl.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
