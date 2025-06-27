@@ -20,6 +20,7 @@
     , nixos-hardware
     , home-manager
     , spicetify-nix
+    , nixos-wsl
     ,
     }@inputs: {
       nixosConfigurations = {
@@ -76,8 +77,14 @@
             }
           ];
         };
+      };
       pjalv-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          machine = "wsl";
+          username = "pjalv";
+          inherit inputs;
+        };
         modules = [
           nixos-wsl.nixosModules.default
           {
@@ -85,15 +92,19 @@
             wsl.enable = true;
             wsl.defaultUser = "pjalv";
           }
-        ./users/pjalv/user.nix
+          ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
           {
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+            home-manager.extraSpecialArgs = {
+              machine = "wsl";
+              username = "pjalv";
+              inherit inputs;
+            };
           }
-
         ];
-      };
       };
       homeConfigurations =
         let
