@@ -77,9 +77,12 @@
             }
           ];
         };
-      };
       pjalv-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+          specialArgs = {
+            machine = "wsl";
+            username = "pjalv";
+          };
         modules = [
           nixos-wsl.nixosModules.default
           {
@@ -92,7 +95,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+            home-manager.users.pjalv = import ./users/remote/hm.nix;
             home-manager.extraSpecialArgs = {
               machine = "wsl";
               username = "pjalv";
@@ -100,6 +103,7 @@
             };
           }
         ];
+      };
       };
       homeConfigurations =
         let
