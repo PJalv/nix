@@ -76,6 +76,14 @@ in
     ];
     commandLineArgs = [ "--force-dark-mode" ];
   };
+  programs.firefox = {
+    enable = true;
+    extensions = [
+      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
+    ];
+    commandLineArgs = [ "--force-dark-mode" ];
+  };
 
   programs.git.extraConfig.init.defaultBranch = "main";
   programs.git.extraConfig.safe.directory = "/etc/nixos";
