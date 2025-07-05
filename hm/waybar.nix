@@ -106,7 +106,7 @@ in
       };
       "custom/power_menu" = {
         format = "⏻ ";
-        on-click = "syspower";
+        on-click = "bash -c 'hyprctl -j monitors | jq -r '.[] | select(.'focused;==true).id' | syspower -m '";
       };
       pulseaudio = {
         scroll-step = 2;
