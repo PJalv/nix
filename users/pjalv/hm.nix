@@ -82,7 +82,6 @@ in
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
     ];
-    commandLineArgs = [ "--force-dark-mode" ];
   };
 
   programs.git.extraConfig.init.defaultBranch = "main";
