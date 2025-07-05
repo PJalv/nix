@@ -38,7 +38,7 @@ in
         "temperature"
         "battery"
       ] else
-        [ ]) ++ [ "clock" "tray" "power_menu" ];
+        [ ]) ++ [ "clock" "tray" "custom/power_menu" ];
       battery = {
         format = "{capacity}% {icon} ";
         format-alt = "{time} {icon}";
