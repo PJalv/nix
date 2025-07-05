@@ -105,7 +105,7 @@ in
         return-type = "json";
       };
       "custom/power_menu" = {
-        format = "⏻";
+        format = "⏻ ";
         on-click = "syspower";
       };
       pulseaudio = {
