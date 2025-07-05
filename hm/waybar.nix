@@ -107,7 +107,7 @@ in
       "custom/power_menu" = {
         format = "⏻ ";
         on-click = ''
-        bash -c hyprctl -j monitors | jq -r '.[] | select(.focused==true).id' | xargs syspower -m
+        hyprctl -j monitors | jq -r '.[] | select(.focused==true).id' | xargs syspower -m
         '';
       };
       pulseaudio = {
