@@ -46,6 +46,7 @@ in
     gtk_engines
     gnome-themes-extra
     zoxide
+    syspower
   ];
 
   imports = [

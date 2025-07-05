@@ -38,7 +38,7 @@ in
         "temperature"
         "battery"
       ] else
-        [ ]) ++ [ "clock" "tray" ];
+        [ ]) ++ [ "clock" "tray" "power_menu" ];
       battery = {
         format = "{capacity}% {icon} ";
         format-alt = "{time} {icon}";
@@ -63,7 +63,7 @@ in
       };
       backlight = {
         format = "{percent}% {icon}";
-        format-icons = [ " " " " " " " " " " " " " " " " " " ];
+        furmat-icons = [ " " " " " " " " " " " " " " " " " " ];
       };
       clock = {
         tooltip-format = ''
@@ -104,11 +104,10 @@ in
         format = "{}";
         return-type = "json";
       };
-      "custom/voice_typer" = {
-        exec = "bash ${dotfilesDir}/.config/waybar/voice_typer_waybar.sh";
-        format = "{}";
-        return-type = "json";
-        on-click = "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
+      "custom/power_menu" = {
+        exec = "";
+        format = "⏻";
+        on-click = "syspower";
       };
       pulseaudio = {
         scroll-step = 2;
