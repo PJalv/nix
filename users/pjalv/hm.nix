@@ -78,7 +78,7 @@ in
   };
   programs.firefox = {
     enable = true;
-    profiles.pjalv.extensions.packages = [
+    profiles.pjalv.extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
     ];
