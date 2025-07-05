@@ -105,7 +105,6 @@ in
         return-type = "json";
       };
       "custom/power_menu" = {
-        exec = "";
         format = "⏻";
         on-click = "syspower";
       };
