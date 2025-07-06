@@ -58,6 +58,7 @@ in
     ../../hm/ghostty.nix
     ../../hm/entries.nix
     ../../hm/starship.nix
+    ../../hm/firefox.nix
     ../../hm/spicetify.nix
     spicetify-nix
   ];
