@@ -1,5 +1,5 @@
 {
-  pkgs,
+  inputs,
   lib,
   ...
 }: {
@@ -22,7 +22,7 @@
         };
       };
       bookmarks = {};
-      extensions.packages = with pkgs.inputs.firefox-addons; [
+      extensions.packages = with inputs.firefox-addons; [
         ublock-origin
         browserpass
       ];

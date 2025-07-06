@@ -10,79 +10,78 @@
     ghostty.url = "github:ghostty-org/ghostty?ref=v1.1.3";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    { ghostty
-    , self
-    , nixpkgs
-    , nix
-    , nixos-hardware
-    , home-manager
-    , spicetify-nix
-    , nixos-wsl
-    ,
-    }@inputs: {
-      nixosConfigurations = {
-        pjalv-desktop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            machine = "desktop";
-            username = "pjalv";
-          };
-          modules = [
-            {
-              environment.systemPackages =
-                [ ghostty.packages.x86_64-linux.default ];
-            }
-            ./users/pjalv/user.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useUserPackages = true;
-              home-manager.useGlobalPkgs = true;
-              home-manager.users.pjalv = import ./users/pjalv/hm.nix;
-              home-manager.extraSpecialArgs = {
-                machine = "desktop";
-                username = "pjalv";
-                inherit inputs;
-              };
-            }
-          ];
+  outputs = {
+    ghostty,
+    self,
+    nixpkgs,
+    nix,
+    nixos-hardware,
+    home-manager,
+    spicetify-nix,
+    nixos-wsl,
+  } @ inputs: {
+    nixosConfigurations = {
+      pjalv-desktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          machine = "desktop";
+          username = "pjalv";
         };
-        pjalv-laptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            machine = "laptop";
-            username = "pjalv";
-          };
-          modules = [
-            {
-              environment.systemPackages =
-                [ ghostty.packages.x86_64-linux.default ];
-            }
-
-            ./users/pjalv/user.nix
-            home-manager.nixosModules.home-manager
-            {
-
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.pjalv = import ./users/pjalv/hm.nix;
-              home-manager.extraSpecialArgs = {
-                machine = "laptop";
-                username = "pjalv";
-                inherit inputs;
-              };
-
-            }
-          ];
+        modules = [
+          {
+            environment.systemPackages = [ghostty.packages.x86_64-linux.default];
+          }
+          ./users/pjalv/user.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+            home-manager.extraSpecialArgs = {
+              machine = "desktop";
+              username = "pjalv";
+              inherit inputs;
+            };
+          }
+        ];
+      };
+      pjalv-laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          machine = "laptop";
+          username = "pjalv";
         };
+        modules = [
+          {
+            environment.systemPackages = [ghostty.packages.x86_64-linux.default];
+          }
+
+          ./users/pjalv/user.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.pjalv = import ./users/pjalv/hm.nix;
+            home-manager.extraSpecialArgs = {
+              machine = "laptop";
+              username = "pjalv";
+              inherit inputs;
+            };
+          }
+        ];
+      };
       pjalv-wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-          specialArgs = {
-            machine = "wsl";
-            username = "pjalv";
-          };
+        specialArgs = {
+          machine = "wsl";
+          username = "pjalv";
+        };
         modules = [
           nixos-wsl.nixosModules.default
           {
@@ -104,28 +103,23 @@
           }
         ];
       };
-      };
-      homeConfigurations =
-        let
-          username = "pjalv";
-          #pkgs = import nixpkgs { system = "x86_64-linux"; };
-          pkgs = import nixpkgs { system = "aarch64-linux"; }; # For ARM-based systems
-        in
-        {
-          "${username}" =
-            home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-
-              # Specify your home configuration modules here, for example,
-              # the path to your home.nix.
-              modules = [ ./users/remote/hm.nix ];
-              extraSpecialArgs = { inherit username; };
-
-              # Optionally use extraSpecialArgs
-              # to pass through arguments to home.nix
-            };
-        };
-
     };
+    homeConfigurations = let
+      username = "pjalv";
+      #pkgs = import nixpkgs { system = "x86_64-linux"; };
+      pkgs = import nixpkgs {system = "aarch64-linux";}; # For ARM-based systems
+    in {
+      "${username}" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [./users/remote/hm.nix];
+        extraSpecialArgs = {inherit username;};
+
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+      };
+    };
+  };
 }
