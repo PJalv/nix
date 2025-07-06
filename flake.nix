@@ -23,6 +23,7 @@
     nix,
     nixos-hardware,
     home-manager,
+    firefox-addons,
     spicetify-nix,
     nixos-wsl,
   } @ inputs: {
