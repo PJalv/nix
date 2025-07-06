@@ -1,12 +1,12 @@
 {
-  pkgs,
+  inputs,
   lib,
   ...
 }: {
   programs.browserpass.enable = true;
   programs.firefox = {
     enable = true;
-    profiles.gabriel = {
+    profiles.pjalv = {
       search = {
         force = true;
         default = "kagi";
@@ -22,7 +22,7 @@
         };
       };
       bookmarks = {};
-      extensions.packages = with pkgs.inputs.firefox-addons; [
+      extensions.packages = with inputs.firefox-addons; [
         ublock-origin
         browserpass
       ];
