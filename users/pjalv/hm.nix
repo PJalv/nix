@@ -69,7 +69,7 @@ in
     nix-direnv.enable = true;
   };
 
-  programs.brave = {
+  programs.ungoogled-chromium = {
     
     enable = true;
     extensions = [
