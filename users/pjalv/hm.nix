@@ -69,9 +69,8 @@ in
     nix-direnv.enable = true;
   };
 
-  programs.chromium = {
+  programs.brave = {
     
-    package = pkgs.brave;
     enable = true;
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
