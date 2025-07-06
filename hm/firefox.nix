@@ -7,7 +7,7 @@
           settings = {
             # Browser settings go here
           };
-          extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+          extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
             ublock-origin
             tree-style-tab
           ];
