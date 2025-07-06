@@ -40,6 +40,8 @@ in
 
   home.packages = with pkgs; [
     lazygit
+    bat
+    hyperfine
     swww
     sassc
     gtk-engine-murrine
