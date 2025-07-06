@@ -69,8 +69,8 @@ in
     nix-direnv.enable = true;
   };
 
-  programs.ungoogled-chromium = {
-    
+  programs.chromium = {
+   package = pkgs.ungoogled-chromium; 
     enable = true;
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
