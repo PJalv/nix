@@ -3,9 +3,7 @@
 {
   programs.firefox = {
       enable = true;
-      profiles.default = {
-          id = 0;
-          name = "Default";
+      profiles.pjalv = {
           settings = {
             # Browser settings go here
           };
