@@ -27,6 +27,7 @@
     nix,
     nixos-hardware,
     home-manager,
+    nur,
     firefox-addons,
     spicetify-nix,
     nixos-wsl,
