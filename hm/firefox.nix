@@ -6,7 +6,7 @@
   programs.browserpass.enable = true;
   programs.firefox = {
     enable = true;
-    profiles.gabriel = {
+    profiles.pjalv = {
       search = {
         force = true;
         default = "kagi";
