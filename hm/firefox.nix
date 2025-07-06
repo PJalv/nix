@@ -1,12 +1,12 @@
 {
-  inputs,
+  pkgs,
   lib,
   ...
 }: {
   programs.browserpass.enable = true;
   programs.firefox = {
     enable = true;
-    profiles.pjalv = {
+    profiles.gabriel = {
       search = {
         force = true;
         default = "kagi";
@@ -22,7 +22,7 @@
         };
       };
       bookmarks = {};
-      extensions.packages = with inputs.firefox-addons; [
+      extensions.packages = with pkgs.inputs.firefox-addons; [
         ublock-origin
         browserpass
       ];
@@ -119,6 +119,12 @@
     };
   };
 
+  home = {
+    persistence = {
+      # Not persisting is safer
+      # "/persist/${config.home.homeDirectory}".directories = [ ".mozilla/firefox" ];
+    };
+  };
 
   xdg.mimeApps.defaultApplications = {
     "text/html" = ["firefox.desktop"];
