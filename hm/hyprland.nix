@@ -158,8 +158,10 @@
       # windowrulev2
       windowrulev2 = [
         "pin,class:^(rofi)$"
-        "float,class:org.pulseaudio.pavucontrol"
+        "float,class:org.pulseaudio.pavujontrol"
         "size 900 450,class:org.pulseaudio.pavucontrol"
+        "float,class:com.github.wwmm.easyeffects"
+        "size 900 450,class:com.github.wwmm.easyeffects"
         "float,class:com.github.hluk.copyq"
         "size 422 652,class:com.github.hluk.copyq"
 

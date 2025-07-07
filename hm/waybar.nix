@@ -129,6 +129,7 @@ in
         format-source-muted = " ";
         on-click = "pavucontrol";
         on-click-middle = "pactl set-sink-mute 0 toggle";
+        on-click-left = "easyeffects";
       };
       "hyprland/mode" = { format = ''<span style="italic">{}</span>''; };
       temperature = {
