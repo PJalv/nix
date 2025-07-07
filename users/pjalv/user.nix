@@ -20,6 +20,7 @@ let
     git
     basedpyright
     gopls
+    killall
     lua-language-server
     nixd
     compiledb

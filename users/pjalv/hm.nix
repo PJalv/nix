@@ -50,6 +50,8 @@ in
     zoxide
     jq
     syspower
+    easyeffects
+    
   ];
 
   imports = [
