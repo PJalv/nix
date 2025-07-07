@@ -22,6 +22,7 @@ let
     unzip
     direnv
     gcc
+    killall
     fzf
     zoxide
     ripgrep
