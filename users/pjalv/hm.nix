@@ -64,8 +64,8 @@ in {
   programs.git.extraConfig.pull.rebase = false;
   programs.git = {
     enable = true;
-    userName = "PJalv";
-    userEmail = "pjalvbusiness@gmail.com";
+    userName = "Jorge Luis Suarez";
+    userEmail = "jorge.suarez@tp-link.com";
   };
 
   programs.gh.enable = true;

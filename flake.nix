@@ -81,6 +81,7 @@
             machine = "wsl";
             username = "pjalv";
           };
+
         modules = [
           nixos-wsl.nixosModules.default
           {
@@ -95,7 +96,7 @@
                 codex.packages.x86_64-linux.default
                 ];
             }
-        ./users/pjalv/user.nix
+            ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useUserPackages = true;
