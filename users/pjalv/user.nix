@@ -80,6 +80,7 @@ in {
 
 
       services.openssh.enable = true;
+      networking.firewall.enable = true;
       networking.firewall.allowedUDPPorts = [ 51820 ];
 
       environment.systemPackages = basePackages;
