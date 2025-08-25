@@ -45,6 +45,7 @@ in {
     xdg-utils
     discordo
     opencode
+    shellify
   ];
 
   imports = [
