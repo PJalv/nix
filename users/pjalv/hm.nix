@@ -46,6 +46,8 @@ in {
     discordo
     opencode
     shellify
+    killall
+    file
   ];
 
   imports = [
