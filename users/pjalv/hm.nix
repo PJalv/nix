@@ -48,6 +48,7 @@ in {
     shellify
     killall
     file
+    suricata
   ];
 
   imports = [
