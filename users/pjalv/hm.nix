@@ -48,7 +48,8 @@ in {
     shellify
     killall
     file
-    suricata
+    tree-sitter
+
   ];
 
   imports = [
