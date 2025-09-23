@@ -12,6 +12,7 @@ let
     wireguard-tools
     lxqt.lxqt-policykit
     liberation_ttf
+    python3
     basedpyright
     clang
     clang-tools
