@@ -43,7 +43,7 @@ in {
     tmux
     apacheHttpd
     xdg-utils
-    discordo
+    opencode
     shellify
     killall
     file
