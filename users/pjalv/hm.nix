@@ -48,6 +48,9 @@ in
     gtk_engines
     gnome-themes-extra
     zoxide
+
+    tree-sitter
+
     jq
     syspower
     easyeffects
