@@ -1,11 +1,11 @@
 { pkgs, ... }: {
   gtk = {
     enable = true;
-    # theme = {
-    #   name = "Tokyonight-Dark";
-    #   package = pkgs.tokyonight-gtk-theme;
-    #
-    # };
+    theme = {
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
+
+    };
 
     font = {
       name = "Nunito";
