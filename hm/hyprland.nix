@@ -34,7 +34,7 @@
         repeat_delay = 250;
         repeat_rate = 50;
       };
-      gestures = { workspace_swipe = true; };
+      # gestures = { workspace_swipe = true; };
       general = {
         "$fileManager" = "thunar";
         "$terminal" = "ghostty";

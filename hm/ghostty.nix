@@ -6,7 +6,7 @@
     window-padding-color = extend
     background-opacity = 0.94 
     unfocused-split-opacity = 0.90 
-    theme = catppuccin-mocha
+    theme = Catppuccin Mocha
     window-theme = ghostty
     window-decoration = false
 
