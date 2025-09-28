@@ -48,7 +48,6 @@ let
     kitty
     waybar
     vesktop
-    rofi-wayland
     rofi
     vial
     pavucontrol
