@@ -41,7 +41,7 @@ let
     direnv
     gcc
     playerctl
-    stremio
+    # stremio
     fzf
     zoxide
     ripgrep
