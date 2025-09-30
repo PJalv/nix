@@ -83,6 +83,7 @@ in
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
+      { id = "bapeomcobggcdleohggighcjbeeglhbn"; } # proton pass
     ];
     commandLineArgs = [ "--force-dark-mode" ];
   };
