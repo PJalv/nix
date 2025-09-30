@@ -8,13 +8,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty.url = "github:ghostty-org/ghostty";
-    codex.url = "github:scanhex/codex";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  outputs = { codex, ghostty, self, nixpkgs, nix, nixos-hardware, nixos-wsl, home-manager
+  outputs = { ghostty, self, nixpkgs, nix, nixos-hardware, nixos-wsl, home-manager
     , spicetify-nix, }@inputs: {
       nixosConfigurations = {
         pjalv-desktop = nixpkgs.lib.nixosSystem {
@@ -27,7 +26,6 @@
             {
               environment.systemPackages =
                 [ ghostty.packages.x86_64-linux.default 
-                codex.packages.x86_64-linux.default
                 ];
             }
             ./users/pjalv/user.nix
@@ -55,7 +53,6 @@
               environment.systemPackages =
                 [
                 ghostty.packages.x86_64-linux.default
-                codex.packages.x86_64-linux.default
                 ];
             }
 
@@ -93,7 +90,6 @@
             {
               environment.systemPackages =
                 [
-                codex.packages.x86_64-linux.default
                 ];
             }
             ./users/pjalv/user.nix
