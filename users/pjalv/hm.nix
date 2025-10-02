@@ -1,5 +1,12 @@
-{ config, pkgs, lib, machine ? "desktop", username ? "pjalv", inputs, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  machine ? "desktop",
+  username ? "pjalv",
+  inputs,
+  ...
+}: let
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {
     url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
@@ -10,8 +17,6 @@ let
 
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
-
-
 in {
   xdg.configFile = {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
@@ -23,16 +28,16 @@ in {
   xdg.mimeApps = {
     enable = true;
     associations.added = {
-      "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
-      "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
-      "text/html" = [ "chromium-browser.desktop" ];
-      "application/pdf" = [ "chromium-browser.desktop" ];
+      "x-scheme-handler/http" = ["chromium-browser.desktop"];
+      "x-scheme-handler/https" = ["chromium-browser.desktop"];
+      "text/html" = ["chromium-browser.desktop"];
+      "application/pdf" = ["chromium-browser.desktop"];
     };
     defaultApplications = {
-      "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
-      "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
-      "text/html" = [ "chromium-browser.desktop" ];
-      "application/pdf" = [ "chromium-browser.desktop" ];
+      "x-scheme-handler/http" = ["chromium-browser.desktop"];
+      "x-scheme-handler/https" = ["chromium-browser.desktop"];
+      "text/html" = ["chromium-browser.desktop"];
+      "application/pdf" = ["chromium-browser.desktop"];
     };
   };
 
@@ -48,7 +53,7 @@ in {
     killall
     file
     tree-sitter
-
+    alejandra
   ];
 
   imports = [
@@ -61,7 +66,7 @@ in {
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
-
+  programs.docker.enable = true;
 
   programs.git.extraConfig.init.defaultBranch = "main";
   programs.git.extraConfig.safe.directory = "/etc/nixos";
@@ -77,8 +82,5 @@ in {
   # originally installed.
   home.stateVersion = "24.05";
 
-
-
-  home.sessionVariables = { };
+  home.sessionVariables = {};
 }
-
