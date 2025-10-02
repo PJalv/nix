@@ -66,7 +66,7 @@ in {
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
-  programs.docker.enable = true;
+  programs.dev.docker.enable = true;
 
   programs.git.extraConfig.init.defaultBranch = "main";
   programs.git.extraConfig.safe.directory = "/etc/nixos";
