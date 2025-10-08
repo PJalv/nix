@@ -21,8 +21,8 @@ llvmPackages_20.clang-tools btop bat
   programs.git.extraConfig.pull.rebase = false;
   programs.git = {
     enable = true;
-    userName = "PJalv";
-    userEmail = "pjalvbusiness@gmail.com";
+    userName = "jorge.sarez";
+    userEmail = "jorge.suarez@tp-link.com";
   };
   programs.gh.enable = true;
   # The state version is required and should stay at the version you
