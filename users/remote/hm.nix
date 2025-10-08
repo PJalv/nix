@@ -21,7 +21,7 @@ llvmPackages_20.clang-tools btop bat
   programs.git.extraConfig.pull.rebase = false;
   programs.git = {
     enable = true;
-    userName = "jorge.sarez";
+    userName = "Jorge Luis Suarez";
     userEmail = "jorge.suarez@tp-link.com";
   };
   programs.gh.enable = true;
