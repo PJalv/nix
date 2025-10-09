@@ -6,7 +6,7 @@ in {
   home.username = username;
   home.homeDirectory = "/home/${username}";
   home.packages = with pkgs; [lua eza lazygit zoxide neovim fzf nixd ripgrep
-llvmPackages_20.clang-tools btop bat
+llvmPackages_20.clang-tools btop bat opencode
   ];
 
   imports = [ ../../hm/zsh.nix ../../hm/starship.nix ];
