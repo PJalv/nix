@@ -13,14 +13,15 @@ let
 
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
 
-in {
+in
+{
   xdg.configFile = {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
     fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
     mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
     styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
   };
-
+  xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
     enable = true;
     associations.added = {
@@ -39,12 +40,21 @@ in {
 
   home.packages = with pkgs; [
     lazygit
+    bat
+    hyperfine
     swww
     sassc
     gtk-engine-murrine
     gtk_engines
     gnome-themes-extra
     zoxide
+
+    tree-sitter
+
+    jq
+    syspower
+    easyeffects
+    
   ];
 
   imports = [
@@ -55,6 +65,7 @@ in {
     ../../hm/ghostty.nix
     ../../hm/entries.nix
     ../../hm/starship.nix
+    ../../hm/firefox.nix
     ../../hm/spicetify.nix
     spicetify-nix
   ];
@@ -66,10 +77,13 @@ in {
   };
 
   programs.chromium = {
+   package = pkgs.ungoogled-chromium; 
+    # package = pkgs.chromium; 
     enable = true;
     extensions = [
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
+      { id = "bapeomcobggcdleohggighcjbeeglhbn"; } # proton pass
     ];
     commandLineArgs = [ "--force-dark-mode" ];
   };

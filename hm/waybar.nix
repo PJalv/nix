@@ -1,18 +1,19 @@
-{ config, pkgs, lib, machine ? "desktop", username ? "pjalv", ... }:
+{ pkgs, machine ? "desktop", ... }:
 
 let
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {
     url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
-    rev = "6d3f321c260580eb61a16749a31faeb8b83bc153";
+    rev = "c1d1904d6091f03a8e48c589c50bd702c70b914b";
     # Or specify the commit hash/branch/tag
-    sha256 = "sha256-MeTkMZwqlSBam7amaAlQ1xmKJQypFy4cGUqzCe91jgk="; # This will be automatically replaced when you run `nixos-rebuild`
+    sha256 = "sha256-QIHJZlVkLvsW+GxiEH2l8Tgv6wyYiEwFGngNJ+KLvQw="; # This will be automatically replaced when you run `nixos-rebuild`
   };
 
   # Define the location of your dotfiles directory
   dotfilesDir = dotfilesRepo;
 
-in {
+in
+{
 
   programs.waybar = {
     enable = true;
@@ -33,11 +34,11 @@ in {
         [ "hyprland/workspaces" "custom/media" "custom/process_volume" "custom/voice_typer" ];
       modules-right = [ "pulseaudio" "network" "cpu" "memory" "backlight" ]
         ++ (if machine == "laptop" then [
-          "power-profiles-daemon"
-          "temperature"
-          "battery"
-        ] else
-          [ ]) ++ [ "clock" "tray" ];
+        "power-profiles-daemon"
+        "temperature"
+        "battery"
+      ] else
+        [ ]) ++ [ "clock" "tray" "custom/power_menu" ];
       battery = {
         format = "{capacity}% {icon} ";
         format-alt = "{time} {icon}";
@@ -62,7 +63,7 @@ in {
       };
       backlight = {
         format = "{percent}% {icon}";
-        format-icons = [ " " " " " " " " " " " " " " " " " " ];
+        furmat-icons = [ " " " " " " " " " " " " " " " " " " ];
       };
       clock = {
         tooltip-format = ''
@@ -103,11 +104,11 @@ in {
         format = "{}";
         return-type = "json";
       };
-      "custom/voice_typer"= {
-        exec = "bash ${dotfilesDir}/.config/waybar/voice_typer_waybar.sh";
-        format= "{}";
-        return-type= "json";
-        on-click= "echo -n 'TOGGLE' | nc -U '/tmp/voice_typer.sock'";
+      "custom/power_menu" = {
+        format = "⏻ ";
+        on-click = ''
+        hyprctl -j monitors | jq -r '.[] | select(.focused==true).id' | xargs syspower -m
+        '';
       };
       pulseaudio = {
         scroll-step = 2;
@@ -128,6 +129,7 @@ in {
         format-source-muted = " ";
         on-click = "pavucontrol";
         on-click-middle = "pactl set-sink-mute 0 toggle";
+        on-click-left = "easyeffects";
       };
       "hyprland/mode" = { format = ''<span style="italic">{}</span>''; };
       temperature = {

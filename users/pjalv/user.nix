@@ -21,6 +21,7 @@ let
     basedpyright
     gopls
     atftp
+    killall
     lua-language-server
     nixd
     compiledb
@@ -41,23 +42,19 @@ let
     direnv
     gcc
     playerctl
+    # stremio
     fzf
     zoxide
     ripgrep
     kitty
     waybar
     vesktop
-    rofi-wayland
     rofi
     vial
     pavucontrol
     pulseaudio
     obs-studio
     spotify
-    cifs-utils
-    stm32cubemx
-    wireshark
-    ettercap
     xfce.thunar
     xfce.tumbler
     libreoffice
@@ -82,7 +79,8 @@ let
     # openocd
     # kdePackages.kdeconnect-kde
   ];
-in {
+in
+{
   # We'll use the passed-in parameters instead of defining options
   imports = [ ./${machine}/hardware-configuration.nix ];
   config = lib.mkMerge [
@@ -99,10 +97,17 @@ in {
       hardware.bluetooth.powerOnBoot = true;
       services.gvfs.enable = true; # Mount, trash, and other functionalities
       services.tumbler.enable = true; # Thumbnail support for images
+      services.udev = {
+        packages = with pkgs; [
 
-      hardware.graphics.enable = true;
+          qmk
+          qmk-udev-rules
+          qmk_hid
+          via
+          vial
+        ];
 
-
+      };
       boot = {
         loader = {
           systemd-boot.enable = false;
@@ -142,14 +147,13 @@ in {
         zsh.enable = true;
         ydotool = {
           enable = true;
-          };
+        };
       };
-      virtualisation.docker.enable = true;
 
       users.users.${username} = {
         isNormalUser = true;
         extraGroups =
-          [ "wheel" "input" "network" "dialout" "docker" "networkmanager" "ydotool" ];
+          [ "wheel" "input" "network" "dialout"  "networkmanager" "ydotool" ];
         shell = pkgs.zsh;
       };
       users.defaultUserShell = pkgs.zsh;
@@ -193,7 +197,7 @@ in {
         };
       };
 
-      virtualisation.waydroid.enable = true;
+      virtualisation.waydroid.enable = false;
       programs.steam = {
         enable = true;
         remotePlay.openFirewall = true;

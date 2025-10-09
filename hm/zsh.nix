@@ -6,10 +6,16 @@
     syntaxHighlighting.enable = true;
 
     plugins = [{
-      # Must be before plugins that wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
+# Must be before plugins that wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
       name = "fzf-tab";
       src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-    }];
+    }
+    {
+      name = "vi-mode";
+      src = pkgs.zsh-vi-mode;
+      file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+    }
+    ];
 
     completionInit = ''
       # Load Zsh modules
@@ -119,6 +125,9 @@
           fi
       }
 
+
+      export "EDITOR=nvim"
+
       # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
       # - The first argument to the function ($1) is the base path to start traversal
       # - See the source code (completion.{bash,zsh}) for the details.
@@ -164,6 +173,7 @@
       ls = "ls --color";
       vim = "nvim";
       c = "clear";
+      cat = "bat";
 
       find_remote =
         "adb exec-out am start -a android.intent.action.VIEW -d -n com.nvidia.remotelocator/.ShieldRemoteLocatorActivity";
