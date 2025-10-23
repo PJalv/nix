@@ -1,15 +1,33 @@
-{ config, pkgs, lib, username ? "remote", inputs, ... }:
-let
-
+{
+  config,
+  pkgs,
+  lib,
+  username ? "remote",
+  inputs,
+  ...
+}: let
 in {
-
   home.username = username;
   home.homeDirectory = "/home/${username}";
-  home.packages = with pkgs; [lua eza lazygit zoxide neovim fzf nixd ripgrep
-llvmPackages_20.clang-tools btop bat  nodejs jq alejandra
+  home.packages = with pkgs; [
+    lua
+    eza
+    lazygit
+    zoxide
+    neovim
+    fzf
+    nixd
+    ripgrep
+    llvmPackages_20.clang-tools
+    btop
+    bat
+    nodejs
+    jq
+    alejandra
+    inputs.opencode-flake.packages.${pkgs.system}.default
   ];
 
-  imports = [ ../../hm/zsh.nix ../../hm/starship.nix ];
+  imports = [../../hm/zsh.nix ../../hm/starship.nix];
 
   programs.direnv = {
     enable = true;
@@ -29,8 +47,6 @@ llvmPackages_20.clang-tools btop bat  nodejs jq alejandra
   # originally installed.
 
   programs.home-manager.enable = true;
-  home.sessionVariables = { };
+  home.sessionVariables = {};
   home.stateVersion = "24.11"; # Please read the comment before changing.
-
 }
-
