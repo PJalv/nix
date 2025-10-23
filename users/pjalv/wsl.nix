@@ -62,6 +62,7 @@ in {
         shell = pkgs.zsh;
       };
       users.defaultUserShell = pkgs.zsh;
+      virtualisation.docker.enable = true;
 
       nix.settings.experimental-features = ["nix-command" "flakes"];
       nixpkgs.config.allowUnfree = true;
