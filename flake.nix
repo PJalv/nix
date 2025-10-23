@@ -23,6 +23,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    opencode-flake = {
+      url = "github:spahl/opencode-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -36,6 +40,7 @@
     firefox-addons,
     spicetify-nix,
     nixos-wsl,
+    opencode-flake,
   } @ inputs: {
     nixosConfigurations = {
       pjalv-desktop = nixpkgs.lib.nixosSystem {
