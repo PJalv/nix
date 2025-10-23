@@ -26,7 +26,8 @@ in {
     alejandra
     inputs.opencode-flake.packages.${pkgs.system}.default
   ];
-
+  virtualisation.docker.enable = true;
+  users.users.${username}.extraGroups = ["docker"];
   imports = [../../hm/zsh.nix ../../hm/starship.nix];
 
   programs.direnv = {
