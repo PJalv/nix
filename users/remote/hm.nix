@@ -23,6 +23,7 @@ in {
     bat
     nodejs
     jq
+    tmux
     alejandra
     tree-sitter
     inputs.opencode-flake.packages.${pkgs.system}.default
