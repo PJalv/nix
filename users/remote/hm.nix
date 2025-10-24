@@ -24,6 +24,7 @@ in {
     nodejs
     jq
     alejandra
+    tree-sitter
     inputs.opencode-flake.packages.${pkgs.system}.default
   ];
   imports = [../../hm/zsh.nix ../../hm/starship.nix];
