@@ -398,11 +398,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762247181,
-        "narHash": "sha256-LOraG+p8UA32D8rl/T2CCDe3WGWN6THF3h6lmU5sk+Q=",
+        "lastModified": 1762333266,
+        "narHash": "sha256-SkiKrLyorIMKALur6VseqlIbQSOYg5plutpz280Qu74=",
         "owner": "spahl",
         "repo": "opencode-flake",
-        "rev": "ec0e40e76e5ae422e08c73f97d9212c6baf175ca",
+        "rev": "311d7b961ad13ae0f2310ba3d04bf96effc1a98a",
         "type": "github"
       },
       "original": {
