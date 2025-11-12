@@ -155,7 +155,7 @@ in {
         tuxclocker = {
           enable = true;
           enableAMD = true;
-          useUnfree = true;
+          useUnfree = false;
         };
       };
 
