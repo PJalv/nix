@@ -189,6 +189,7 @@
         ${if machine == "laptop" then laptopConfig else desktopConfig}
 
         source = ~/.config/hypr/monitors.conf 
+        source = ~/.config/hypr/workspaces.conf 
         exec-once = swww-daemon
         exec-once = nm-applet --indicator
         exec-once = fusuma
