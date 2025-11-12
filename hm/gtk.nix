@@ -38,4 +38,9 @@
       package = pkgs.catppuccin-cursors.macchiatoDark;
     };
   };
+  qt = {
+enable = true;
+platformTheme = "gtk";
+
+    };
 }
