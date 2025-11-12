@@ -40,7 +40,7 @@
   };
   qt = {
 enable = true;
-platformTheme = "gtk2";
+platformTheme = "gtk";
 
     };
 }
