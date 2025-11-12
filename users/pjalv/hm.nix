@@ -75,11 +75,6 @@ in {
     spicetify-nix
   ];
 
-  programs.tuxclocker = {
-    enable = true;
-    enableAMD = true;
-    useUnfree = true;
-  };
 
   programs.direnv = {
     enable = true;
