@@ -48,6 +48,7 @@ in
     gtk_engines
     gnome-themes-extra
     zoxide
+    nwg-displays
 
     tree-sitter
 
