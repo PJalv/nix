@@ -1,5 +1,12 @@
-{ config, lib, pkgs, machine ? "desktop", username ? "pjalv", inputs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  machine ? "desktop",
+  username ? "pjalv",
+  inputs,
+  ...
+}: let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland"; # Fixed typo here
 
@@ -78,14 +85,12 @@ let
     # openocd
     # kdePackages.kdeconnect-kde
   ];
-in
-{
+in {
   # We'll use the passed-in parameters instead of defining options
-  imports = [ ./${machine}/hardware-configuration.nix ];
+  imports = [./${machine}/hardware-configuration.nix];
   config = lib.mkMerge [
     # Common configuration
     {
-
       networking.hostName = "pjalv-${machine}";
       networking.networkmanager.enable = true;
       hardware.keyboard.qmk.enable = true;
@@ -98,14 +103,12 @@ in
       services.tumbler.enable = true; # Thumbnail support for images
       services.udev = {
         packages = with pkgs; [
-
           qmk
           qmk-udev-rules
           qmk_hid
           via
           vial
         ];
-
       };
       boot = {
         loader = {
@@ -119,7 +122,9 @@ in
           efi = {
             canTouchEfiVariables = true;
             efiSysMountPoint =
-              if machine == "laptop" then "/boot" else "/boot/efi";
+              if machine == "laptop"
+              then "/boot"
+              else "/boot/efi";
           };
         };
         kernelPackages = pkgs.linuxPackages_latest;
@@ -147,17 +152,21 @@ in
         ydotool = {
           enable = true;
         };
+        tuxclocker = {
+          enable = true;
+          enableAMD = true;
+          useUnfree = true;
+        };
       };
 
       users.users.${username} = {
         isNormalUser = true;
-        extraGroups =
-          [ "wheel" "input" "network" "dialout"  "networkmanager" "ydotool" ];
+        extraGroups = ["wheel" "input" "network" "dialout" "networkmanager" "ydotool"];
         shell = pkgs.zsh;
       };
       users.defaultUserShell = pkgs.zsh;
 
-      nix.settings.experimental-features = [ "nix-command" "flakes" ];
+      nix.settings.experimental-features = ["nix-command" "flakes"];
       nixpkgs.config.allowUnfree = true;
       hardware.pulseaudio.enable = false;
       security = {
@@ -172,7 +181,7 @@ in
       ];
 
       services.openssh.enable = true;
-      networking.firewall.allowedUDPPorts = [ 51820 ];
+      networking.firewall.allowedUDPPorts = [51820];
 
       environment.systemPackages = basePackages;
 
@@ -189,8 +198,7 @@ in
             user = "${username}";
           };
           default_session = {
-            command =
-              "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd Hyprland";
+            command = "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd Hyprland";
             user = "greeter";
           };
         };
