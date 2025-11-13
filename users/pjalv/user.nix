@@ -127,6 +127,7 @@ in {
               else "/boot/efi";
           };
         };
+        supportedFilesystems = ["ntfs"];
         kernelPackages = pkgs.linuxPackages_latest;
         extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
         extraModprobeConfig = ''
