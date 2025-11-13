@@ -7,7 +7,7 @@
   inputs,
   ...
 }: let
-  tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
+  tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland"; # Fixed typo here
 
   # Define base packages that are common to both laptop and desktop
@@ -130,12 +130,11 @@ in {
         };
         supportedFilesystems = ["ntfs"];
         kernelPackages = pkgs.linuxPackages_latest;
-        extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+        extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
         extraModprobeConfig = ''
           options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-          '';
-          kernelModules = ["v4l2loopback"];
-
+        '';
+        kernelModules = ["v4l2loopback"];
       };
 
       time.timeZone = "America/Los_Angeles";
@@ -160,11 +159,6 @@ in {
         ydotool = {
           enable = true;
         };
-        tuxclocker = {
-          enable = true;
-          enableAMD = true;
-          useUnfree = false;
-        };
       };
 
       users.users.${username} = {
@@ -176,7 +170,7 @@ in {
 
       nix.settings.experimental-features = ["nix-command" "flakes"];
       nixpkgs.config.allowUnfree = true;
-      hardware.pulseaudio.enable = false;
+      services.pulseaudio.enable = true;
       security = {
         rtkit.enable = true;
         polkit.enable = true;
@@ -211,7 +205,13 @@ in {
           };
         };
       };
-
+      programs = {
+        tuxclocker = {
+          enable = true;
+          useUnfree = false;
+        };
+      };
+      hardware.amdgpu.overdrive.enable = true;
       virtualisation.waydroid.enable = false;
       programs.steam = {
         enable = true;
@@ -236,7 +236,7 @@ in {
         displayManager.sddm = {
           package = pkgs.kdePackages.sddm;
           extraPackages = with pkgs; [
-          kdePackages.qt5compat
+            kdePackages.qt5compat
           ];
           enable = true;
           theme = "catppuccin-sddm-corners";
