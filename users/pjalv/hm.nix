@@ -52,6 +52,7 @@ in {
     gtk-engine-murrine
     gtk_engines
     gnome-themes-extra
+    ghostty
     zoxide
     nwg-displays
 
