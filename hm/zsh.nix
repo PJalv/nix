@@ -1,4 +1,4 @@
-{ config, pkgs, host, ... }: {
+{ config, pkgs, host, lib,... }: {
   programs.zsh = {
     enable = true;
     # enableCompletion = true;
@@ -95,7 +95,7 @@
       zstyle ':fzf-tab:*' switch-group ',' '.'
     '';
 
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       DISABLE_AUTO_UPDATE=true
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
