@@ -61,6 +61,8 @@ in {
     jq
     syspower
     easyeffects
+    inputs.opencode-flake.packages.${pkgs.system}.default
+    
   ];
 
   imports = [
