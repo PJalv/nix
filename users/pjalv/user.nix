@@ -233,8 +233,13 @@ in {
     (lib.mkIf (machine == "laptop") {
       services = {
         displayManager.sddm = {
+          package = pkgs.kdePackages.sddm;
+          extraPackages = with pkgs; [
+          kdePackages.qt5compat
+          ];
           enable = true;
           theme = "catppuccin-sddm-corners";
+          wayland.enable = true;
         };
         power-profiles-daemon.enable = true;
         libinput.enable = true;
