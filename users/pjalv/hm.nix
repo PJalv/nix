@@ -49,6 +49,7 @@ in {
     hyperfine
     swww
     sassc
+    alejandra
     gtk-engine-murrine
     gtk_engines
     gnome-themes-extra
