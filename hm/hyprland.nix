@@ -177,17 +177,19 @@
             sensitivity = 0.9
           }
         '';
+          # monitor=DP-3,1920x1080@144,0x0,1
+          # monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
+          # monitor=desc:Sharp Corporation LC40LB601U,preferred,-1920x0,1
+          # workspace=9, monitor:HDMI-A-1
         desktopConfig = ''
-          monitor=DP-3,1920x1080@144,0x0,1
-          monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
-          monitor=desc:Sharp Corporation LC40LB601U,preferred,-1920x0,1
-          workspace=9, monitor:HDMI-A-1
           exec-once=[workspace 9 silent] vesktop & hyprctl dispatch workspace 9
         '';
       in
       ''
         ${if machine == "laptop" then laptopConfig else desktopConfig}
 
+        source = ~/.config/hypr/monitors.conf 
+        source = ~/.config/hypr/workspaces.conf 
         exec-once = swww-daemon
         exec-once = nm-applet --indicator
         exec-once = fusuma

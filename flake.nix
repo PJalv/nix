@@ -8,10 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
@@ -34,7 +30,6 @@
   };
 
   outputs = {
-    ghostty,
     self,
     nixpkgs,
     nix,
@@ -54,9 +49,6 @@
           username = "pjalv";
         };
         modules = [
-          {
-            environment.systemPackages = [ghostty.packages.x86_64-linux.default];
-          }
           ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
           {
@@ -78,9 +70,6 @@
           username = "pjalv";
         };
         modules = [
-          {
-            environment.systemPackages = [ghostty.packages.x86_64-linux.default];
-          }
 
           ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
