@@ -320,6 +320,26 @@
         "type": "github"
       }
     },
+    "opencode-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762939249,
+        "narHash": "sha256-fABz9+HMyWbjvtFyZZ+5S9tjmCMYJFjjx/sLjTBncyg=",
+        "owner": "spahl",
+        "repo": "opencode-flake",
+        "rev": "1ed32d8fd2b55dc154c9fe64f30eba1a7ea6b01d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spahl",
+        "repo": "opencode-flake",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "firefox-addons": "firefox-addons",
@@ -329,6 +349,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_3",
         "nur": "nur",
+        "opencode-flake": "opencode-flake",
         "spicetify-nix": "spicetify-nix"
       }
     },
