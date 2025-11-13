@@ -1,5 +1,12 @@
-{ config, pkgs, lib, machine ? "desktop", username ? "pjalv", inputs, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  machine ? "desktop",
+  username ? "pjalv",
+  inputs,
+  ...
+}: let
   # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
   dotfilesRepo = pkgs.fetchgit {
     url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
@@ -12,9 +19,7 @@ let
   dotfilesDir = dotfilesRepo;
 
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
-
-in
-{
+in {
   xdg.configFile = {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
     fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
@@ -25,16 +30,16 @@ in
   xdg.mimeApps = {
     enable = true;
     associations.added = {
-      "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
-      "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
-      "text/html" = [ "chromium-browser.desktop" ];
-      "application/pdf" = [ "chromium-browser.desktop" ];
+      "x-scheme-handler/http" = ["chromium-browser.desktop"];
+      "x-scheme-handler/https" = ["chromium-browser.desktop"];
+      "text/html" = ["chromium-browser.desktop"];
+      "application/pdf" = ["chromium-browser.desktop"];
     };
     defaultApplications = {
-      "x-scheme-handler/http" = [ "chromium-browser.desktop" ];
-      "x-scheme-handler/https" = [ "chromium-browser.desktop" ];
-      "text/html" = [ "chromium-browser.desktop" ];
-      "application/pdf" = [ "chromium-browser.desktop" ];
+      "x-scheme-handler/http" = ["chromium-browser.desktop"];
+      "x-scheme-handler/https" = ["chromium-browser.desktop"];
+      "text/html" = ["chromium-browser.desktop"];
+      "application/pdf" = ["chromium-browser.desktop"];
     };
   };
 
@@ -48,13 +53,13 @@ in
     gtk_engines
     gnome-themes-extra
     zoxide
+    nwg-displays
 
     tree-sitter
 
     jq
     syspower
     easyeffects
-    
   ];
 
   imports = [
@@ -70,6 +75,7 @@ in
     spicetify-nix
   ];
 
+
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -77,15 +83,15 @@ in
   };
 
   programs.chromium = {
-   package = pkgs.ungoogled-chromium; 
-    # package = pkgs.chromium; 
+    package = pkgs.ungoogled-chromium;
+    # package = pkgs.chromium;
     enable = true;
     extensions = [
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-      { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # proton pass
-      { id = "bapeomcobggcdleohggighcjbeeglhbn"; } # proton pass
+      {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
+      {id = "ghmbeldphafepmbegfdlkpapadhbakde";} # proton pass
+      {id = "bapeomcobggcdleohggighcjbeeglhbn";} # proton pass
     ];
-    commandLineArgs = [ "--force-dark-mode" ];
+    commandLineArgs = ["--force-dark-mode"];
   };
 
   programs.git.extraConfig.init.defaultBranch = "main";
@@ -102,7 +108,7 @@ in
   # originally installed.
   home.stateVersion = "24.05";
   dconf.settings = {
-    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+    "org/gnome/desktop/interface" = {color-scheme = "prefer-dark";};
   };
 
   gtk = {
@@ -110,7 +116,6 @@ in
     theme = {
       name = "Tokyonight-Dark";
       package = pkgs.tokyonight-gtk-theme;
-
     };
 
     font = {
@@ -152,6 +157,5 @@ in
     x11.enable = true;
   };
 
-  home.sessionVariables = { };
+  home.sessionVariables = {};
 }
-
