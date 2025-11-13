@@ -170,7 +170,7 @@ in {
 
       nix.settings.experimental-features = ["nix-command" "flakes"];
       nixpkgs.config.allowUnfree = true;
-      services.pulseaudio.enable = true;
+      hardware.pulseaudio.enable = true;
       security = {
         rtkit.enable = true;
         polkit.enable = true;
