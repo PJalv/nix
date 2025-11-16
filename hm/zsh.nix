@@ -1,20 +1,27 @@
-{ config, pkgs, host, lib,... }: {
+{
+  config,
+  pkgs,
+  host,
+  lib,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     # enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    plugins = [{
-# Must be before plugins that wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
-      name = "fzf-tab";
-      src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-    }
-    {
-      name = "vi-mode";
-      src = pkgs.zsh-vi-mode;
-      file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-    }
+    plugins = [
+      {
+        # Must be before plugins that wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
+        name = "fzf-tab";
+        src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+      }
+      {
+        name = "vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
     ];
 
     completionInit = ''
@@ -175,17 +182,14 @@
       c = "clear";
       cat = "bat";
 
-      find_remote =
-        "adb exec-out am start -a android.intent.action.VIEW -d -n com.nvidia.remotelocator/.ShieldRemoteLocatorActivity";
+      find_remote = "nix-shell -p android-tools && adb exec-out am start -a android.intent.action.VIEW -d -n com.nvidia.remotelocator/.ShieldRemoteLocatorActivity";
 
       pbc = "wl=copy";
       pbp = "wl-paste";
       nix-shell = "nix-shell --run $SHELL";
 
       nixedit = "cd /etc/nixos && nvim .";
-      nixupdate =
-        "git stage . && git commit -m 'Tweak' && sudo nixos-rebuild switch";
-
+      nixupdate = "git stage . && git commit -m 'Tweak' && sudo nixos-rebuild switch";
     };
   };
 
@@ -197,5 +201,4 @@
     enable = true;
     enableZshIntegration = true;
   };
-
 }
