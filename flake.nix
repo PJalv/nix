@@ -8,7 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nur = {
@@ -70,7 +69,6 @@
           username = "pjalv";
         };
         modules = [
-
           ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
           {
