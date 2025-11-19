@@ -114,7 +114,7 @@
       };
     };
     homeConfigurations = let
-      username = "pjalv";
+      username = "fep";
       #pkgs = import nixpkgs { system = "x86_64-linux"; };
       pkgs = import nixpkgs {system = "aarch64-linux";}; # For ARM-based systems
     in {
