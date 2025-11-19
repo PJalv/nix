@@ -18,6 +18,8 @@ in {
     fzf
     nixd
     ripgrep
+    deno
+    xdg-utils
     llvmPackages_20.clang-tools
     btop
     bat
