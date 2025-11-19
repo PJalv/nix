@@ -18,16 +18,16 @@ in {
     fzf
     nixd
     ripgrep
-    llvmPackages_20.clang-tools
     btop
     bat
     nodejs
+    nodejs_22
     jq
     tmux
     alejandra
     tree-sitter
     inputs.opencode-flake.packages.${pkgs.system}.default
-    inputs.opencode-flake.packages.${pkgs.system}.openspec
+    #inputs.opencode-flake.packages.${pkgs.system}.openspec
   ];
   imports = [../../hm/zsh.nix ../../hm/starship.nix];
 
