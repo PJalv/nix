@@ -82,6 +82,7 @@
     bottles
     steam-rom-manager
     soundwireserver
+    lutris
     # stm32cubemx
     # openocd
     # kdePackages.kdeconnect-kde
@@ -212,6 +213,7 @@ in {
         };
       };
       hardware.amdgpu.overdrive.enable = true;
+      hardware.graphics.enable32Bit = true;
       virtualisation.waydroid.enable = false;
       programs.steam = {
         enable = true;
