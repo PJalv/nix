@@ -94,7 +94,7 @@
         "SUPER, period, exec, emote"
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, Q, killactive,"
-        "$mainMod, M, exit,"
+        "$mainMod, M, exec, hyprlock"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
         "$mainMod, SPACE, exec, $menu -show drun -show-icons"

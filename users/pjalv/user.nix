@@ -60,6 +60,7 @@
     vial
     pavucontrol
     pulseaudio
+    hyprlock
     obs-studio
     spotify
     xfce.thunar
