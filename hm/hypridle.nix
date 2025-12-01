@@ -7,7 +7,7 @@
   username ? "pjalv",
   ...
 }:{
-  programs.hyprlock = {
+  programs.hypridle = {
     enable = true;
     extraConfig = ''
     general {
