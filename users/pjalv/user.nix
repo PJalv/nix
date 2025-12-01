@@ -247,10 +247,10 @@ in {
         };
         power-profiles-daemon.enable = true;
         libinput.enable = true;
-        logind.settings.Login = ''
-        HandleLidSwitch=suspend
-        HandleLidSwitchDocked=ignore
-        '';
+        logind= {
+          lidSwitch = "suspend";
+        lidSwitchDocked = "ignore";
+        };
       };
 
       environment.systemPackages = laptopPackages;
