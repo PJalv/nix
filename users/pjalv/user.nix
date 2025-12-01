@@ -251,6 +251,7 @@ in {
           lidSwitch = "suspend";
         lidSwitchDocked = "ignore";
         };
+        hypridle.enable = true;
       };
 
       environment.systemPackages = laptopPackages;
