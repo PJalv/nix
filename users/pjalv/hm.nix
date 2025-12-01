@@ -63,22 +63,22 @@ in {
     syspower
     easyeffects
     inputs.opencode-flake.packages.${pkgs.system}.default
-    
   ];
 
   imports = [
     ../../hm/zsh.nix
     ../../hm/rofi.nix
     ../../hm/hyprland.nix
+    ../../hm/hyprlock.nix
     ../../hm/waybar.nix
     ../../hm/ghostty.nix
     ../../hm/entries.nix
     ../../hm/starship.nix
     ../../hm/firefox.nix
     ../../hm/spicetify.nix
+
     spicetify-nix
   ];
-
 
   programs.direnv = {
     enable = true;
