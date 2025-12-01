@@ -5,7 +5,18 @@
   machine ? "desktop",
   username ? "pjalv",
   ...
-}: {
+}: let
+  # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
+  dotfilesRepo = pkgs.fetchFromGitHub {
+    owner = "PJalv";
+    repo = "dotfiles";
+    rev = "59705306b11e15b9bb7f3948fecded6acbaafe01";
+    hash = "sha256-xPbIdVtBcvanQMAHNBLr+6NVz7Iv6hhnSVN96Eur8xs=";
+  };
+
+  # Define the location of your dotfiles directory
+  dotfilesDir = dotfilesRepo;
+in {
   programs.hyprlock = {
     enable = true;
     extraConfig = ''
@@ -14,7 +25,7 @@
       background {
           monitor =
           #path = screenshot
-          path = https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop
+          path = ${dotfilesDir}/.config/wallpaper/alex-perez-NLUkAA-nDdE-unsplash.jpg
           #color = $background
           blur_passes = 2
           contrast = 1

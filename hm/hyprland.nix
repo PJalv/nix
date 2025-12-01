@@ -1,12 +1,22 @@
-{ config
-, pkgs
-, lib
-, machine ? "desktop"
-, username ? "pjalv"
-, ...
-}:
 {
+  config,
+  pkgs,
+  lib,
+  machine ? "desktop",
+  username ? "pjalv",
+  ...
+}: let
+  # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
+  dotfilesRepo = pkgs.fetchgit {
+    url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
+    rev = "c1d1904d6091f03a8e48c589c50bd702c70b914b";
+    # Or specify the commit hash/branch/tag
+    sha256 = "sha256-QIHJZlVkLvsW+GxiEH2l8Tgv6wyYiEwFGngNJ+KLvQw="; # This will be automatically replaced when you run `nixos-rebuild`
+  };
 
+  # Define the location of your dotfiles directory
+  dotfilesDir = dotfilesRepo;
+in {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -20,7 +30,6 @@
         "macro_go 'chromium' '.spotify-wrapped'"
         "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
         "sleep 1 && waybar"
-
       ];
 
       input = {
@@ -30,7 +39,7 @@
         scroll_factor = 3;
         accel_profile = "flat";
 
-        touchpad = { natural_scroll = true; };
+        touchpad = {natural_scroll = true;};
         repeat_delay = 250;
         repeat_rate = 50;
       };
@@ -48,14 +57,14 @@
         "col.inactive_border" = "rgba(595959aa)";
       };
 
-      cursor = { inactive_timeout = 5; };
+      cursor = {inactive_timeout = 5;};
       misc = {
         disable_hyprland_logo = true;
         always_follow_on_dnd = true;
         middle_click_paste = false;
       };
 
-      dwindle = { preserve_split = true; };
+      dwindle = {preserve_split = true;};
 
       decoration = {
         rounding = 4;
@@ -72,7 +81,7 @@
       animations = {
         enabled = true;
 
-        bezier = [ "myBezier, 0.05, 0.9, 0.1, 1.05" ];
+        bezier = ["myBezier, 0.05, 0.9, 0.1, 1.05"];
 
         animation = [
           "windows, 1, 7, myBezier"
@@ -154,7 +163,6 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
-
       # windowrulev2
       windowrulev2 = [
         "pin,class:^(rofi)$"
@@ -169,63 +177,64 @@
       ];
     };
 
-    extraConfig =
-      let
-        laptopConfig = ''
-          monitor = eDP-1,2240x1400,0x0,1
-          input {
-            sensitivity = 0.9
-          }
-        '';
-          # monitor=DP-3,1920x1080@144,0x0,1
-          # monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
-          # monitor=desc:Sharp Corporation LC40LB601U,preferred,-1920x0,1
-          # workspace=9, monitor:HDMI-A-1
-        desktopConfig = ''
-          exec-once=[workspace 9 silent] vesktop & hyprctl dispatch workspace 9
-        '';
-      in
-      ''
-        ${if machine == "laptop" then laptopConfig else desktopConfig}
-
-        source = ~/.config/hypr/monitors.conf 
-        source = ~/.config/hypr/workspaces.conf 
-        exec-once = swww-daemon
-        exec-once = nm-applet --indicator
-        exec-once = fusuma
-        exec-once = swww img "$(find -L .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
-        exec-once = cd $($HOME)/.config/waybar && nix-shell --run "uv run python main.py" 
-        exec-once = /home/${username}/.config/styles/setup.sh 
-
-        xwayland {
-          force_zero_scaling = true
+    extraConfig = let
+      laptopConfig = ''
+        monitor = eDP-1,2240x1400,0x0,1
+        input {
+          sensitivity = 0.9
         }
-
-        env = XCURSOR_SIZE,24
-        env = HYPRCURSOR_SIZE,24
-        device {
-          name = epic-mouse-v1
-          sensitivity = -0.5
-        }
-        bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
-        bind = ALT, R, submap, resize
-        # will start a submap called "resize"
-        submap = resize
-        # sets repeatable binds for resizing the active window
-        binde = , l, resizeactive, 50 0
-        binde = , h, resizeactive, -50 0
-        binde = , k, resizeactive, 0 -40
-        binde = , j, resizeactive, 0 40 # use reset to go back to the global submap
-        bind = , escape, submap, reset
-        # will reset the submap, meaning end the current one and return to the global one
-        submap = reset
-        bind = $mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
-        bindl=, XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
-        bindel=, XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -5%
-        bindel=, XF86AudioRaiseVolume, exec, pactl -- set-sink-volume 0 +5%
-        bindel=, XF86MonBrightnessDown, exec, brightnessctl s 5%-
-        bindel=, XF86MonBrightnessUp, exec, brightnessctl s 5%+
       '';
+      # monitor=DP-3,1920x1080@144,0x0,1
+      # monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
+      # monitor=desc:Sharp Corporation LC40LB601U,preferred,-1920x0,1
+      # workspace=9, monitor:HDMI-A-1
+      desktopConfig = ''
+        exec-once=[workspace 9 silent] vesktop & hyprctl dispatch workspace 9
+      '';
+    in ''
+      ${
+        if machine == "laptop"
+        then laptopConfig
+        else desktopConfig
+      }
+
+      source = ~/.config/hypr/monitors.conf
+      source = ~/.config/hypr/workspaces.conf
+      exec-once = swww-daemon
+      exec-once = nm-applet --indicator
+      exec-once = fusuma
+      exec-once = swww img "$(find -L .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
+      exec-once = cd $($HOME)/.config/waybar && nix-shell --run "uv run python main.py"
+      exec-once = /home/${username}/.config/styles/setup.sh
+
+      xwayland {
+        force_zero_scaling = true
+      }
+
+      env = XCURSOR_SIZE,24
+      env = HYPRCURSOR_SIZE,24
+      device {
+        name = epic-mouse-v1
+        sensitivity = -0.5
+      }
+      bind = SUPER_SHIFT, S, exec, grim -g "$(slurp -d)" - | wl-copy
+      bind = ALT, R, submap, resize
+      # will start a submap called "resize"
+      submap = resize
+      # sets repeatable binds for resizing the active window
+      binde = , l, resizeactive, 50 0
+      binde = , h, resizeactive, -50 0
+      binde = , k, resizeactive, 0 -40
+      binde = , j, resizeactive, 0 40 # use reset to go back to the global submap
+      bind = , escape, submap, reset
+      # will reset the submap, meaning end the current one and return to the global one
+      submap = reset
+      bind = $mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
+      bindl=, XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
+      bindel=, XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -5%
+      bindel=, XF86AudioRaiseVolume, exec, pactl -- set-sink-volume 0 +5%
+      bindel=, XF86MonBrightnessDown, exec, brightnessctl s 5%-
+      bindel=, XF86MonBrightnessUp, exec, brightnessctl s 5%+
+    '';
   };
 }
-
