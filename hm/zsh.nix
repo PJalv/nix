@@ -116,21 +116,6 @@
       setopt hist_expire_dups_first
       setopt hist_verify
 
-      load_api_keys() {
-          local api_keys_file="$HOME/.api_keys"
-
-          if [[ -f "$api_keys_file" ]]; then
-              while IFS= read -r line; do
-                  # Skip empty lines and comments
-                  [[ -z "$line" || "$line" == \#* ]] && continue
-
-                  # Export each line as an environment variable
-                  export "$line"
-              done < "$api_keys_file"
-          else
-              echo "⚠️  Missing .api_keys file"
-          fi
-      }
 
 
       export "EDITOR=nvim"
@@ -173,7 +158,6 @@
         zle -N zle-line-init
         zle -N zle-line-finish
       fi
-      precmd_functions+=(load_api_keys)
     '';
     shellAliases = {
       cd = "z";

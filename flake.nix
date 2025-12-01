@@ -114,7 +114,7 @@
       };
     };
     homeConfigurations = let
-      username = "pjalv";
+      username = "fep";
       #pkgs = import nixpkgs { system = "x86_64-linux"; };
       pkgs = import nixpkgs {system = "aarch64-linux";}; # For ARM-based systems
     in {
@@ -124,7 +124,8 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [./users/remote/hm.nix];
-        extraSpecialArgs = {inherit username;};
+        extraSpecialArgs = {inherit username;
+        inherit inputs;};
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
