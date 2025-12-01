@@ -23,6 +23,10 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     opencode-flake = {
+      url = "github:sst/opencode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    openspec-flake = {
       url = "github:spahl/opencode-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
