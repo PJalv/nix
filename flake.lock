@@ -327,6 +327,26 @@
         ]
       },
       "locked": {
+        "lastModified": 1764600213,
+        "narHash": "sha256-Ga2KRvtkFXMJuAMgyZxip8n3V+yv4rf2pcPSQu3SaNw=",
+        "owner": "sst",
+        "repo": "opencode",
+        "rev": "cbbd21e2e5058e88c2f3062b3684deb731749797",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sst",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
+    "openspec-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
         "lastModified": 1763725412,
         "narHash": "sha256-aWX3kM5HqiIF/F9M99+MGg9yGRRIi5i+saDd/JK3E7w=",
         "owner": "spahl",
@@ -350,6 +370,7 @@
         "nixpkgs": "nixpkgs_3",
         "nur": "nur",
         "opencode-flake": "opencode-flake",
+        "openspec-flake": "openspec-flake",
         "spicetify-nix": "spicetify-nix"
       }
     },
