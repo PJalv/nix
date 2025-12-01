@@ -7,7 +7,7 @@
   username ? "pjalv",
   ...
 }:{
-  xdg.configFile."hypridle.conf".text = '' 
+  xdg.configFile."hypr/hypridle.conf".text = '' 
 
 general {
   lock_cmd = pidof hyprlock || hyprlock       # start hyprlock if not already running
