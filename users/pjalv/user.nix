@@ -247,7 +247,7 @@ in {
         };
         power-profiles-daemon.enable = true;
         libinput.enable = true;
-        logind.extraConfig = ''
+        services.logind.settings.Login = ''
         HandleLidSwitch=suspend
         HandleLidSwitchDocked=ignore
         '';
