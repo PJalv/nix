@@ -25,7 +25,7 @@ in {
       background {
           monitor =
           #path = screenshot
-          path = ${dotfilesDir}/.config/wallpaper/alex-perez-NLUkAA-nDdE-unsplash.jpg
+          path = cmd[] find ${dotfilesDir}/.config/wallpaper/ -type f \( -iname '*.jpg' -o -iname '*.png' \) | shuf -n 1
           #color = $background
           blur_passes = 2
           contrast = 1
