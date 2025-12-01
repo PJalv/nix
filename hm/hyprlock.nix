@@ -25,7 +25,7 @@ in {
       background {
           monitor =
           #path = screenshot
-          path = cmd[] echo ${dotfilesDir}
+          path = cmd[] find ${dotfilesDir}/.config/wallpaper/ -type f \( -iname '*.jpg' -o -iname '*.png' \) | shuf -n 1
           #color = $background
           blur_passes = 2
           contrast = 1
