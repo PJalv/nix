@@ -247,6 +247,10 @@ in {
         };
         power-profiles-daemon.enable = true;
         libinput.enable = true;
+        logind.extraConfig = ''
+        HandleLidSwitch=suspend
+        HandleLidSwitchDocked=ignore
+        '';
       };
 
       environment.systemPackages = laptopPackages;

@@ -69,6 +69,7 @@ in {
   imports = [
     ../../hm/zsh.nix
     ../../hm/rofi.nix
+    ../../hm/hypridle.nix
     ../../hm/hyprland.nix
     ../../hm/hyprlock.nix
     ../../hm/waybar.nix
