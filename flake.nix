@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode-flake = {
-      url = "github:sst/opencode";
+      url = "github:pjalv/opencode-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -116,7 +116,7 @@
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
+       # the path to your home.nix.
         modules = [./users/remote/hm.nix];
         extraSpecialArgs = {inherit username;};
 
