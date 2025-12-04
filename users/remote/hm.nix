@@ -29,7 +29,6 @@ in {
     alejandra
     tree-sitter
     inputs.opencode-flake.packages.${pkgs.system}.default
-    inputs.openspec-flake.packages.${pkgs.system}.openspec
   ];
   imports = [../../hm/zsh.nix ../../hm/starship.nix];
 

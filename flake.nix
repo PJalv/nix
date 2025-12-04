@@ -35,7 +35,6 @@
     spicetify-nix,
     nixos-wsl,
     opencode-flake,
-    openspec-flake,
   } @ inputs: {
     nixosConfigurations = {
       pjalv-desktop = nixpkgs.lib.nixosSystem {
