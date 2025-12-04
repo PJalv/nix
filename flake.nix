@@ -18,16 +18,8 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # opencode-flake = {
-    #   url = "github:spahl/opencode-flake/d98f05cda2758feeb9fe1c8d2a13d417c6a29fc5";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     opencode-flake = {
       url = "github:sst/opencode";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    openspec-flake = {
-      url = "github:spahl/opencode-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
