@@ -327,36 +327,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1764628032,
-        "narHash": "sha256-jaLeHXchuoIs2DX2QcDpPPaigucuMa+JRZOwSA0c0tM=",
+        "lastModified": 1764871856,
+        "narHash": "sha256-uoxWho/UpCQ7bCy/BEdP9Bo1+vWTYZ27YYLMBIfU3KE=",
         "owner": "sst",
         "repo": "opencode",
-        "rev": "0acefd5c08d724d440071de2ff7bcee4b599ecad",
+        "rev": "7f86fe3f6141bef31cdab166a60269143b78dcc5",
         "type": "github"
       },
       "original": {
         "owner": "sst",
         "repo": "opencode",
-        "type": "github"
-      }
-    },
-    "openspec-flake": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1763725412,
-        "narHash": "sha256-aWX3kM5HqiIF/F9M99+MGg9yGRRIi5i+saDd/JK3E7w=",
-        "owner": "spahl",
-        "repo": "opencode-flake",
-        "rev": "bde241ee19a315bd67c33c4d5ac4b0b2c5d2e2ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "spahl",
-        "repo": "opencode-flake",
         "type": "github"
       }
     },
@@ -370,7 +350,6 @@
         "nixpkgs": "nixpkgs_3",
         "nur": "nur",
         "opencode-flake": "opencode-flake",
-        "openspec-flake": "openspec-flake",
         "spicetify-nix": "spicetify-nix"
       }
     },
