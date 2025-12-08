@@ -247,6 +247,11 @@ in {
         };
         power-profiles-daemon.enable = true;
         libinput.enable = true;
+        logind= {
+          lidSwitch = "suspend";
+        lidSwitchDocked = "ignore";
+        };
+        hypridle.enable = true;
       };
 
       environment.systemPackages = laptopPackages;

@@ -183,7 +183,9 @@ in {
         input {
           sensitivity = 0.9
         }
-      '';
+
+        exec-once= hypridle
+        '';
       # monitor=DP-3,1920x1080@144,0x0,1
       # monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
       # monitor=desc:Sharp Corporation LC40LB601U,preferred,-1920x0,1
