@@ -8,7 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nur = {
@@ -24,7 +23,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     opencode-flake = {
-      url = "github:spahl/opencode-flake";
+      url = "github:PJalv/opencode-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -70,7 +69,6 @@
           username = "pjalv";
         };
         modules = [
-
           ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
           {
@@ -114,9 +112,9 @@
       };
     };
     homeConfigurations = let
-      username = "fep";
-      #pkgs = import nixpkgs { system = "x86_64-linux"; };
-      pkgs = import nixpkgs {system = "aarch64-linux";}; # For ARM-based systems
+      username = "ubuntu";
+      pkgs = import nixpkgs {system = "x86_64-linux";};
+      # pkgs = import nixpkgs {system = "aarch64-linux";}; # For ARM-based systems
     in {
       "${username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -124,8 +122,10 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [./users/remote/hm.nix];
-        extraSpecialArgs = {inherit username;
-        inherit inputs;};
+        extraSpecialArgs = {
+          inherit username;
+          inherit inputs;
+        };
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
