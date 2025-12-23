@@ -39,6 +39,7 @@ in {
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+  programs.command-not-found.enable = true;
 
   programs.git.extraConfig.init.defaultBranch = "main";
   programs.git.extraConfig.pull.rebase = false;
