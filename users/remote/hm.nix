@@ -26,6 +26,7 @@ in {
     nodejs
     jq
     tmux
+    pay-respects
     alejandra
     tree-sitter
     inputs.opencode-flake.packages.${pkgs.system}.default

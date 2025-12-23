@@ -197,5 +197,9 @@
     enable = true;
     enableZshIntegration = true;
   };
+  programs.pay-respects = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
 }
