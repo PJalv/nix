@@ -327,15 +327,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1766519033,
-        "narHash": "sha256-BDCOMGgC9zHqyHHe49u0EqYtjbM6dG0tUA5M5YBu6p0=",
-        "owner": "pjalv",
+        "lastModified": 1767027028,
+        "narHash": "sha256-hA/6eRFcIG2KAaFZSeMymSj/NC9l6l3Ww9EbARhkzbY=",
+        "owner": "PJalv",
         "repo": "opencode-flake",
-        "rev": "a8096138536b3e587fde73e58d852cae57544002",
+        "rev": "c4983abe34c1b3ca677af7a4106e0c7c6aa04ab2",
         "type": "github"
       },
       "original": {
-        "owner": "pjalv",
+        "owner": "PJalv",
         "repo": "opencode-flake",
         "type": "github"
       }

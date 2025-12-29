@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode-flake = {
-      url = "github:pjalv/opencode-flake";
+      url = "github:PJalv/opencode-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
