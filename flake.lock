@@ -327,11 +327,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767037128,
-        "narHash": "sha256-pQUsJjnHwu+CWwEl5u3GUjNCp2W/z6YzHmI76+vUATw=",
+        "lastModified": 1767113085,
+        "narHash": "sha256-l/wb0+ntqULWNZ/Y/CQ9Qi10vMJBfV5vd4hn1HNFb0s=",
         "owner": "PJalv",
         "repo": "opencode-flake",
-        "rev": "232193d2e110984b08afc6ed190486991adf77a1",
+        "rev": "b7075513264431bc267def7cd8c75638aa7dafe2",
         "type": "github"
       },
       "original": {
