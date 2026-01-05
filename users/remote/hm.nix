@@ -18,15 +18,20 @@ in {
     fzf
     nixd
     ripgrep
+    deno
+    xdg-utils
+    llvmPackages_20.clang-tools
     btop
     bat
     nodejs
     jq
     tmux
+    pay-respects
     alejandra
     tree-sitter
     inputs.opencode-flake.packages.${pkgs.system}.default
-    #inputs.opencode-flake.packages.${pkgs.system}.openspec
+    inputs.opencode-flake.packages.${pkgs.system}.openspec
+    inputs.opencode-flake.packages.${pkgs.system}.opencode-google-antigravity-auth
   ];
   imports = [../../hm/zsh.nix ../../hm/starship.nix];
 
@@ -35,6 +40,7 @@ in {
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+  programs.command-not-found.enable = true;
 
   programs.git.extraConfig.init.defaultBranch = "main";
   programs.git.extraConfig.pull.rebase = false;
