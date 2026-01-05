@@ -21,7 +21,6 @@ in {
     btop
     bat
     nodejs
-    nodejs_22
     jq
     tmux
     alejandra
