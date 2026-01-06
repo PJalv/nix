@@ -27,10 +27,10 @@ in {
     jq
     tmux
     pay-respects
+    mosh
     alejandra
     tree-sitter
     inputs.opencode-flake.packages.${pkgs.system}.default
-    inputs.opencode-flake.packages.${pkgs.system}.openspec
     inputs.opencode-flake.packages.${pkgs.system}.opencode-google-antigravity-auth
   ];
   imports = [../../hm/zsh.nix ../../hm/starship.nix];
