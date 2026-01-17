@@ -42,12 +42,14 @@ in {
   };
   programs.command-not-found.enable = true;
 
-  programs.git.extraConfig.init.defaultBranch = "main";
-  programs.git.extraConfig.pull.rebase = false;
   programs.git = {
     enable = true;
-    userName = "Jorge Luis Suarez";
-    userEmail = "jorge.suarez@tp-link.com";
+    settings = {
+      user.name = "Jorge Luis Suarez";
+      user.email = "jorge.suarez@tp-link.com";
+      init.defaultBranch = "main";
+      pull.rebase = false;
+    };
   };
   programs.gh.enable = true;
   # The state version is required and should stay at the version you
