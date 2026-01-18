@@ -5,19 +5,9 @@
   machine ? "desktop",
   username ? "pjalv",
   inputs,
+  dotfilesDir,
   ...
 }: let
-  # Define the Git repository URL and revision (e.g., branch, commit hash, etc.)
-  dotfilesRepo = pkgs.fetchgit {
-    url = "https://github.com/PJalv/dotfiles.git"; # Replace with your repo URL
-    rev = "296e0a345840c58e8b8e28eb9e564a283adc003e";
-    # Or specify the commit hash/branch/tag
-    sha256 = "sha256-Xc0bu3me8YuHwt4xZ8+juOndO0sS4IUwU0ql60s5GNc="; # This will be automatically replaced when you run `nixos-rebuild`
-  };
-
-  # Define the location of your dotfiles directory
-  dotfilesDir = dotfilesRepo;
-
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
 in {
   xdg.configFile = {
@@ -103,13 +93,15 @@ in {
     commandLineArgs = ["--force-dark-mode"];
   };
 
-  programs.git.extraConfig.init.defaultBranch = "main";
-  programs.git.extraConfig.safe.directory = "/etc/nixos";
-  programs.git.extraConfig.pull.rebase = false;
   programs.git = {
     enable = true;
-    userName = "PJalv";
-    userEmail = "pjalvbusiness@gmail.com";
+    settings = {
+      user.name = "PJalv";
+      user.email = "pjalvbusiness@gmail.com";
+      init.defaultBranch = "main";
+      safe.directory = "/etc/nixos";
+      pull.rebase = false;
+    };
   };
 
   programs.gh.enable = true;

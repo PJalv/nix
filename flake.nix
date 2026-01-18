@@ -27,23 +27,32 @@
   outputs = {
     self,
     nixpkgs,
-    nix,
-    nixos-hardware,
     home-manager,
     nur,
     firefox-addons,
     spicetify-nix,
     nixos-wsl,
     opencode-flake,
-  } @ inputs: {
+  } @ inputs: let
+    # Shared dotfiles repository
+    dotfilesRepo = nixpkgs.legacyPackages.x86_64-linux.fetchgit {
+      url = "https://github.com/PJalv/dotfiles.git";
+      rev = "296e0a345840c58e8b8e28eb9e564a283adc003e";
+      sha256 = "sha256-Xc0bu3me8YuHwt4xZ8+juOndO0sS4IUwU0ql60s5GNc=";
+    };
+    dotfilesDir = dotfilesRepo;
+  in {
     nixosConfigurations = {
       pjalv-desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           machine = "desktop";
           username = "pjalv";
+          inherit dotfilesDir inputs;
         };
         modules = [
+          ./modules/dotfiles.nix
+          ./modules/optimization.nix
           ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
           {
@@ -53,7 +62,7 @@
             home-manager.extraSpecialArgs = {
               machine = "desktop";
               username = "pjalv";
-              inherit inputs;
+              inherit dotfilesDir inputs;
             };
           }
         ];
@@ -63,8 +72,11 @@
         specialArgs = {
           machine = "laptop";
           username = "pjalv";
+          inherit dotfilesDir inputs;
         };
         modules = [
+          ./modules/dotfiles.nix
+          ./modules/optimization.nix
           ./users/pjalv/user.nix
           home-manager.nixosModules.home-manager
           {
@@ -74,7 +86,7 @@
             home-manager.extraSpecialArgs = {
               machine = "laptop";
               username = "pjalv";
-              inherit inputs;
+              inherit dotfilesDir inputs;
             };
           }
         ];
@@ -84,6 +96,7 @@
         specialArgs = {
           machine = "wsl";
           username = "pjalv";
+          inherit dotfilesDir inputs;
         };
         modules = [
           nixos-wsl.nixosModules.default
@@ -101,7 +114,7 @@
             home-manager.extraSpecialArgs = {
               machine = "wsl";
               username = "pjalv";
-              inherit inputs;
+              inherit dotfilesDir inputs;
             };
           }
         ];
@@ -119,8 +132,7 @@
        # the path to your home.nix.
         modules = [./users/remote/hm.nix];
         extraSpecialArgs = {
-          inherit username;
-          inherit inputs;
+          inherit username dotfilesDir inputs;
         };
 
         # Optionally use extraSpecialArgs

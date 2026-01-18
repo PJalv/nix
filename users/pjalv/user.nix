@@ -247,9 +247,9 @@ in {
         };
         power-profiles-daemon.enable = true;
         libinput.enable = true;
-        logind= {
-          lidSwitch = "suspend";
-        lidSwitchDocked = "ignore";
+        logind.settings.Login = {
+          HandleLidSwitch = "suspend";
+          HandleLidSwitchDocked = "ignore";
         };
         hypridle.enable = true;
       };
