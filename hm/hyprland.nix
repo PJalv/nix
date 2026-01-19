@@ -32,7 +32,6 @@ in {
         "wl-paste --type image --watch cliphist store # Stores only image data"
         "mako"
         "macro_go 'chromium' '.spotify-wrapped'"
-        "[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required"
         "sleep 1 && waybar"
       ];
 
@@ -184,6 +183,7 @@ in {
       # workspace=9, monitor:HDMI-A-1
       desktopConfig = ''
         exec-once=[workspace 9 silent] vesktop & hyprctl dispatch workspace 9
+        exec-once=[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required
       '';
     in ''
       ${
