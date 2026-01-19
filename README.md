@@ -20,6 +20,7 @@ Welcome to the NixOS configuration repository for user **`pjalv`**. This reposit
   - [Additional Tools](#additional-tools)
 - [Usage](#usage)
 - [Updating the System](#updating-the-system)
+- [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -43,7 +44,174 @@ By organizing configurations into reusable modules, this setup allows for easy c
 
 ## Getting Started
 
-### Prerequisites
+### Quick Start (Automated Installation)
+
+For a fresh NixOS minimal install, use the automated installation script:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/PJalv/nixos-config/main/install.sh | sudo bash
+```
+
+This script will:
+- Enable Nix flakes automatically
+- Clone this repository
+- Detect your machine type (desktop/laptop/WSL)
+- Generate hardware-specific configuration
+- Apply the configuration
+- Set up your user account
+
+### Fresh Install Guide
+
+If you're installing NixOS from scratch, follow these steps:
+
+#### 1. Boot NixOS Minimal ISO
+
+Download and boot the latest NixOS minimal ISO:
+- [NixOS Downloads](https://nixos.org/download.html)
+
+#### 2. Partition Your Disk
+
+**Important**: Replace `/dev/nvme0n1` with your actual disk (check with `lsblk`)
+
+**For UEFI Systems (recommended):**
+```bash
+# Partition scheme for desktop (separate /home partition)
+sudo fdisk /dev/nvme0n1
+
+# Create partitions:
+# - 512MB EFI partition (type: EFI System)
+# - Rest of disk for Btrfs root (type: Linux filesystem)
+# - Optional: Separate partition for /home
+
+# Example layout:
+# /dev/nvme0n1p1 - EFI System Partition (512MB, FAT32)
+# /dev/nvme0n1p2 - Root partition (Btrfs, rest of disk)
+# /dev/nvme0n1p3 - Home partition (Btrfs, optional)
+
+# Format partitions
+sudo mkfs.fat -F32 /dev/nvme0n1p1
+sudo mkfs.btrfs /dev/nvme0n1p2
+sudo mkfs.btrfs /dev/nvme0n1p3  # Optional home partition
+
+# Mount partitions
+sudo mount /dev/nvme0n1p2 /mnt
+sudo mkdir -p /mnt/home
+sudo mount /dev/nvme0n1p3 /mnt/home  # If using separate home
+sudo mkdir -p /mnt/boot
+sudo mount /dev/nvme0n1p1 /mnt/boot
+```
+
+**For Laptops with single partition:**
+```bash
+# Partition scheme for laptop
+sudo fdisk /dev/nvme0n1
+
+# Create partitions:
+# - 512MB EFI partition (type: EFI System)
+# - Rest of disk for Btrfs root (type: Linux filesystem)
+
+# Format partitions
+sudo mkfs.fat -F32 /dev/nvme0n1p1
+sudo mkfs.btrfs /dev/nvme0n1p2
+
+# Mount partitions
+sudo mount /dev/nvme0n1p2 /mnt
+sudo mkdir -p /mnt/boot
+sudo mount /dev/nvme0n1p1 /mnt/boot
+```
+
+#### 3. Install Base NixOS System
+
+```bash
+# Generate hardware configuration
+sudo nixos-generate-config --root /mnt
+
+# Install minimal NixOS
+sudo nixos-install
+
+# Reboot into installed system
+sudo reboot
+```
+
+#### 4. Apply This Configuration
+
+After rebooting into your newly installed NixOS:
+
+```bash
+# Run the installation script
+curl -sSL https://raw.githubusercontent.com/PJalv/nixos-config/main/install.sh | sudo bash
+```
+
+Or follow the manual installation steps below.
+
+### Manual Installation
+
+#### Prerequisites
+
+- **Nix Package Manager**: Ensure Nix is installed on your system.
+- **NixOS**: This configuration is intended for NixOS installations.
+- **Flakes Enabled**: Flakes must be enabled in your Nix configuration.
+
+To enable flakes, add of following to your `/etc/nix/nix.conf`:
+
+```nix
+experimental-features = nix-command flakes
+```
+
+#### Installation Steps
+
+1. **Clone the Repository**:
+
+    ```bash
+    git clone https://github.com/PJalv/nixos-config.git
+    cd nixos-config
+    ```
+
+2. **Generate Hardware Configuration**:
+
+    Generate hardware-specific configuration for your machine:
+
+    ```bash
+    sudo nixos-generate-config --root / --no-hardware-config --dir /etc/nixos/users/pjalv/desktop
+    # Or for laptop:
+    # sudo nixos-generate-config --root / --no-hardware-config --dir /etc/nixos/users/pjalv/laptop
+    ```
+
+3. **Switch to Configuration**:
+
+    Use the NixOS `flake` command to switch to the desired configuration.
+
+    For **desktop**:
+
+    ```bash
+    sudo nixos-rebuild switch --flake .#pjalv-desktop
+    ```
+
+    For **laptop**:
+
+    ```bash
+    sudo nixos-rebuild switch --flake .#pjalv-laptop
+    ```
+
+4. **Set User Password**:
+
+    After the rebuild, set the password for the user `pjalv` if not already set:
+
+    ```bash
+    sudo passwd pjalv
+    ```
+
+This script will:
+- Enable Nix flakes automatically
+- Clone this repository
+- Detect your machine type (desktop/laptop/WSL)
+- Generate hardware-specific configuration
+- Apply the configuration
+- Set up your user account
+
+### Manual Installation
+
+#### Prerequisites
 
 - **Nix Package Manager**: Ensure Nix is installed on your system.
 - **NixOS**: This configuration is intended for NixOS installations.
@@ -55,38 +223,48 @@ To enable flakes, add the following to your `/etc/nix/nix.conf`:
 experimental-features = nix-command flakes
 ```
 
-### Installation
+#### Installation Steps
 
 1. **Clone the Repository**:
 
-   ```bash
-   git clone https://github.com/PJalv/nixos-config.git
-   cd nixos-config
-   ```
+    ```bash
+    git clone https://github.com/PJalv/nixos-config.git
+    cd nixos-config
+    ```
 
-2. **Switch to Configuration**:
+2. **Generate Hardware Configuration**:
 
-   Use the NixOS `flake` command to switch to the desired configuration.
+    Generate hardware-specific configuration for your machine:
 
-   For **desktop**:
+    ```bash
+    sudo nixos-generate-config --root / --no-hardware-config --dir /etc/nixos/users/pjalv/desktop
+    # Or for laptop:
+    # sudo nixos-generate-config --root / --no-hardware-config --dir /etc/nixos/users/pjalv/laptop
+    ```
 
-   ```bash
-   sudo nixos-rebuild switch --flake .#pjalv-desktop
-   ```
+3. **Switch to Configuration**:
 
-   For **laptop**:
+    Use the NixOS `flake` command to switch to the desired configuration.
 
-   ```bash
-   sudo nixos-rebuild switch --flake .#pjalv-laptop
-   ```
+    For **desktop**:
 
-3. **Set User Password**:
+    ```bash
+    sudo nixos-rebuild switch --flake .#pjalv-desktop
+    ```
 
-   After the rebuild, set the password for the user `pjalv` if not already set:
+    For **laptop**:
 
-   ```bash
-   sudo passwd pjalv
-   ```
+    ```bash
+    sudo nixos-rebuild switch --flake .#pjalv-laptop
+    ```
+
+4. **Set User Password**:
+
+    After the rebuild, set the password for the user `pjalv` if not already set:
+
+    ```bash
+    sudo passwd pjalv
+    ```
 
 ## Directory Structure
 
@@ -249,23 +427,96 @@ To update the NixOS system and flakes:
 
 1. **Pull Latest Changes**:
 
-   ```bash
-   git pull
-   ```
+    ```bash
+    git pull
+    ```
 
 2. **Update Flake Inputs**:
 
-   ```bash
-   nix flake update
-   ```
+    ```bash
+    nix flake update
+    ```
 
 3. **Rebuild System**:
 
+    ```bash
+    sudo nixos-rebuild switch --flake .#pjalv-desktop
+    ```
+
+    Replace `pjalv-desktop` with `pjalv-laptop` if applicable.
+
+## Troubleshooting
+
+For detailed installation troubleshooting and step-by-step guides, see [INSTALL.md](INSTALL.md).
+
+### Installation Fails
+
+If the installation script fails:
+1. Check error messages carefully
+2. Ensure you have root privileges (`sudo`)
+3. Verify internet connectivity for downloading packages
+4. Check disk partitioning is correct
+5. Review `/var/log/nixos-install` for detailed logs
+
+### Build Errors
+
+If `nixos-rebuild switch` fails:
+```bash
+# Check detailed error messages
+sudo nixos-rebuild switch --flake .#pjalv-desktop --show-trace
+
+# Try dry-run first to see what would be built
+sudo nixos-rebuild dry-build --flake .#pjalv-desktop
+
+# Clear Nix store and rebuild (last resort)
+sudo nix-collect-garbage -d
+sudo nix-store --optimize
+sudo nixos-rebuild switch --flake .#pjalv-desktop
+```
+
+### Flake Not Found
+
+If flakes are not recognized:
+```bash
+# Check if flakes are enabled
+cat /etc/nix/nix.conf
+
+# Should contain: experimental-features = nix-command flakes
+
+# If not, add it:
+echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
+```
+
+### Hardware Issues
+
+If hardware-specific features don't work:
+1. Regenerate hardware configuration:
    ```bash
-   sudo nixos-rebuild switch --flake .#pjalv-desktop
+   sudo nixos-generate-config --root / --no-hardware-config --dir /etc/nixos/users/pjalv/desktop
+   ```
+2. Check kernel modules are loaded
+3. Verify device drivers are included in configuration
+4. Check dmesg logs for hardware errors:
+   ```bash
+   sudo dmesg | less
    ```
 
-   Replace `pjalv-desktop` with `pjalv-laptop` if applicable.
+### User Login Issues
+
+If you can't login as `pjalv`:
+```bash
+# Reset user password
+sudo passwd pjalv
+
+# Check user exists
+id pjalv
+
+# Verify shell is correct
+getent passwd pjalv
+
+# If needed, recreate user
+sudo nixos-rebuild switch --flake .#pjalv-desktop
+```
 
 ## Contributing
 
