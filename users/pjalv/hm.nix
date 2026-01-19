@@ -11,10 +11,15 @@
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
 in {
   xdg.configFile = {
-    wallpaper.source = "${dotfilesDir}/.config/wallpaper"; # Neovim config
-    fusuma.source = "${dotfilesDir}/.config/fusuma"; # Neovim config
-    mako.source = "${dotfilesDir}/.config/mako"; # Neovim config
-    styles.source = "${dotfilesDir}/.config/waybar"; # Neovim config
+    wallpaper.source = "${dotfilesDir}/.config/wallpaper";
+    fusuma.source = "${dotfilesDir}/.config/fusuma";
+    mako.source = "${dotfilesDir}/.config/mako";
+    styles.source = "${dotfilesDir}/.config/waybar";
+  };
+
+  home.file.".config/hypr/load-wallpaper.sh" = {
+    source = ../../hm/scripts/load-wallpaper.sh;
+    executable = true;
   };
   xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {

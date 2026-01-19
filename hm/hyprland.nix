@@ -194,10 +194,9 @@ in {
 
       source = ~/.config/hypr/monitors.conf
       source = ~/.config/hypr/workspaces.conf
-      exec-once = swww-daemon; sleep 1; swww query || hyprctl notify 0 5000 0 "swww-daemon failed to start"
       exec-once = nm-applet --indicator
       exec-once = fusuma
-      exec-once = swww img "$(find -L .config/wallpaper -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' \) | shuf -n 1)"
+      exec-once = ~/.config/hypr/load-wallpaper.sh
 
       xwayland {
         force_zero_scaling = true
