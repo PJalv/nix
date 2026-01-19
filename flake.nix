@@ -37,8 +37,8 @@
     # Shared dotfiles repository
     dotfilesRepo = nixpkgs.legacyPackages.x86_64-linux.fetchgit {
       url = "https://github.com/PJalv/dotfiles.git";
-      rev = "296e0a345840c58e8b8e28eb9e564a283adc003e";
-      sha256 = "sha256-Xc0bu3me8YuHwt4xZ8+juOndO0sS4IUwU0ql60s5GNc=";
+      rev = "e7ad6143f272e328d2f4e0682960ebfbd038bb09";
+      sha256 = "sha256-X25UHN+pdtocbUDXoiMfh3CVy7bfS9QKgF5bk5Pac4M=";
     };
     dotfilesDir = dotfilesRepo;
   in {
