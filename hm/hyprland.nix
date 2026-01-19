@@ -12,11 +12,12 @@ in {
     enable = true;
     settings = {
       # autostart
+      "$fileManager" = "thunar";
+      "$terminal" = "ghostty";
+      "$menu" = "rofi";
+      "$mainMod" = "ALT";
+
       general = {
-        "$fileManager" = "thunar";
-        "$terminal" = "ghostty";
-        "$menu" = "rofi";
-        "mainMod" = "ALT";
         layout = "dwindle";
         gaps_in = 1;
         gaps_out = 0;
@@ -86,50 +87,50 @@ in {
 
       bind = [
         # show keybinds list
-        "mainMod, F1, exec, show-keybinds"
+        "$mainMod, F1, exec, show-keybinds"
         "SUPER, v, exec, copyq show"
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         "SUPER, D, exec, vesktop"
         "SUPER, S, exec, spotify"
         "SUPER, period, exec, emote"
-        "mainMod, RETURN, exec, $terminal"
-        "mainMod, Q, killactive,"
-        "mainMod, M, exec, hyprlock"
-        "mainMod, E, exec, $fileManager"
-        "mainMod, V, togglefloating,"
-        "mainMod, SPACE, exec, $menu -show drun -show-icons"
-        "mainMod, P, pseudo" # dwindle
-        "mainMod, B, togglesplit"
+        "$mainMod, RETURN, exec, $terminal"
+        "$mainMod, Q, killactive,"
+        "$mainMod, M, exec, hyprlock"
+        "$mainMod, E, exec, $fileManager"
+        "$mainMod, V, togglefloating,"
+        "$mainMod, SPACE, exec, $menu -show drun -show-icons"
+        "$mainMod, P, pseudo" # dwindle
+        "$mainMod, B, togglesplit"
 
         # Move focus with mainMod + arrow keys
-        "mainMod, h, movefocus, l"
-        "mainMod, l, movefocus, r"
-        "mainMod, k, movefocus, u"
-        "mainMod, j, movefocus, d"
+        "$mainMod, h, movefocus, l"
+        "$mainMod, l, movefocus, r"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
 
         # Switch workspaces with mainMod + [0-9]
-        "mainMod, 1, workspace, 1"
-        "mainMod, 2, workspace, 2"
-        "mainMod, 3, workspace, 3"
-        "mainMod, 4, workspace, 4"
-        "mainMod, 5, workspace, 5"
-        "mainMod, 6, workspace, 6"
-        "mainMod, 7, workspace, 7"
-        "mainMod, 8, workspace, 8"
-        "mainMod, 9, workspace, 9"
-        "mainMod, 0, workspace, 10"
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
 
         # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "mainMod SHIFT, 1, movetoworkspace, 1"
-        "mainMod SHIFT, 2, movetoworkspace, 2"
-        "mainMod SHIFT, 3, movetoworkspace, 3"
-        "mainMod SHIFT, 4, movetoworkspace, 4"
-        "mainMod SHIFT, 5, movetoworkspace, 5"
-        "mainMod SHIFT, 6, movetoworkspace, 6"
-        "mainMod SHIFT, 7, movetoworkspace, 7"
-        "mainMod SHIFT, 8, movetoworkspace, 8"
-        "mainMod SHIFT, 9, movetoworkspace, 9"
-        "mainMod SHIFT, 0, movetoworkspace, 10"
+        "$mainMod SHIFT, 1, movetoworkspace, 1"
+        "$mainMod SHIFT, 2, movetoworkspace, 2"
+        "$mainMod SHIFT, 3, movetoworkspace, 3"
+        "$mainMod SHIFT, 4, movetoworkspace, 4"
+        "$mainMod SHIFT, 5, movetoworkspace, 5"
+        "$mainMod SHIFT, 6, movetoworkspace, 6"
+        "$mainMod SHIFT, 7, movetoworkspace, 7"
+        "$mainMod SHIFT, 8, movetoworkspace, 8"
+        "$mainMod SHIFT, 9, movetoworkspace, 9"
+        "$mainMod SHIFT, 0, movetoworkspace, 10"
 
         # media and volume controls
         ",XF86AudioPlay,exec, playerctl play-pause"
@@ -137,21 +138,21 @@ in {
         ",XF86AudioPrev,exec, playerctl previous"
         ",XF86AudioStop,exec, playerctl stop"
         # Example special workspace (scratchpad)
-        "mainMod, S, togglespecialworkspace, magic"
-        "mainMod SHIFT, S, movetoworkspace, special:magic"
+        "$mainMod, S, togglespecialworkspace, magic"
+        "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
         # Scroll through existing workspaces with mainMod + scroll
-        "mainMod, mouse_down, workspace, e+1"
-        "mainMod, mouse_up, workspace, e-1"
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
 
         # SCREENSHOT
-        "mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        "$mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
       ];
 
       # mouse binding
       bindm = [
-        "mainMod, mouse:272, movewindow"
-        "mainMod, mouse:273, resizewindow"
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
 
       # windowrulev2
@@ -220,7 +221,7 @@ in {
       bind = , escape, submap, reset
       # will reset the submap, meaning end the current one and return to the global one
       submap = reset
-      bind = mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
+      bind = $mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
       bindl=, XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
       bindel=, XF86AudioLowerVolume, exec, pactl -- set-sink-volume 0 -5%
       bindel=, XF86AudioRaiseVolume, exec, pactl -- set-sink-volume 0 +5%
