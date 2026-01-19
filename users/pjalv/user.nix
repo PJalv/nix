@@ -8,7 +8,7 @@
   ...
 }: let
   tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
-  session = "${pkgs.hyprland}/bin/Hyprland"; # Fixed typo here
+  session = "${pkgs.hyprland}/bin/start-hyprland"; # Fixed typo and use start-hyprland
 
   # Define base packages that are common to both laptop and desktop
   basePackages = with pkgs; [
@@ -202,7 +202,7 @@ in {
             user = "${username}";
           };
           default_session = {
-            command = "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd Hyprland";
+            command = "${tuigreet} --greeting 'Welcome to Desktop' --asterisks --remember --remember-user-session --time -d -cmd start-hyprland";
             user = "greeter";
           };
         };
