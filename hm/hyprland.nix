@@ -12,6 +12,18 @@ in {
     enable = true;
     settings = {
       # autostart
+      general = {
+        "$fileManager" = "thunar";
+        "$terminal" = "ghostty";
+        "$menu" = "rofi";
+        "$mainMod" = "ALT";
+        layout = "dwindle";
+        gaps_in = 1;
+        gaps_out = 0;
+        border_size = 1;
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
+      };
       exec-once = [
         "copyq --start-server"
         "wl-paste --type text --watch cliphist store # Stores only text data"
@@ -35,18 +47,6 @@ in {
         repeat_rate = 50;
       };
       # gestures = { workspace_swipe = true; };
-      general = {
-        "$fileManager" = "thunar";
-        "$terminal" = "ghostty";
-        "$menu" = "rofi";
-        "$mainMod" = "ALT";
-        layout = "dwindle";
-        gaps_in = 1;
-        gaps_out = 0;
-        border_size = 1;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-      };
 
       cursor = {inactive_timeout = 5;};
       misc = {
@@ -176,7 +176,7 @@ in {
         }
 
         exec-once= hypridle
-        '';
+      '';
       # monitor=DP-3,1920x1080@144,0x0,1
       # monitor=HDMI-A-1,1920x1080,-1080x-200,1,transform,3
       # monitor=desc:Sharp Corporation LC40LB601U,preferred,-1920x0,1
