@@ -50,6 +50,7 @@ in {
     gnome-themes-extra
     ghostty
     hyprlock
+    tmux
     zoxide
     nwg-displays
 
@@ -82,9 +83,6 @@ in {
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
-
-
-
 
   programs.chromium = {
     #package = pkgs.ungoogled-chromium;
