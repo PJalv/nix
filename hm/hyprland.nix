@@ -95,6 +95,7 @@ in {
         "$mainMod, RETURN, exec, $terminal"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exec, hyprlock"
+        "$mainMod, C, exec, chromium-browser"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
         "$mainMod, SPACE, exec, $menu -show drun -show-icons"
@@ -182,8 +183,8 @@ in {
       # monitor=desc:Sharp Corporation LC40LB601U,preferred,-1920x0,1
       # workspace=9, monitor:HDMI-A-1
       desktopConfig = ''
-        exec-once=[workspace 9 silent] vesktop & hyprctl dispatch workspace 9
         exec-once=[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required
+        exec-once=[workspace 9 silent] vesktop & hyprctl dispatch workspace 9
       '';
     in ''
       ${
