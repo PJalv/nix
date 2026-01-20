@@ -87,8 +87,8 @@ in {
 
 
   programs.chromium = {
-    package = pkgs.ungoogled-chromium;
-    # package = pkgs.chromium;
+    #package = pkgs.ungoogled-chromium;
+    package = pkgs.chromium;
     enable = true;
     extensions = [
       {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
