@@ -96,7 +96,7 @@ in {
   config = lib.mkMerge [
     # Common configuration
     {
-      networking.hostName = "pjalv-${machine}";
+      networking.hostName = "smighty";
       networking.networkmanager.enable = true;
       hardware.keyboard.qmk.enable = true;
       hardware.bluetooth.enable = true;
@@ -139,6 +139,9 @@ in {
           options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
         '';
         kernelModules = ["v4l2loopback"];
+        kernel.sysctl = {
+          "net.ipv4.ip_forward" = 1;
+        };
       };
 
       time.timeZone = "America/Los_Angeles";
