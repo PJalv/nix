@@ -43,9 +43,7 @@
     dotfilesDir = dotfilesRepo;
   in {
     nixosConfigurations = {
-      pjalv-desktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
+      smighty = nixpkgs.lib.nixosSystem { system = "x86_64-linux"; specialArgs = {
           machine = "desktop";
           username = "pjalv";
           inherit dotfilesDir inputs;
