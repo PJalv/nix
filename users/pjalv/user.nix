@@ -224,7 +224,7 @@ in {
       };
 
       networking.interfaces = {
-        enp8s0 = {
+        enp11s0 = {
           wakeOnLan.enable = true;
           useDHCP = true;
         };
