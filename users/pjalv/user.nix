@@ -39,6 +39,8 @@
     libnotify
     wl-clipboard
     swappy
+    dnsmasq
+    nftables
     grim
     copyq
     eza
