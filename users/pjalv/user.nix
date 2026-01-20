@@ -170,9 +170,10 @@ in {
 
       users.users.${username} = {
         isNormalUser = true;
-        extraGroups = ["wheel" "input" "network" "dialout" "networkmanager" "ydotool"];
+        extraGroups = ["wheel" "docker" "input" "network" "dialout" "networkmanager" "ydotool"];
         shell = pkgs.zsh;
       };
+      virtualisation.docker.enable = true;
       users.defaultUserShell = pkgs.zsh;
 
       nix.settings.experimental-features = ["nix-command" "flakes"];
