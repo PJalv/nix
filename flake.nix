@@ -43,7 +43,9 @@
     dotfilesDir = dotfilesRepo;
   in {
     nixosConfigurations = {
-      smighty = nixpkgs.lib.nixosSystem { system = "x86_64-linux"; specialArgs = {
+      smighty = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
           machine = "desktop";
           username = "pjalv";
           inherit dotfilesDir inputs;
@@ -127,7 +129,7 @@
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
-       # the path to your home.nix.
+        # the path to your home.nix.
         modules = [./users/remote/hm.nix];
         extraSpecialArgs = {
           inherit username dotfilesDir inputs;

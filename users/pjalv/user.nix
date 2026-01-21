@@ -69,6 +69,8 @@
     xfce.tumbler
     libreoffice
     vlc
+    gnupg
+    pinentry-all
     (import ../../hm/macropad.nix pkgs)
   ];
 
@@ -163,6 +165,10 @@ in {
           xwayland.enable = true;
         };
         zsh.enable = true;
+        gnupg.agent = {
+          enable = true;
+          pinentryPackage = pkgs.pinentry-curses;
+        };
         ydotool = {
           enable = true;
         };
