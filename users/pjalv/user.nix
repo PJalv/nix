@@ -180,7 +180,7 @@ in {
         xdgOpenUsePortal = true; # often helps overall portal reliability
 
         extraPortals = with pkgs; [
-          xdg-desktop-portal-gtk # fallback / GTK-based, usually has InputCapture
+          xdg-desktop-portal-hyprland # fallback / GTK-based, usually has InputCapture
           # If on Plasma: kdePackages.xdg-desktop-portal-kde
           # If on GNOME: xdg-desktop-portal-gnome
         ];
