@@ -217,7 +217,7 @@ in {
       ];
 
       services.openssh.enable = true;
-      networking.firewall.allowedUDPPorts = [51820];
+      networking.firewall.allowedUDPPorts = [51820 69];
 
       environment.systemPackages = basePackages;
 
