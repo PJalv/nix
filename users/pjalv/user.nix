@@ -159,6 +159,10 @@ in {
           pulse.enable = true;
         };
       };
+      services.tftpd = {
+        enable = true;
+        path = "/var/lib/tftpboot";
+      };
 
       programs = {
         hyprland = {
