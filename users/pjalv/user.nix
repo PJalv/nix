@@ -64,6 +64,7 @@
     pulseaudio
     hyprlock
     obs-studio
+    xdg-desktop-portal
     spotify
     xfce.thunar
     xfce.tumbler
@@ -174,6 +175,21 @@ in {
         };
       };
 
+      xdg.portal = {
+        enable = true;
+        xdgOpenUsePortal = true; # often helps overall portal reliability
+
+        extraPortals = with pkgs; [
+          xdg-desktop-portal-gtk # fallback / GTK-based, usually has InputCapture
+          # If on Plasma: kdePackages.xdg-desktop-portal-kde
+          # If on GNOME: xdg-desktop-portal-gnome
+        ];
+
+        # Optional: force GTK portal for InputCapture (some compositors need explicit preference)
+        config.common = {
+          "org.freedesktop.impl.portal.InputCapture" = ["gtk"];
+        };
+      };
       users.users.${username} = {
         isNormalUser = true;
         extraGroups = ["wheel" "docker" "input" "network" "dialout" "networkmanager" "ydotool"];
