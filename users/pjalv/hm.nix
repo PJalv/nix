@@ -54,6 +54,7 @@ in {
     zoxide
     nwg-displays
 
+    deskflow
     tree-sitter
 
     jq
