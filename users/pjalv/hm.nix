@@ -99,10 +99,9 @@ in {
   programs.git = {
     enable = true;
     settings = {
-      user.name = "PJalv";
-      user.email = "pjalvbusiness@gmail.com";
+      user.name = "Jorge Luis Suarez";
+      user.email = "jorge.suarez@tp-link.com";
       init.defaultBranch = "main";
-      safe.directory = "/etc/nixos";
       pull.rebase = false;
     };
   };
