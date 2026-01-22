@@ -261,7 +261,7 @@ in {
           useDHCP = true;
           ipv4.addresses = [
             {
-              address = "192.0.100.105";
+              address = "192.168.0.105";
               prefixLength = 24;
             }
           ];
