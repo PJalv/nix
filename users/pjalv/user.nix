@@ -259,12 +259,12 @@ in {
         enp11s0 = {
           wakeOnLan.enable = true;
           useDHCP = true;
-          ipv4.addresses = [
-            {
-              address = "192.168.0.105";
-              prefixLength = 24;
-            }
-          ];
+          # ipv4.addresses = [
+          #   {
+          #     address = "192.168.0.105";
+          #     prefixLength = 24;
+          #   }
+          # ];
         };
       };
 
