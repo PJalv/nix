@@ -39,7 +39,7 @@ in {
         kb_layout = "us";
         kb_options = "caps:swapescape";
         follow_mouse = 2;
-        scroll_factor = 2;
+        scroll_factor = 1;
         accel_profile = "flat";
 
         touchpad = {natural_scroll = true;};
