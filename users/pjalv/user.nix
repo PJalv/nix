@@ -69,6 +69,7 @@
     xfce.thunar
     xfce.tumbler
     libreoffice
+    kdePackages.krdc
     vlc
     gnupg
     pinentry-all
