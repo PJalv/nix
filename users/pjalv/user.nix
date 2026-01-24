@@ -29,6 +29,7 @@
     gopls
     atftp
     gcc
+    gdb
     killall
     lua-language-server
     nixd
