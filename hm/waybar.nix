@@ -15,7 +15,7 @@ in
       layer = "top";
       position = "top";
       tray = { spacing = 10; };
-      modules-center = [ "hyprland/window" ];
+      modules-center = [ "custom/time" ];
       modules-left =
         [ "hyprland/workspaces" "custom/media" "custom/process_volume" "custom/voice_typer" ];
       modules-right = [ "pulseaudio" "custom/network" "cpu" "memory" "backlight" ]
@@ -76,6 +76,11 @@ in
         on-scroll-down = "${dotfilesDir}/.config/waybar/network-cycler.sh --next && ${dotfilesDir}/.config/waybar/network-cycler.sh";
         tooltip = true;
       };
+      "custom/time" = {
+        exec = "date '+%a %d %B %I:%M:%S %p'";
+        format = "{}";
+        interval = 1;
+      };
       "custom/media" = {
         exec = ''
           playerctl --follow metadata --format '{"text": "{{ artist }} - {{ title }}", "class": "custom-spotify", "alt": "spotify"}' --player=spotify'';
@@ -118,6 +123,10 @@ in
         on-click-left = "easyeffects";
       };
       "hyprland/mode" = { format = ''<span style="italic">{}</span>''; };
+      "hyprland/workspaces" = {
+        format = "{name}";
+        format-active = "<span foreground='#cdd6f4' font-weight='bold'>{name}</span>";
+      };
       temperature = {
         critical-threshold = 80;
         format = "{temperatureC}°C {icon}";
