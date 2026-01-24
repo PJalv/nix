@@ -18,7 +18,7 @@ in
       modules-center = [ "hyprland/window" ];
       modules-left =
         [ "hyprland/workspaces" "custom/media" "custom/process_volume" "custom/voice_typer" ];
-      modules-right = [ "pulseaudio" "network" "cpu" "memory" "backlight" ]
+      modules-right = [ "pulseaudio" "custom/network" "cpu" "memory" "backlight" ]
         ++ (if machine == "laptop" then [
         "power-profiles-daemon"
         "temperature"
@@ -68,13 +68,13 @@ in
         interval = 5;
         format = "{}%  ";
       };
-      network = {
+      "custom/network" = {
+        exec = "${dotfilesDir}/.config/waybar/network-cycler.sh";
+        return-type = "json";
         interval = 1;
-        format-alt = "{ifname}: {ipaddr}/{cidr}";
-        format-disconnected = "Disconnected ⚠";
-        format-ethernet = "{ipaddr}/{cidr}";
-        format-linked = "{ifname} (No IP) ";
-        format-wifi = "{essid} ({signalStrength}%)  ";
+        on-scroll-up = "${dotfilesDir}/.config/waybar/network-cycler.sh --prev && ${dotfilesDir}/.config/waybar/network-cycler.sh";
+        on-scroll-down = "${dotfilesDir}/.config/waybar/network-cycler.sh --next && ${dotfilesDir}/.config/waybar/network-cycler.sh";
+        tooltip = true;
       };
       "custom/media" = {
         exec = ''
