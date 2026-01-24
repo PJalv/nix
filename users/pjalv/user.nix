@@ -28,6 +28,7 @@
     basedpyright
     gopls
     atftp
+    gcc
     killall
     lua-language-server
     nixd
