@@ -157,6 +157,32 @@
         zle -N zle-line-init
         zle -N zle-line-finish
       fi
+
+      _nix_private_rebuild() {
+        local action="$1"
+        local target="''${2:-desktop}"
+        local private_input="''${3:-github:PJalv/nix-private}"
+        local token
+
+        if ! command -v gh >/dev/null 2>&1; then
+          print -u2 "gh is required to read the GitHub token for private flake access"
+          return 127
+        fi
+
+        token="$(gh auth token)" || return $?
+
+        sudo env "NIX_CONFIG=access-tokens = github.com=$token" \
+          nixos-rebuild "$action" --flake ".#$target" \
+          --override-input private "$private_input"
+      }
+
+      nixbuild-private() {
+        _nix_private_rebuild build "$@"
+      }
+
+      nixswitch-private() {
+        _nix_private_rebuild switch "$@"
+      }
     '';
     shellAliases = {
       cd = "z";
@@ -173,6 +199,10 @@
 
       nixedit = "cd /etc/nixos && nvim .";
       nixupdate = "git stage . && git commit -m 'Tweak' && sudo nixos-rebuild switch";
+      nixbuild-desktop = "nixbuild-private desktop";
+      nixswitch-desktop = "nixswitch-private desktop";
+      nixbuild-laptop = "nixbuild-private laptop";
+      nixswitch-laptop = "nixswitch-private laptop";
       docker = "docker";
     };
   };
