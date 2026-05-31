@@ -71,57 +71,74 @@
     privateHomeModules = private.homeManagerModules or {};
     privateSystemModule = privateNixosModules.default or (_: {});
     privateHomeModule = privateHomeModules.default or (_: {});
+    privateUsernames = private.usernames or {};
+
+    usernameFor = machine: privateUsernames.${machine} or "user";
+
+    mkNixosSystem = {
+      machine,
+      extraModules ? [],
+      homeModule,
+      username ? usernameFor machine,
+    }:
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = mkSpecialArgs {inherit machine username;};
+        modules =
+          extraModules
+          ++ [
+            ./users/primary/user.nix
+            privateSystemModule
+            home-manager.nixosModules.home-manager
+            (mkHomeManager {inherit machine username homeModule;})
+          ];
+      };
   in {
     nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = mkSpecialArgs {machine = "desktop"; username = "user";};
-        modules = [
+      desktop = mkNixosSystem {
+        machine = "desktop";
+        homeModule = ./users/primary/hm.nix;
+        extraModules = [
           ./modules/dotfiles.nix
           ./modules/optimization.nix
           ./modules/gaming.nix
           ./modules/pi-backup.nix
-          ./users/primary/user.nix
-          privateSystemModule
-          home-manager.nixosModules.home-manager
           handy.nixosModules.default
           {
             networking.hostName = "desktop";
             programs.handy.enable = true;
           }
-          (mkHomeManager {machine = "desktop"; username = "user"; homeModule = ./users/primary/hm.nix;})
         ];
       };
 
-      laptop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = mkSpecialArgs {machine = "laptop"; username = "user";};
-        modules = [
+      laptop = mkNixosSystem {
+        machine = "laptop";
+        homeModule = ./users/primary/hm.nix;
+        extraModules = [
           ./modules/dotfiles.nix
           ./modules/optimization.nix
           ./modules/gaming.nix
-          ./users/primary/user.nix
-          privateSystemModule
-          home-manager.nixosModules.home-manager
           {networking.hostName = "laptop";}
-          (mkHomeManager {machine = "laptop"; username = "user"; homeModule = ./users/primary/hm.nix;})
         ];
       };
 
-      wsl = nixpkgs.lib.nixosSystem {
+      wsl = let
+        machine = "wsl";
+        username = usernameFor machine;
+      in nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = mkSpecialArgs {machine = "wsl"; username = "user";};
+        specialArgs = mkSpecialArgs {inherit machine username;};
         modules = [
           nixos-wsl.nixosModules.default
           {
             system.stateVersion = "24.05";
             wsl.enable = true;
-            wsl.defaultUser = "user";
+            wsl.defaultUser = username;
           }
           ./users/primary/wsl.nix
           privateSystemModule
           home-manager.nixosModules.home-manager
-          (mkHomeManager {machine = "wsl"; username = "user"; homeModule = ./users/remote/hm.nix;})
+          (mkHomeManager {inherit machine username; homeModule = ./users/remote/hm.nix;})
         ];
       };
     };

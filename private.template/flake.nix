@@ -4,6 +4,12 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = {...}: {
+    usernames = {
+      desktop = "user";
+      laptop = "user";
+      wsl = "user";
+    };
+
     nixosModules.default = {lib, machine ? "desktop", username ? "user", ...}: {
       imports = [./hosts/${machine}.nix];
 
