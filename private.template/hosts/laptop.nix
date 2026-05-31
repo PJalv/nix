@@ -1,5 +1,3 @@
-{lib, username ? "user", ...}: {
+{lib, ...}: {
   networking.hostName = lib.mkDefault "laptop";
-
-  users.users.${username}.description = lib.mkDefault "Laptop user";
 }
