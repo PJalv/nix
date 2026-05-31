@@ -1,0 +1,18 @@
+# Local/private overlays and secrets
+/private/
+/secrets/
+.env
+.env.*
+.api_keys
+*.age
+*.sops.yaml
+
+# Nix build outputs
+result
+result-*
+
+# Generated large repository snapshots
+repomix-output.txt
+
+# Local cartography state
+.slim/
