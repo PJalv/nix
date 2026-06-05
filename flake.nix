@@ -63,7 +63,9 @@
     mkHomeManager = {machine, username, homeModule}: {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.${username} = import homeModule;
+      home-manager.users.${username} = {
+        imports = [homeModule privateHomeModule];
+      };
       home-manager.extraSpecialArgs = mkSpecialArgs {inherit machine username;};
     };
 

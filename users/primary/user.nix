@@ -190,18 +190,7 @@ in {
         path = "/var/lib/tftpboot";
       };
 
-      services.dnsmasq.enable = false;
-
-      systemd.services.dnsmasq = lib.mkDefault {
-        wantedBy = [ "multi-user.target" ];
-        after = [ "network-online.target" ];
-        wants = [ "network-online.target" ];
-        serviceConfig = {
-          ExecStart = "${pkgs.dnsmasq}/bin/dnsmasq --conf-file=/dev/null --no-hosts --keep-in-foreground";
-          Restart = "on-failure";
-          RestartSec = "5";
-        };
-      };
+      services.dnsmasq.enable = lib.mkDefault false;
 
       programs = {
         hyprland = {

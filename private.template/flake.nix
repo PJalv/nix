@@ -5,21 +5,21 @@
 
   outputs = {...}: {
     usernames = {
-      desktop = "user";
-      laptop = "user";
-      wsl = "user";
+      desktop = "pjalv";
+      laptop = "pjalv";
+      wsl = "pjalv";
     };
 
     nixosModules.default = {lib, machine ? "desktop", username ? "user", ...}: {
       imports = [./hosts/${machine}.nix];
 
-      users.users.${username}.description = lib.mkDefault "NixOS User";
+      users.users.${username}.description = lib.mkDefault "PJalv";
     };
 
     homeManagerModules.default = {lib, ...}: {
       programs.git.settings = {
-        user.name = lib.mkDefault "NixOS User";
-        user.email = lib.mkDefault "user@example.invalid";
+        user.name = lib.mkForce "Jorge Luis Suarez";
+        user.email = lib.mkForce "jorge.suarez@tp-link.com";
       };
     };
   };
