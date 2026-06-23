@@ -29,6 +29,7 @@
     wireguard-tools
     lxqt.lxqt-policykit
     liberation_ttf
+    tailscale
     basedpyright
     clang
     clang-tools
@@ -124,6 +125,7 @@ in {
       hardware.bluetooth.package = pkgs.bluez;
       hardware.bluetooth.input.General.ClassicBondedOnly = false;
       services.blueman.enable = true;
+      services.tailwind.enable = true;
       hardware.bluetooth.powerOnBoot = true;
       services.gvfs.enable = true; # Mount, trash, and other functionalities
       services.tumbler.enable = true; # Thumbnail support for images
