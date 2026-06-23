@@ -125,7 +125,7 @@ in {
       hardware.bluetooth.package = pkgs.bluez;
       hardware.bluetooth.input.General.ClassicBondedOnly = false;
       services.blueman.enable = true;
-      services.tailwind.enable = true;
+      services.tailscale.enable = true;
       hardware.bluetooth.powerOnBoot = true;
       services.gvfs.enable = true; # Mount, trash, and other functionalities
       services.tumbler.enable = true; # Thumbnail support for images
