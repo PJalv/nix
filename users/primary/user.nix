@@ -29,6 +29,7 @@
     wireguard-tools
     lxqt.lxqt-policykit
     liberation_ttf
+    vopono
     tailscale
     basedpyright
     clang
