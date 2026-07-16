@@ -67,6 +67,8 @@ in {
     easyeffects
     inputs.llm-agents.packages.${pkgs.system}.opencode
     inputs.llm-agents.packages.${pkgs.system}.rtk
+    inputs.llm-agents.packages.${pkgs.system}.omp
+    inputs.llm-agents.packages.${pkgs.system}.codex
     inputs.mex.packages.${pkgs.system}.default
   ];
 
