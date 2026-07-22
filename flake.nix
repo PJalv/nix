@@ -32,6 +32,10 @@
       url = "github:PJalv/mex";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    t3code = {
+      url = "github:ominit/t3code-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     private = {
       # Public-safe defaults live in private.template. Override this input with a
       # private flake for real host names, network topology, backup targets, and
