@@ -67,6 +67,7 @@ in {
     easyeffects
     inputs.llm-agents.packages.${pkgs.system}.opencode
     inputs.t3code-nightly.packages.${pkgs.system}.t3code
+    inputs.t3code-nightly.packages.${pkgs.system}.server
     inputs.llm-agents.packages.${pkgs.system}.rtk
     inputs.llm-agents.packages.${pkgs.system}.omp
     inputs.llm-agents.packages.${pkgs.system}.codex
