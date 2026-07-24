@@ -71,6 +71,7 @@ in {
     inputs.llm-agents.packages.${pkgs.system}.rtk
     inputs.llm-agents.packages.${pkgs.system}.omp
     inputs.llm-agents.packages.${pkgs.system}.codex
+    inputs.zen-browser.packages.${pkgs.system}.default
     inputs.mex.packages.${pkgs.system}.default
   ];
 

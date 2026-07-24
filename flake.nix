@@ -32,6 +32,10 @@
       url = "github:PJalv/mex";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     t3code-nightly.url = "path:/home/pjalv/projects/t3code-nightly-flake";
     private = {
       # Public-safe defaults live in private.template. Override this input with a
