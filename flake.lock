@@ -319,11 +319,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1785354813,
-        "narHash": "sha256-7FP/nFDQokzcEG50sBrGjaOEfS3+9CFsNv2Ll9KVsmA=",
+        "lastModified": 1785367106,
+        "narHash": "sha256-Q7ui8jYWIOAj3DFTZC7gzcZLyVN59u7e7P/VqQbZqyI=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "b2479bf8a3e1a7294bf4e558f519bef8d6a805af",
+        "rev": "2345fca1225b29dbd740e2303aae8ea289b1c7b8",
         "type": "github"
       },
       "original": {
@@ -737,8 +737,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1785357853,
-        "narHash": "sha256-ckd/zr5RJ76d85xhpwDCJVut9Fz9SfGeAtD9fkLbqto=",
+        "lastModified": 1785368147,
+        "narHash": "sha256-9ZrJpcja8w6EQQp4TZy5ecAEf2VwLZtyneKQJcZ7Bu0=",
         "path": "/home/pjalv/projects/t3code-nightly-flake",
         "type": "path"
       },
@@ -799,11 +799,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784369104,
-        "narHash": "sha256-47cxbcZODibHv3rELFQ9vZly0vUNkND/atn/U7HLeb0=",
+        "lastModified": 1785360170,
+        "narHash": "sha256-XE1lKgQ3eIO3E7zWryqcRsax+mYXod/5RHBn4YaR9YE=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "df3c0640565d04a0261253cdd89fce78ec50168a",
+        "rev": "d1187f8bc71fb8aab02395869ec3f5c1920f75c0",
         "type": "github"
       },
       "original": {
