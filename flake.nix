@@ -110,6 +110,7 @@
           ./modules/optimization.nix
           ./modules/gaming.nix
           ./modules/pi-backup.nix
+          ./modules/work-ip-publisher.nix
           handy.nixosModules.default
           {
             networking.hostName = "desktop";

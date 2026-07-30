@@ -90,10 +90,13 @@ in {
     ../../hm/starship.nix
     ../../hm/firefox.nix
     ../../hm/spicetify.nix
+    ../../hm/work-ip-client.nix
 
     spicetify-nix
   ];
   services.kdeconnect.enable = true;
+
+  programs.workIpClient.enable = lib.mkIf (machine == "laptop") true;
 
 
   programs.direnv = {

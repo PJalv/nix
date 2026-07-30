@@ -1,4 +1,6 @@
 {lib, username ? "user", ...}: {
+  # Enable the work-PC IP publisher for this host
+  services.workIpPublisher.enable = true;
   networking.hostName = lib.mkDefault "desktop";
 
   # LAN interface: enp11s0 at 192.168.169.1/24
