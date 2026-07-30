@@ -737,8 +737,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1785428142,
-        "narHash": "sha256-lCIdBh6IncL7npDs4M9lydPE+OEkxEx5ytxL7f/rtE0=",
+        "lastModified": 1785444599,
+        "narHash": "sha256-e/7ZKmykJJl5y11RjcTYscuO/oHGSxGRNa/oZ7p0KoI=",
         "path": "/home/pjalv/projects/t3code-nightly-flake",
         "type": "path"
       },
