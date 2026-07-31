@@ -734,17 +734,35 @@
           "t3code-nightly",
           "llm-agents",
           "nixpkgs"
-        ]
+        ],
+        "t3code-source": "t3code-source"
       },
       "locked": {
-        "lastModified": 1785517002,
-        "narHash": "sha256-lD5FurcKhwElg9G4jBh/fLnRajJ5LLimjvcAnN5vSGM=",
+        "lastModified": 1785535341,
+        "narHash": "sha256-1hsfKdBiqVZ5PHyXAgIIgO8FLf+ysStl1c55/JU6I54=",
         "path": "/home/pjalv/projects/t3code-nightly-flake",
         "type": "path"
       },
       "original": {
         "path": "/home/pjalv/projects/t3code-nightly-flake",
         "type": "path"
+      }
+    },
+    "t3code-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785535156,
+        "narHash": "sha256-4lo9MLsiYz5ehx8sKOQB1Rh1J5Sp2cOqUtPVc9b0pdg=",
+        "owner": "PJalv",
+        "repo": "t3code",
+        "rev": "60a6968777bb9d58f36956889ba2b7690cb9600f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PJalv",
+        "repo": "t3code",
+        "rev": "60a6968777bb9d58f36956889ba2b7690cb9600f",
+        "type": "github"
       }
     },
     "treefmt-nix": {
