@@ -738,8 +738,8 @@
         "t3code-source": "t3code-source"
       },
       "locked": {
-        "lastModified": 1785535341,
-        "narHash": "sha256-1hsfKdBiqVZ5PHyXAgIIgO8FLf+ysStl1c55/JU6I54=",
+        "lastModified": 1785616444,
+        "narHash": "sha256-DSJ5xjfGJ6ANOE5jD5X/orCMRAIr7BMqHwk4SCWK+ME=",
         "path": "/home/pjalv/projects/t3code-nightly-flake",
         "type": "path"
       },
@@ -751,17 +751,17 @@
     "t3code-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1785535156,
-        "narHash": "sha256-4lo9MLsiYz5ehx8sKOQB1Rh1J5Sp2cOqUtPVc9b0pdg=",
+        "lastModified": 1785616233,
+        "narHash": "sha256-ft8lmCt/ov6fVw0T/vzNjOpW7odHww6JZHDafPI1yHY=",
         "owner": "PJalv",
         "repo": "t3code",
-        "rev": "60a6968777bb9d58f36956889ba2b7690cb9600f",
+        "rev": "561d4bc0837905b186ff69276322e79ac269bdcd",
         "type": "github"
       },
       "original": {
         "owner": "PJalv",
         "repo": "t3code",
-        "rev": "60a6968777bb9d58f36956889ba2b7690cb9600f",
+        "rev": "561d4bc0837905b186ff69276322e79ac269bdcd",
         "type": "github"
       }
     },
