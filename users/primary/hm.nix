@@ -70,6 +70,9 @@ in {
     inputs.t3code-nightly.packages.${pkgs.system}.server
     inputs.llm-agents.packages.${pkgs.system}.rtk
     inputs.llm-agents.packages.${pkgs.system}.codex
+    (inputs.llm-agents.packages.${pkgs.system}.claude-code.override {
+      disableTelemetry = true;
+    })
     inputs.zen-browser.packages.${pkgs.system}.default
     inputs.mex.packages.${pkgs.system}.default
   ];
