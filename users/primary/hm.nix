@@ -9,6 +9,15 @@
   ...
 }: let
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
+  t3code = inputs.t3code-nightly.packages.${pkgs.system}.t3code;
+  t3codeWithKWallet = pkgs.symlinkJoin {
+    name = "${t3code.name}-kwallet";
+    paths = [t3code];
+    nativeBuildInputs = [pkgs.makeWrapper];
+    postBuild = ''
+      wrapProgram "$out/bin/t3code" --add-flags "--password-store=kwallet6"
+    '';
+  };
 in {
   xdg.configFile = {
     wallpaper.source = "${dotfilesDir}/.config/wallpaper";
@@ -66,7 +75,11 @@ in {
     syspower
     easyeffects
     inputs.llm-agents.packages.${pkgs.system}.opencode
-    inputs.t3code-nightly.packages.${pkgs.system}.t3code
+    (
+      if machine == "desktop"
+      then t3codeWithKWallet
+      else t3code
+    )
     inputs.t3code-nightly.packages.${pkgs.system}.server
     inputs.llm-agents.packages.${pkgs.system}.rtk
     inputs.llm-agents.packages.${pkgs.system}.codex
@@ -96,7 +109,6 @@ in {
   services.kdeconnect.enable = true;
 
   programs.workIpClient.enable = lib.mkIf (machine == "laptop") true;
-
 
   programs.direnv = {
     enable = true;

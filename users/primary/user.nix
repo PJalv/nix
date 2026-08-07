@@ -110,6 +110,8 @@
     steam-rom-manager
     soundwireserver
     lutris
+    kdePackages.kwallet
+    kdePackages.kwalletmanager
     # stm32cubemx
     # openocd
     # kdePackages.kdeconnect-kde
@@ -274,7 +276,7 @@ in {
       services.openssh.enable = true;
       networking.firewall = {
         allowedUDPPorts = [51820 69 67 53 29810 19810];
-        allowedTCPPorts = [ 29811 29812 29813 29814 29815 29816 29817 ];
+        allowedTCPPorts = [29811 29812 29813 29814 29815 29816 29817];
         allowedTCPPortRanges = kdeConnectPortRange;
         allowedUDPPortRanges = kdeConnectPortRange;
       };
@@ -299,6 +301,7 @@ in {
           };
         };
       };
+      services.dbus.packages = [pkgs.kdePackages.kwallet];
       programs = {
         tuxclocker = {
           enable = true;
