@@ -31,8 +31,8 @@ in {
     alejandra
     tree-sitter
     git-repo
-    inputs.llm-agents.packages.${pkgs.system}.opencode
-    inputs.llm-agents.packages.${pkgs.system}.codex
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
   ];
   imports = [../../hm/zsh.nix ../../hm/starship.nix];
 

@@ -9,7 +9,7 @@
   ...
 }: let
   spicetify-nix = inputs.spicetify-nix.homeManagerModules.default;
-  t3code = inputs.t3code-nightly.packages.${pkgs.system}.t3code;
+  t3code = inputs.t3code-nightly.packages.${pkgs.stdenv.hostPlatform.system}.t3code;
   t3codeWithKWallet = pkgs.symlinkJoin {
     name = "${t3code.name}-kwallet";
     paths = [t3code];
@@ -74,20 +74,20 @@ in {
     git-repo
     syspower
     easyeffects
-    inputs.llm-agents.packages.${pkgs.system}.opencode
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
     (
       if machine == "desktop"
       then t3codeWithKWallet
       else t3code
     )
-    inputs.t3code-nightly.packages.${pkgs.system}.server
-    inputs.llm-agents.packages.${pkgs.system}.rtk
-    inputs.llm-agents.packages.${pkgs.system}.codex
-    (inputs.llm-agents.packages.${pkgs.system}.claude-code.override {
+    inputs.t3code-nightly.packages.${pkgs.stdenv.hostPlatform.system}.server
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.rtk
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex
+    (inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code.override {
       disableTelemetry = true;
     })
-    inputs.zen-browser.packages.${pkgs.system}.default
-    inputs.mex.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.mex.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   imports = [
@@ -117,7 +117,7 @@ in {
   };
 
   programs.chromium = {
-    package = inputs.browser-previews.packages.${pkgs.system}.google-chrome;
+    package = inputs.browser-previews.packages.${pkgs.stdenv.hostPlatform.system}.google-chrome;
     enable = true;
     extensions = [
       {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin

@@ -81,8 +81,8 @@
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     pinta
-    xfce.thunar
-    xfce.tumbler
+    thunar
+    tumbler
     libreoffice
     hunspell
     playwright-mcp
