@@ -31,6 +31,8 @@ in {
     alejandra
     tree-sitter
     git-repo
+    inputs.llm-agents.packages.${pkgs.system}.opencode
+    inputs.llm-agents.packages.${pkgs.system}.codex
     inputs.opencode-flake.packages.${pkgs.system}.opencode-tps-meter
     inputs.opencode-flake.packages.${pkgs.system}.opencode-google-antigravity-auth
   ];

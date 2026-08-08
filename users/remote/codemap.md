@@ -20,4 +20,4 @@ Remote Home Manager profile for a lightweight `remote` user account. This module
 
 - Home Manager user environment only; no NixOS system-level services.
 - Tooling integration: direnv, command-not-found, Git defaults, GH CLI, tmux, Neovim, and language/dev utilities.
-- External flake packages: `opencode-tps-meter` and `opencode-google-antigravity-auth` from `opencode-flake`.
+- External flake packages: `opencode` and `codex` from `llm-agents.nix`, plus `opencode-tps-meter` and `opencode-google-antigravity-auth` from `opencode-flake`.
