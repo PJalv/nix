@@ -3,6 +3,7 @@
 {
   programs.firefox = {
       enable = true;
+      package = inputs.browser-nixpkgs.legacyPackages.${pkgs.system}.firefox;
       profiles.${username} = {
           settings = {
             # Browser settings go here

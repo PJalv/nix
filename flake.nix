@@ -18,6 +18,11 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    browser-previews = {
+      url = "github:nix-community/browser-previews";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    browser-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     opencode-flake = {
       url = "github:PJalv/opencode-flake";
       inputs.nixpkgs.follows = "nixpkgs";

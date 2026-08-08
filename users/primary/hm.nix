@@ -117,8 +117,7 @@ in {
   };
 
   programs.chromium = {
-    #package = pkgs.ungoogled-chromium;
-    package = pkgs.google-chrome;
+    package = inputs.browser-previews.packages.${pkgs.system}.google-chrome;
     enable = true;
     extensions = [
       {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
