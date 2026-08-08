@@ -48,7 +48,7 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    t3code-nightly.url = "path:/home/pjalv/projects/t3code-nightly-flake";
+    t3code-nightly.url = "github:PJalv/t3code-nightly-flake";
     private = {
       # Public-safe defaults live in private.template. Override this input with a
       # private flake for real host names, network topology, backup targets, and

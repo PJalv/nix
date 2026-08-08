@@ -21,6 +21,18 @@ Available public-safe outputs:
 - `nixosConfigurations.wsl`
 - `homeConfigurations.ubuntu`
 
+## Remote Home Manager
+
+On a multi-user Nix installation, configure the Numtide cache in the Nix daemon before the first build:
+
+```bash
+./users/remote/configure-nix-cache.sh
+nix build .#homeConfigurations.ubuntu.activationPackage
+./result/activate
+```
+
+Do not use `--max-jobs 0`. The agent packages come from the binary cache, but Home Manager must build small host-specific configuration files locally.
+
 ## Layout
 
 ```text
