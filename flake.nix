@@ -1,13 +1,6 @@
 {
   description = "NixOS and Home Manager configurations";
 
-  nixConfig = {
-    extra-substituters = ["https://cache.numtide.com"];
-    extra-trusted-public-keys = [
-      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
-    ];
-  };
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
@@ -30,10 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     browser-nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    opencode-flake = {
-      url = "github:PJalv/opencode-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";

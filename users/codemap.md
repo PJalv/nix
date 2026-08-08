@@ -23,4 +23,4 @@ User-scoped Nix modules for this repository. This subtree assembles per-user sys
 - NixOS system services: boot loader, networking, hardware, PipeWire, X11/Wayland, OpenSSH, Docker, firewall, and user accounts.
 - Desktop integration: Hyprland, greetd, SDDM, xdg-desktop-portal, Wayland utilities, and GUI apps.
 - Dev tooling: Home Manager, direnv, Git/GH, compilers, language servers, and Nix flakes.
-- External inputs: flake inputs for `spicetify-nix`, `llm-agents`, `mex`, and `opencode-flake` packages.
+- External inputs: flake inputs for `spicetify-nix`, `llm-agents`, and `mex` packages.

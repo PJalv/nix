@@ -7,7 +7,7 @@ NixOS flake for desktop, laptop, WSL, and standalone remote Home Manager use. Th
 ## System Entry Points
 
 - `flake.nix`: Primary composition root. Defines inputs, pins an external dotfiles repository, wires a public-safe `private.template` flake input, and exposes generic `nixosConfigurations` for `desktop`, `laptop`, and `wsl`, plus a standalone `homeConfigurations.ubuntu` profile.
-- `flake.lock`: Locks upstream inputs such as `nixpkgs`, `home-manager`, `nixos-wsl`, `spicetify-nix`, `firefox-addons`, `nix-gaming`, `opencode-flake`, `llm-agents`, `handy`, and `mex`.
+- `flake.lock`: Locks upstream inputs such as `nixpkgs`, `home-manager`, `nixos-wsl`, `spicetify-nix`, `firefox-addons`, `nix-gaming`, `llm-agents`, `handy`, and `mex`.
 - `install.sh`: Fresh-install automation referenced by the README; bootstraps flakes, clones the repo, detects target machine type, generates hardware config, and applies the configuration.
 - `test.nix`: Root-level Nix expression for ad hoc testing/experimentation.
 - `README.md` / `INSTALL.md`: Human-facing installation and usage documentation.
@@ -47,6 +47,6 @@ NixOS flake for desktop, laptop, WSL, and standalone remote Home Manager use. Th
 
 - **NixOS**: `nixpkgs.lib.nixosSystem`, NixOS module system, systemd services/timers, hardware profiles, boot/network/audio/graphics/user-account options.
 - **Home Manager**: `home-manager.nixosModules.home-manager` for NixOS-integrated user environments and `home-manager.lib.homeManagerConfiguration` for standalone remote use.
-- **External flakes**: `nixos-wsl`, `spicetify-nix`, `firefox-addons`, `nix-gaming`, `opencode-flake`, `llm-agents`, `handy`, `mex`, and NUR-derived packages.
+- **External flakes**: `nixos-wsl`, `spicetify-nix`, `firefox-addons`, `nix-gaming`, `llm-agents`, `handy`, `mex`, and NUR-derived packages.
 - **Desktop runtime**: Hyprland/Wayland ecosystem, Waybar, Hyprlock/Hypridle, Ghostty/Kitty, Rofi, Firefox, Spotify/Spicetify, GTK/Qt theming.
 - **Operational tooling**: Install automation, Pi rsync backup service, Nix GC/store optimization, Docker/dev tooling, SSH, and local package patches.
