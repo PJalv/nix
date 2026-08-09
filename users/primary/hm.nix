@@ -88,6 +88,8 @@ in {
     })
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.mex.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ] ++ lib.optionals (machine == "desktop") [
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.voxtype
   ];
 
   imports = [

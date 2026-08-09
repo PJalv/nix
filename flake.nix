@@ -28,7 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
-    handy.url = "github:cjpais/Handy";
     mex = {
       url = "github:PJalv/mex";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,7 +55,6 @@
     nixpkgs,
     home-manager,
     nixos-wsl,
-    handy,
     private,
     ...
   } @ inputs: let
@@ -116,11 +114,7 @@
           ./modules/gaming.nix
           ./modules/pi-backup.nix
           ./modules/work-ip-publisher.nix
-          handy.nixosModules.default
-          {
-            networking.hostName = "desktop";
-            programs.handy.enable = true;
-          }
+          {networking.hostName = "desktop";}
         ];
       };
 
