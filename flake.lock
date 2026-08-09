@@ -739,11 +739,11 @@
         "t3code-source": "t3code-source"
       },
       "locked": {
-        "lastModified": 1786232717,
-        "narHash": "sha256-jKOVBO//kvKvavViK11EBpkUZTAV9GAErdJu/ZaeZcM=",
+        "lastModified": 1786237815,
+        "narHash": "sha256-N4yUH4aJjOCrmvIjmsheyKxLexGPZahPlLrV2yPpgXQ=",
         "owner": "PJalv",
         "repo": "t3code-nightly-flake",
-        "rev": "c6783ee0018c2bcc728eb37a211487748753393b",
+        "rev": "72c3c20cb84c811cacdd3d10710ef7f6aabbedfd",
         "type": "github"
       },
       "original": {
@@ -755,17 +755,17 @@
     "t3code-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1786232519,
-        "narHash": "sha256-bhZrk1ucIlfgabntilb2nXX2hZKyL+aUbTEhQ6kIzz0=",
+        "lastModified": 1786237687,
+        "narHash": "sha256-McMRtM3a+0fDAL6Q+MDjaRtYXEMLia2hrH9b2brudqM=",
         "owner": "PJalv",
         "repo": "t3code",
-        "rev": "88d4063c3175055f85bc733e6e85d718808af53d",
+        "rev": "b5450fd48f842d69c980e3a0a0046e6a9213db8d",
         "type": "github"
       },
       "original": {
         "owner": "PJalv",
         "repo": "t3code",
-        "rev": "88d4063c3175055f85bc733e6e85d718808af53d",
+        "rev": "b5450fd48f842d69c980e3a0a0046e6a9213db8d",
         "type": "github"
       }
     },
