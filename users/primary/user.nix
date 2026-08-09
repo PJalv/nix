@@ -4,6 +4,7 @@
   pkgs,
   machine ? "desktop",
   username ? "user",
+  inputs,
   ...
 }: let
   tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
@@ -17,6 +18,7 @@
   ];
 
   stremio-linux-shell = pkgs.callPackage ../../pkgs/stremio-linux-shell/package.nix {};
+  ketch = inputs.ketch.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   # Define base packages that are common to both laptop and desktop
   basePackages = with pkgs; [
@@ -64,6 +66,7 @@
     direnv
     playerctl
     stremio-linux-shell
+    ketch
     fzf
     zoxide
     ripgrep

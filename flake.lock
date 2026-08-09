@@ -347,6 +347,27 @@
         "type": "github"
       }
     },
+    "ketch": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786249836,
+        "narHash": "sha256-TghluiHtb3TDDQeMv7cr0ZupNKIEaSqj0mujXIdZDl4=",
+        "owner": "PJalv",
+        "repo": "ketch",
+        "rev": "3a4bd748efb2d0ff77b07ed28f29a0a3b75926ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PJalv",
+        "ref": "nix-flake",
+        "repo": "ketch",
+        "type": "github"
+      }
+    },
     "llm-agents": {
       "inputs": {
         "bun2nix": "bun2nix_2",
@@ -622,6 +643,7 @@
         "firefox-addons": "firefox-addons",
         "handy": "handy",
         "home-manager": "home-manager",
+        "ketch": "ketch",
         "llm-agents": "llm-agents",
         "mex": "mex",
         "nix-gaming": "nix-gaming",

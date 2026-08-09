@@ -38,6 +38,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     t3code-nightly.url = "github:PJalv/t3code-nightly-flake";
+    ketch = {
+      url = "github:PJalv/ketch/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     private = {
       # Public-safe defaults live in private.template. Override this input with a
       # private flake for real host names, network topology, backup targets, and
