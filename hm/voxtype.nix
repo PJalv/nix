@@ -8,7 +8,9 @@
   voxtype = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.voxtype;
 in {
   config = lib.mkIf (machine == "desktop") {
-    xdg.configFile."voxtype/config.toml".text = ''
+    xdg.configFile."voxtype/config.toml" = {
+      force = true;
+      text = ''
       state_file = "auto"
 
       [hotkey]
@@ -37,7 +39,8 @@ in {
 
       [status]
       icon_theme = "nerd-font"
-    '';
+      '';
+    };
 
     systemd.user.services.voxtype = {
       Unit = {
