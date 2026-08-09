@@ -26,6 +26,12 @@ in {
       language = "en"
       translate = false
       on_demand_loading = false
+      context_window_optimization = true
+
+      [vad]
+      enabled = true
+      threshold = 0.5
+      min_speech_duration_ms = 100
 
       [output]
       mode = "type"
