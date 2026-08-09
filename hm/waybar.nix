@@ -1,4 +1,4 @@
-{ pkgs, machine ? "desktop", dotfilesDir, ... }:
+{ pkgs, lib, machine ? "desktop", inputs, dotfilesDir, ... }:
 
 let
 in
@@ -9,6 +9,18 @@ in
     systemd.enable = false;
     style = ''
       ${builtins.readFile "${dotfilesDir}/.config/waybar/styles/style.css"}
+
+      #custom-voice_typer {
+        padding: 0 8px;
+      }
+
+      #custom-voice_typer.recording {
+        color: #f38ba8;
+      }
+
+      #custom-voice_typer.transcribing {
+        color: #f9e2af;
+      }
     '';
     settings = [{
       height = 20;
@@ -17,7 +29,8 @@ in
       tray = { spacing = 10; };
       modules-center = [ "custom/time" ];
       modules-left =
-        [ "hyprland/workspaces" "custom/media" "custom/process_volume" "custom/voice_typer" ];
+        [ "hyprland/workspaces" "custom/media" "custom/process_volume" ]
+        ++ lib.optionals (machine == "desktop") [ "custom/voice_typer" ];
       modules-right = [ "pulseaudio" "custom/network" "cpu" "memory" "backlight" ]
         ++ (if machine == "laptop" then [
         "power-profiles-daemon"
@@ -94,6 +107,13 @@ in
         exec = "${dotfilesDir}/.config/waybar/apps_volume chromium spotify";
         format = "{}";
         return-type = "json";
+      };
+      "custom/voice_typer" = {
+        exec = "${inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.voxtype}/bin/voxtype status --follow --format json --extended";
+        format = "{}";
+        return-type = "json";
+        tooltip = true;
+        on-click = "voxtype record toggle";
       };
       "custom/power_menu" = {
         format = "⏻ ";

@@ -104,6 +104,7 @@ in {
     ../../hm/starship.nix
     ../../hm/firefox.nix
     ../../hm/spicetify.nix
+    ../../hm/voxtype.nix
     ../../hm/work-ip-client.nix
 
     spicetify-nix
