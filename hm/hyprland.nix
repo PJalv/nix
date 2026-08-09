@@ -155,12 +155,8 @@ in {
         # SCREENSHOT
         "$mainMod,code:117, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
       ] ++ lib.optionals (machine == "desktop") [
-        # Hold Ctrl+Space to dictate; releasing Space transcribes and types.
-        "CTRL, SPACE, exec, voxtype record start"
-      ];
-
-      bindr = lib.optionals (machine == "desktop") [
-        "CTRL, SPACE, exec, voxtype record stop"
+        # Press Ctrl+Space once to start dictation and again to stop.
+        "CTRL, SPACE, exec, voxtype record toggle"
       ];
 
       # mouse binding
