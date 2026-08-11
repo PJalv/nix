@@ -114,6 +114,7 @@
           ./modules/gaming.nix
           ./modules/pi-backup.nix
           ./modules/work-ip-publisher.nix
+          ./modules/binderfs.nix
           {networking.hostName = "desktop";}
         ];
       };
