@@ -127,7 +127,7 @@ in {
       {id = "ghmbeldphafepmbegfdlkpapadhbakde";} # proton pass
       {id = "bapeomcobggcdleohggighcjbeeglhbn";} # proton pass
     ];
-    commandLineArgs = ["--force-dark-mode"];
+    commandLineArgs = ["--force-dark-mode" "--password-store=kwallet6"];
   };
 
   programs.git = {

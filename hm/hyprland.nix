@@ -7,6 +7,27 @@
   dotfilesDir,
   ...
 }: let
+  chromeWithKWallet = pkgs.writeShellScript "chrome-with-kwallet" ''
+    # Chrome must not start before Secret Service is ready, otherwise it uses a
+    # non-persistent encryption key and existing login cookies become unreadable.
+    ${pkgs.systemd}/bin/busctl --user call \
+      org.kde.kwalletd6 /modules/kwalletd6 org.freedesktop.DBus.Peer Ping \
+      >/dev/null 2>&1 || true
+
+    for _ in $(${pkgs.coreutils}/bin/seq 1 100); do
+      if [ "$(${pkgs.systemd}/bin/busctl --user get-property \
+        org.freedesktop.secrets \
+        /org/freedesktop/secrets/collection/kdewallet \
+        org.freedesktop.Secret.Collection Locked 2>/dev/null)" = "b false" ]; then
+        exec ${config.programs.chromium.package}/bin/google-chrome-stable \
+          --autoplay-policy=no-user-gesture-required
+      fi
+      ${pkgs.coreutils}/bin/sleep 0.1
+    done
+
+    echo "KWallet Secret Service did not become ready; refusing to start Chrome with an ephemeral encryption key" >&2
+    exit 1
+  '';
 in {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -193,7 +214,7 @@ in {
       # monitor=desc:Sharp Corporation LC40LB601U,preferred,-1920x0,1
       # workspace=9, monitor:HDMI-A-1
       desktopConfig = ''
-        exec-once=[workspace 1 silent] chromium-browser --autoplay-policy=no-user-gesture-required
+        exec-once=[workspace 1 silent] ${chromeWithKWallet}
         exec-once=[workspace 9 silent] vesktop & hyprctl dispatch workspace 9
       '';
     in ''
