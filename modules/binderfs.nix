@@ -16,6 +16,10 @@
   fileSystems."/dev/binderfs" = {
     device = "binder";
     fsType = "binder";
-    options = [ "mode=0755" ];
+
+    # binderfs does not support the generic "mode" fsconfig parameter.  Keep
+    # this non-essential mount from making the whole machine unbootable if a
+    # future kernel lacks binderfs or rejects the mount for another reason.
+    options = [ "nofail" ];
   };
 }
