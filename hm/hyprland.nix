@@ -20,6 +20,7 @@
         /org/freedesktop/secrets/collection/kdewallet \
         org.freedesktop.Secret.Collection Locked 2>/dev/null)" = "b false" ]; then
         exec ${config.programs.chromium.package}/bin/google-chrome-stable \
+          --password-store=kwallet6 \
           --autoplay-policy=no-user-gesture-required
       fi
       ${pkgs.coreutils}/bin/sleep 0.1
