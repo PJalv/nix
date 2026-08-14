@@ -9,6 +9,7 @@
     theme = Catppuccin Mocha
     window-theme = ghostty
     window-decoration = false
+    clipboard-paste-protection = false
 
 
 
