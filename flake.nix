@@ -40,6 +40,10 @@
     pi-copilot = {
       url = "git+ssh://git@git.pjalv.com:2221/PJalv/pi-copilot.git";
       inputs.nixpkgs.follows = "nixpkgs";
+      # Use the system's already-working llm-agents input (same rev + nixpkgs)
+      # instead of the separate copy pinned inside the pi-copilot flake, so pi
+      # builds against the exact nixpkgs the rest of home.packages uses.
+      inputs.llm-agents_nix.follows = "llm-agents";
     };
     ketch = {
       url = "github:PJalv/ketch/nix-flake";
