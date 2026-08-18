@@ -37,6 +37,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     t3code-nightly.url = "github:PJalv/t3code-nightly-flake";
+    pi-copilot = {
+      url = "git+ssh://git@git.pjalv.com:2221/PJalv/pi-copilot.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ketch = {
       url = "github:PJalv/ketch/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
