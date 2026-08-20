@@ -75,10 +75,6 @@ in {
     syspower
     easyeffects
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.opencode
-    # Single pi for the shell: the t3code-nightly wrapped build (pi-copilot
-    # 0.84.2) which pins subagents + mcp-adapter. Avoids the duplicate-extension
-    # conflict that arises when a raw pi-copilot also loads ~/.pi/agent packages.
-    inputs.t3code-nightly.packages.${pkgs.stdenv.hostPlatform.system}.pi
     (
       if machine == "desktop"
       then t3codeWithKWallet

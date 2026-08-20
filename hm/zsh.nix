@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   programs.zsh = {
@@ -190,6 +191,11 @@
       vim = "nvim";
       c = "clear";
       cat = "bat";
+
+      # Single pi: the t3code-nightly wrapped build (pi-copilot 0.84.2) which
+      # pins subagents + mcp-adapter; avoids installing a raw pi-copilot that
+      # would also load ~/.pi/agent packages and conflict with t3code's pins.
+      pi = "${inputs.t3code-nightly.packages.${pkgs.stdenv.hostPlatform.system}.pi}/bin/pi";
 
       find_remote = "nix-shell -p android-tools && adb exec-out am start -a android.intent.action.VIEW -d -n com.nvidia.remotelocator/.ShieldRemoteLocatorActivity";
 
