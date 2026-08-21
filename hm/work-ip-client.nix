@@ -31,7 +31,7 @@ with lib; let
     fi
 
     # Validate it's in 10.176.0.0/16
-    if ! python3 -c "
+    if ! ${pkgs.python3}/bin/python3 -c "
 import ipaddress, sys
 addr = ipaddress.ip_address(sys.argv[1])
 net = ipaddress.ip_network('10.176.0.0/16')

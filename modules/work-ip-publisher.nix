@@ -22,7 +22,7 @@ with lib; let
       exit 0
     fi
 
-    if ! python3 -c "
+    if ! ${pkgs.python3}/bin/python3 -c "
 import ipaddress, sys
 addr = ipaddress.ip_address(sys.argv[1])
 net = ipaddress.ip_network(sys.argv[2])
