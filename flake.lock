@@ -686,11 +686,11 @@
         "t3code-source": "t3code-source"
       },
       "locked": {
-        "lastModified": 1787261207,
-        "narHash": "sha256-pYaBtuA2hKw2ZsuLB/2rlfqt/YQJ/6TJZ1ItXS8KSvU=",
+        "lastModified": 1787447922,
+        "narHash": "sha256-PETKMA3cczKZe1lwEz/BUzEsb8L0v+62eI+TAovwJDc=",
         "owner": "PJalv",
         "repo": "t3code-nightly-flake",
-        "rev": "68d3419119562c758248ffa8a270e983496ee73b",
+        "rev": "cb168c208721ef46e724116b82b71136d77c7342",
         "type": "github"
       },
       "original": {
