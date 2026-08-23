@@ -144,7 +144,14 @@
         border-radius: 8px;
         margin: 6px 0px 0px 0px;
         padding: 8px 12px;
-        text-color: @red;
+        text-color: @fg;
+      }
+
+      /* Filebrowser and error messages wrap their content in a nested textbox.
+         Override rofi's light default so it does not appear as a white bar. */
+      textbox {
+        background-color: transparent;
+        text-color: @fg;
       }
 
       /* --- mode switcher (sidebar) --- */
