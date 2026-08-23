@@ -1,0 +1,62 @@
+[13:48:44.772] l_msg_api_alloc_internal:123: garbage collect pool 1 ring 1 index 61
+[13:48:44.772] 0:
+[13:48:44.922] /tmp # 
+[13:48:45.073] /tmp # 
+[13:48:45.225] /tmp # 
+[13:48:45.364] /tmp # 
+[13:48:45.509] /tmp # 
+[13:48:45.662] /tmp # 
+[13:48:45.806] /tmp # 
+[13:48:45.955] /tmp # /tmp # netstat -anp 2>/dev/null | grep -E 'ecs|29815' | head -20; echo '---all e
+[13:48:46.156] cs conns---'; netstat -anp 2>/dev/null | grep ecs[J[1A/tmp # netstat | grep 29815[J
+[13:48:46.965] tcp        0      0 localhost:45381         localhost:29815         ESTABLISHED 
+[13:48:47.016] tcp        0      0 localhost:29815         localhost:45381         ESTABLISHED 
+[13:48:47.030] /tmp # /tmp # netstat | grep 29815[J
+[13:48:47.651] tcp        0      0 localhost:45381         localhost:29815         ESTABLISHED 
+[13:48:47.704] tcp        0      0 localhost:29815         localhost:45381         ESTABLISHED 
+[13:48:47.719] /tmp # /tmp # netstat | grep 29815[J
+[13:48:47.946] tcp        0      0 localhost:45381         localhost:29815         ESTABLISHED 
+[13:48:47.998] tcp        0      0 localhost:29815         localhost:45381         ESTABLISHED 
+[13:48:48.012] /tmp # /tmp # netstat | grep 29815[J
+[13:48:48.263] tcp        0      0 localhost:45381         localhost:29815         ESTABLISHED 
+[13:48:48.315] tcp        0      0 localhost:29815         localhost:45381         ESTABLISHED 
+[13:48:48.330] /tmp # /tmp # netstat | grep 29815[J
+[13:48:48.566] tcp        0      0 localhost:45381         localhost:29815         ESTABLISHED 
+[13:48:48.617] tcp        0      0 localhost:29815         localhost:45381         ESTABLISHED 
+[13:48:48.631] /tmp # /tmp # netstat | grep 29815[J
+[13:48:48.883] tcp        0      0 localhost:45381         localhost:29815         ESTABLISHED 
+[13:48:48.945] tcp        0      0 localhost:29815         localhost:45381         ESTABLISHED 
+[13:48:48.959] /tmp # /tmp # netstat | grep 29815[J
+[13:48:49.160] tcp        0      0 localhost:45381         localhost:29815         ESTABLISHED 
+[13:48:49.208] tcp        0      0 localhost:29815         localhost:45381         ESTABLISHED 
+[13:48:49.223] /tmp # /tmp # netstat | grep 29815[J0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 0 index 992
+[13:48:49.420] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:48:51.413] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 1 index 50
+[13:48:51.421] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:48:54.413] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 2 index 31
+[13:48:54.419] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:01.413] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 0 index 993
+[13:49:01.421] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:05.413] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 2 index 32
+[13:49:05.421] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:07.751] [31;1m[ERROR][DAL][dmpSwitch:opTaskDef_6632][dal.c:_dalCfgDispatch:1533] Callback of DAL_MOD_PORTAL_GUEST not found in switchMac[0m
+[13:49:07.763] [PORTAL_INFO][0][418:vl_api_portal_guest_t_handler] modify guest 825614512_LAN1
+[13:49:07.843] [31;1m[ERROR][DAL][dmpSwitch:opTaskDef_6632][dal.c:_dalCfgDispatch:1533] Callback of QOSSCHEDULER_BW_RATIO not found in switchMac[0m
+[13:49:07.856] [31;1m[ERROR][DAL][dmpSwitch:opTaskDef_6632][dal.c:_dalCfgDispatch:1533] Callback of QOSSCHEDULER_BW_RATIO not found in switchMac[0m
+[13:49:08.451] [31;1m[ERROR][DAL][dmpSwitch:opTaskDef_6632][dal.c:_dalCfgDispatch:1533] Callback of dpi_statistics not found in switchMac[0m
+[13:49:16.412] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 2 index 33
+[13:49:16.418] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:27.412] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 2 index 34
+[13:49:27.419] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:29.967] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 1 index 51
+[13:49:29.975] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:37.843] [31;1m[ERROR][DAL][dmpSwitch:opTaskDef_6632][dal.c:_dalCfgDispatch:1533] Callback of QOSSCHEDULER_BW_RATIO not found in switchMac[0m
+[13:49:37.855] [31;1m[ERROR][DAL][dmpSwitch:opTaskDef_6632][dal.c:_dalCfgDispatch:1533] Callback of QOSSCHEDULER_BW_RATIO not found in switchMac[0m
+[13:49:38.412] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 2 index 35
+[13:49:38.418] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:40.413] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 0 index 27
+[13:49:40.421] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:40.817] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 1 index 52
+[13:49:40.824] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
+[13:49:49.412] 0: vl_msg_api_alloc_internal:123: garbage collect pool 1 ring 2 index 37
+[13:49:49.420] 0: vl_msg_api_alloc_internal:129: msg id 1170 name ip_stats_details
