@@ -109,12 +109,14 @@
       }
 
       element-icon {
+        background-color: transparent;
         size: 26px;
         vertical-align: 0.5;
         text-color: @fg;
       }
 
       element-text {
+        background-color: transparent;
         vertical-align: 0.5;
         text-color: @fg;
       }
