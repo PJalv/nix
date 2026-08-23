@@ -103,15 +103,20 @@
         border-radius: 8px;
         padding: 9px 12px;
         spacing: 12px;
+        /* rofi's default foreground is dark; without this, rows render
+           dark-on-dark over the crust background and look washed out. */
+        text-color: @fg;
       }
 
       element-icon {
         size: 26px;
         vertical-align: 0.5;
+        text-color: @fg;
       }
 
       element-text {
         vertical-align: 0.5;
+        text-color: @fg;
       }
 
       element selected {
